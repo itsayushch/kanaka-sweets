@@ -374,6 +374,23 @@ export function ChevronDownIcon({ className = "w-3 h-3", size, ...props }: IconP
   );
 }
 
+export function VegetarianMarkIcon({ className = "w-4 h-4", size, ...props }: IconProps) {
+  return (
+    <svg
+      width={size || 16}
+      height={size || 16}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-label="100% Pure Vegetarian"
+      {...props}
+    >
+      <rect x="2" y="2" width="20" height="20" rx="3" stroke="#059669" strokeWidth="2.5" fill="#ffffff" />
+      <circle cx="12" cy="12" r="5" fill="#059669" />
+    </svg>
+  );
+}
+
 export function KanakaEmblemIcon({ className = "w-6 h-6", size, ...props }: IconProps) {
   return (
     <svg

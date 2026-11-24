@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { FormattedProduct } from "@/lib/db-products";
-import { StarIcon, GiftIcon } from "@/components/icons";
+import { StarIcon, GiftIcon, VegetarianMarkIcon } from "@/components/icons";
 
 interface ProductCardProps {
   product: FormattedProduct;
@@ -52,14 +52,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           )}
         </div>
 
-        {/* Top-right FSSAI Green Vegetarian Dot */}
-        <div className="absolute top-2.5 right-2.5 pointer-events-none">
-          <div
-            className="w-4 h-4 bg-white/95 rounded border border-emerald-600 flex items-center justify-center p-0.5 shadow-sm"
-            title="100% Pure Vegetarian"
-          >
-            <div className="w-2 h-2 rounded-full bg-emerald-600" />
-          </div>
+        {/* Top-right FSSAI Green Vegetarian Mark */}
+        <div className="absolute top-2.5 right-2.5 pointer-events-none shadow-sm rounded">
+          <VegetarianMarkIcon className="w-4 h-4" />
         </div>
 
         {/* Bottom-right Rating Badge (BSS Style with vector Star) */}
