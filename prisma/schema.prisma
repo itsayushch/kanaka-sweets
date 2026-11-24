@@ -1,0 +1,194 @@
+// Prisma schema for Kanaka Sweets & Bakery
+// Stack: Next.js + PostgreSQL on Supabase (Mumbai ap-south-1) via Prisma
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum FulfillmentType {
+  DELIVERY
+  PICKUP
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  CANCELLED
+}
+
+model Category {
+  id           String    @id @default(cuid())
+  name         String
+  slug         String    @unique
+  description  String
+  image        String?
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  products     Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  name             String
+  slug             String           @unique
+  description      String
+  categoryId       String
+  category         Category         @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  image            String
+  images           String[]         @default([])
+  isFeatured       Boolean          @default(false)
+  isBestForGifting Boolean          @default(false)
+  isActive         Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  variants         ProductVariant[]
+  orderItems       OrderItem[]
+
+  @@index([categoryId])
+  @@map("products")
+}
+
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name       String
+  weight     String?
+  price      Int
+  stock      Int         @default(50)
+  sku        String?     @unique
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  orderItems OrderItem[]
+
+  @@index([productId])
+  @@map("product_variants")
+}
+
+model Order {
+  id                 String          @id @default(cuid())
+  orderNumber        String          @unique
+  customerName       String
+  customerEmail      String
+  customerPhone      String
+  fulfillmentType    FulfillmentType
+  deliveryAddress    String?
+  deliveryCity       String?         @default("Vijayawada")
+  deliveryPostalCode String?
+  pickupDate         DateTime?
+  pickupTimeSlot     String?
+  totalAmount        Int
+  status             OrderStatus     @default(PENDING)
+  razorpayOrderId    String?         @unique
+  razorpayPaymentId  String?
+  razorpaySignature  String?
+  notes              String?
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  items              OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String         @id @default(cuid())
+  orderId   String
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product        @relation(fields: [productId], references: [id], onDelete: Restrict)
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Restrict)
+  quantity  Int
+  price     Int
+
+  @@index([orderId])
+  @@index([productId])
+  @@index([variantId])
+  @@map("order_items")
+}
+
+model SiteSettings {
+  id                         String   @id @default("global")
+  festivalHighlightActive    Boolean  @default(true)
+  festivalHighlightTitle     String   @default("Festive Special Gift Boxes")
+  festivalHighlightSubtitle  String   @default("Handcrafted with pure desi ghee in Vijayawada")
+  festivalHighlightText      String   @default("Celebrate every occasion with our authentic Andhra sweets and premium festival gift boxes. Freshly prepared daily at our shop.")
+  festivalHighlightImage     String   @default("/images/festival-hero.webp")
+  festivalHighlightDiscount  String?  @default("Special festive assortments & pre-order slots available")
+  updatedAt                  DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+// Better Auth models for admin authentication
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean
+  image         String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Account {
+  id                    String    @id
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verifications")
+}
