@@ -50,11 +50,20 @@ export function ProductForm({
     });
   };
 
-  const setVariant = (index: number, key: keyof ProductFormValues["variants"][number], value: string) =>
+  const setVariant = (index: number, key: keyof ProductFormValues["variants"][number], value: string) => {
     setValues((v) => ({
       ...v,
       variants: v.variants.map((row, i) => (i === index ? { ...row, [key]: value } : row)),
     }));
+    // Clear that size field's error as soon as it is edited (same as other fields).
+    setErrors((e) => {
+      const errorKey = `variants.${index}.${key}`;
+      if (!(errorKey in e)) return e;
+      const next = { ...e };
+      delete next[errorKey];
+      return next;
+    });
+  };
 
   async function save(event: React.FormEvent) {
     event.preventDefault();
