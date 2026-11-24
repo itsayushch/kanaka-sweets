@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   PhoneIcon,
-  WhatsAppIcon,
   ShoppingBagIcon,
   SearchIcon,
   SparklesIcon,
@@ -76,7 +75,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-stone-200/80">
-        {/* ── 1. Top Announcement Bar (Plum #871a45 - Tight, Clean Padding) ── */}
+        {/* ── 1. Top Announcement Bar (Plum #871a45 - Clean, Crisp Padding) ── */}
         <div className="bg-[#871a45] text-white text-xs py-1.5 px-4 sm:px-6 lg:px-8">
           <div className="w-full flex items-center justify-between gap-4">
             {/* Left: Free delivery badge */}
@@ -114,11 +113,12 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. Main Brand Header (Single Unified Line: Logo + Reduced Links + Compact Search + Profile & Cart) ── */}
+        {/* ── 2. Main Brand Header (Single Line: Logo + Expanded Links + RHS Search, Profile & Cart) ── */}
         <div className="bg-white">
           <div className="w-full px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4 lg:gap-6">
-            {/* Left Group: Logo + Reduced Category Links on the SAME LINE */}
-            <div className="flex items-center gap-6 lg:gap-8 shrink-0">
+            {/* Left Group: Logo + Increased Category Links on the SAME LINE */}
+            <div className="flex items-center gap-6 xl:gap-8 min-w-0">
+              {/* Brand Logo */}
               <Link
                 href="/"
                 className="flex items-center gap-2.5 group shrink-0"
@@ -148,37 +148,65 @@ export function Navbar() {
                 </div>
               </Link>
 
-              {/* Reduced Category Links (Same Line!) */}
+              {/* Increased Category Links (Expanded & Beautifully Distributed on Same Line) */}
               <nav
                 aria-label="Primary Categories"
-                className="hidden lg:flex items-center gap-5 xl:gap-7 text-xs sm:text-sm font-semibold text-[#002c3f]"
+                className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-semibold text-[#002c3f] flex-wrap"
                 style={{ fontFamily: "var(--font-jost)" }}
               >
                 <Link
                   href="/sweets"
-                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1 border-b-2 border-transparent hover:border-[#871a45]"
+                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-0.5 border-b-2 border-transparent hover:border-[#871a45]"
                 >
                   <span>All Sweets</span>
                   <ChevronDownIcon className="w-3 h-3 text-stone-400" />
                 </Link>
 
                 <Link
+                  href="/sweets/ghee-mysore-pak"
+                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
+                >
+                  Mysore Pak
+                </Link>
+
+                <Link
+                  href="/sweets/pootharekulu"
+                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
+                >
+                  Pootharekulu
+                </Link>
+
+                <Link
+                  href="/sweets/kaju-katli"
+                  className="hidden xl:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
+                >
+                  Kaju Katli
+                </Link>
+
+                <Link
                   href="/cakes"
-                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45]"
+                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45] whitespace-nowrap"
                 >
                   Cakes
                 </Link>
 
                 <Link
                   href="/snacks"
-                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45]"
+                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45] whitespace-nowrap"
                 >
                   Savouries
                 </Link>
 
                 <Link
+                  href="/sweets/bobbatlu"
+                  className="hidden 2xl:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700 whitespace-nowrap"
+                >
+                  Bobbatlu
+                </Link>
+
+                <Link
                   href="/festival-boxes"
-                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1.5 text-[#871a45] font-bold"
+                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1.5 text-[#871a45] font-bold whitespace-nowrap"
                 >
                   <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
                   <span>Festival Boxes</span>
@@ -189,33 +217,21 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Center: Sleek & Professional Search Bar */}
-            <div className="hidden md:flex items-center w-56 lg:w-72 xl:w-80 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
-              <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
-              <input
-                type="text"
-                readOnly
-                placeholder="Search Pootharekulu, Kaju Katli..."
-                className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
-              />
-              <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
-                ⌘K
-              </span>
-            </div>
-
-            {/* Right Action Items: WhatsApp + Profile & Cart Icons with short pinpoint title below */}
-            <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-              {/* WhatsApp Concierge Order Button */}
-              <a
-                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-xs hover:shadow transition-all active:scale-95 shrink-0"
-                aria-label="Order on WhatsApp"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-white" />
-                <span>WhatsApp</span>
-              </a>
+            {/* RHS: Slightly Longer Sleek Search Bar + Profile & Cart Icons */}
+            <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
+              {/* Search Bar on the RHS (Slightly Longer) */}
+              <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
+                <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
+                <input
+                  type="text"
+                  readOnly
+                  placeholder="Search Pootharekulu, Mysore Pak, Hampers..."
+                  className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
+                />
+                <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
+                  ⌘K
+                </span>
+              </div>
 
               {/* Profile Icon with Short Title Below */}
               <Link
