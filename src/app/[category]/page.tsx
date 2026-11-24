@@ -155,8 +155,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* ── Category Switcher Strip ── */}
-      <div className="bg-[#FAF6EF] border-b border-stone-200/80 sticky top-[var(--navbar-h,0px)] z-10">
+      {/* ── Category Switcher Strip (NOT sticky) ── */}
+      <div className="bg-[#FAF6EF] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-3.5">
             {allCategories.map((c) => (

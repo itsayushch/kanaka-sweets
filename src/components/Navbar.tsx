@@ -34,7 +34,8 @@ const CATEGORIES = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-stone-100">
+    <>
+      <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-stone-100">
       {/* ── Top Announcement Bar (Plum #871a45) ── */}
       <div className="bg-[#871a45] text-white text-xs py-2 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -144,9 +145,10 @@ export function Navbar() {
           </div>
         </div>
       </div>
+    </header>
 
-      {/* ── Signature BSS Category Stories Ribbon (Full Width Cream Strip with Real Photography Discs) ── */}
-      <div className="bg-[#FAF6EF] border-b border-stone-200/80">
+      {/* ── Signature BSS Category Stories Ribbon (Scrolls naturally with page, NOT sticky) ── */}
+      <nav aria-label="Category Stories" className="bg-[#FAF6EF] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-start sm:justify-center gap-6 sm:gap-10 overflow-x-auto no-scrollbar py-3.5">
             {CATEGORIES.map((cat) => (
@@ -177,7 +179,7 @@ export function Navbar() {
             ))}
           </div>
         </div>
-      </div>
-    </header>
+      </nav>
+    </>
   );
 }
