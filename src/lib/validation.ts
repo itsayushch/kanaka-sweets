@@ -9,17 +9,7 @@
  * it is thrown away before any code can use it.
  */
 import { z } from "zod";
-
-/** Max quantity of one item per order (Rule F6: quantity 1-20). */
-export const MAX_QUANTITY = 20;
-
-/** Pickup time slots offered at the shop (extra sales idea, Rule C5). */
-export const PICKUP_SLOTS = [
-  "9:00 AM - 11:00 AM",
-  "11:00 AM - 1:00 PM",
-  "4:00 PM - 6:00 PM",
-  "6:00 PM - 8:00 PM",
-] as const;
+import { MAX_QUANTITY, PICKUP_SLOTS } from "@/lib/shop-constants";
 
 /** One cart line: only IDs and a quantity, never a price. */
 export const cartItemSchema = z.object({

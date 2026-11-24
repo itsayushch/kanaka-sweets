@@ -9,9 +9,10 @@
  */
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { MAX_QUANTITY } from "@/lib/shop-constants";
 
-/** Most of one item a customer may order (matches the server rule). */
-export const MAX_CART_QUANTITY = 20;
+/** Most of one item a customer may order (same limit the server enforces). */
+export const MAX_CART_QUANTITY = MAX_QUANTITY;
 
 export interface CartItem {
   productId: string;

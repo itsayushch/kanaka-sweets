@@ -17,7 +17,7 @@
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/prisma";
 import type { Prisma } from "@/generated/prisma/client";
-import { MAX_QUANTITY } from "@/lib/validation";
+import { MAX_QUANTITY } from "@/lib/shop-constants";
 import type { CartItemInput, CheckoutInput } from "@/lib/validation";
 
 /** A database client or a transaction client: both can run queries. */
