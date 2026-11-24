@@ -7,6 +7,7 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { describeError } from "@/lib/razorpay";
 import { PaymentError, createPaymentForOrder } from "@/lib/payments";
 
 const bodySchema = z.object({ orderNumber: z.string().trim().min(1).max(40) });
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
       );
     }
     // Never leak internal details (or keys) to the browser.
-    console.error("[api/payments/create]", (error as Error).message);
+    console.error("[api/payments/create]", describeError(error));
     return NextResponse.json(
       { error: "SERVER_ERROR", message: "We couldn't start the payment. Please try again." },
       { status: 500 },

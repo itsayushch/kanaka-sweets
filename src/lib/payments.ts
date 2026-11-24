@@ -17,6 +17,7 @@ import {
   getRazorpayClient,
   getRazorpayKeyId,
   isValidPaymentSignature,
+  withTimeout,
 } from "@/lib/razorpay";
 
 /** An expected problem we can explain to the customer (not a crash). */
@@ -68,11 +69,14 @@ export async function createPaymentForOrder(orderNumber: string) {
   // The customer may retry a failed payment: reuse the same Razorpay order.
   let razorpayOrderId = order.razorpayOrderId;
   if (!razorpayOrderId) {
-    const created = await getRazorpayClient().orders.create({
-      amount: amountPaise,
-      currency: "INR",
-      receipt: order.orderNumber,
-    });
+    const created = await withTimeout(
+      getRazorpayClient().orders.create({
+        amount: amountPaise,
+        currency: "INR",
+        receipt: order.orderNumber,
+      }),
+      15000,
+    );
     razorpayOrderId = created.id;
 
     // Save it only if nobody else saved one first (two tabs clicking Pay).

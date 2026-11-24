@@ -59,3 +59,28 @@ export function isValidPaymentSignature(
   if (expectedBytes.length !== givenBytes.length) return false;
   return timingSafeEqual(expectedBytes, givenBytes);
 }
+
+/**
+ * Turn whatever a failed Razorpay call threw into a short, safe log line.
+ * The SDK throws a plain object like { statusCode, error: { description } },
+ * not an Error. We log only the status and description, never keys.
+ */
+export function describeError(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "object" && error !== null) {
+    const e = error as { statusCode?: number; error?: { description?: string } };
+    return `Razorpay error ${e.statusCode ?? "?"}: ${e.error?.description ?? "no description"}`;
+  }
+  return "Unknown error";
+}
+
+/** Stop waiting for a slow call after `ms` so the customer is never stuck. */
+export function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Timed out after ${ms} ms`)), ms);
+    promise.then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}

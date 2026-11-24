@@ -9,6 +9,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { revalidateTag } from "next/cache";
+import { describeError } from "@/lib/razorpay";
 import { PaymentError, verifyAndMarkPaid } from "@/lib/payments";
 
 const bodySchema = z.object({
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
         { status: error.status },
       );
     }
-    console.error("[api/payments/verify]", (error as Error).message);
+    console.error("[api/payments/verify]", describeError(error));
     return NextResponse.json(
       { error: "SERVER_ERROR", message: "We couldn't confirm your payment. Please contact the shop." },
       { status: 500 },
