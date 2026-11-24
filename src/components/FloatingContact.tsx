@@ -1,3 +1,5 @@
+import { PhoneIcon, WhatsAppIcon } from "@/components/icons";
+
 export function FloatingContact() {
   return (
     <aside
@@ -12,7 +14,7 @@ export function FloatingContact() {
           aria-label="Call Kanaka Sweets directly"
           style={{ fontFamily: "var(--font-jost)" }}
         >
-          <span className="text-base">📞</span>
+          <PhoneIcon className="w-4 h-4 text-white" />
           <span>Call Shop</span>
         </a>
 
@@ -25,7 +27,7 @@ export function FloatingContact() {
           aria-label="Chat with Kanaka Sweets on WhatsApp"
           style={{ fontFamily: "var(--font-jost)" }}
         >
-          <span className="text-base">💬</span>
+          <WhatsAppIcon className="w-4 h-4 text-white" />
           <span>WhatsApp</span>
         </a>
       </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { FormattedProduct } from "@/lib/db-products";
+import { StarIcon, GiftIcon } from "@/components/icons";
 
 interface ProductCardProps {
   product: FormattedProduct;
@@ -13,7 +14,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const isOutOfStock = product.variants.every((v) => v.stock <= 0);
   const defaultVariant = sortedVariants[0];
 
-  // Realistic MRP display (12-15% strikethrough for luxury confectionery feel)
+  // Realistic MRP display (15% strikethrough for luxury confectionery feel)
   const originalPrice = Math.round(minPrice * 1.15);
 
   return (
@@ -33,11 +34,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           loading={priority ? undefined : "lazy"}
         />
 
-        {/* Top-left Badges (BSS Style) */}
+        {/* Top-left Badges (BSS Style with vector icon) */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 pointer-events-none">
           {product.isBestForGifting ? (
-            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
-              🎁 Best for Gifting
+            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5">
+              <GiftIcon className="w-3 h-3 text-[#F8D030]" />
+              <span>Best for Gifting</span>
             </span>
           ) : product.isFeatured ? (
             <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md">
@@ -60,10 +62,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Bottom-right Rating Badge (BSS Style ★ 4.8) */}
+        {/* Bottom-right Rating Badge (BSS Style with vector Star) */}
         <div className="absolute bottom-2.5 right-2.5 pointer-events-none">
           <span className="bg-[#002c3f]/90 text-white text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
-            <span className="text-[#F8D030]">★</span> 4.8
+            <StarIcon className="w-3 h-3 text-[#F8D030]" />
+            <span>4.8</span>
           </span>
         </div>
 

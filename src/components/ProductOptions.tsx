@@ -3,6 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { FormattedProduct } from "@/lib/db-products";
+import {
+  ShoppingBagIcon,
+  WhatsAppIcon,
+  CheckIcon,
+  ShieldCheckIcon,
+  PackageIcon,
+  LightningIcon,
+  LeafIcon,
+} from "@/components/icons";
 
 interface ProductOptionsProps {
   product: FormattedProduct;
@@ -162,19 +171,22 @@ export function ProductOptions({ product }: ProductOptionsProps) {
               : "bg-[#871a45] hover:bg-[#691436] text-white active:scale-[0.99] shadow-sm"
           }`}
         >
-          🛒
-          {isCurrentOutOfStock
-            ? "Selected size is out of stock"
-            : `Add to Cart · ₹${(selectedVariant?.price ?? 0) * quantity}`}
+          <ShoppingBagIcon className="w-4 h-4 text-white" />
+          <span>
+            {isCurrentOutOfStock
+              ? "Selected size is out of stock"
+              : `Add to Cart · ₹${(selectedVariant?.price ?? 0) * quantity}`}
+          </span>
         </button>
 
         <a
           href={`https://wa.me/919848022338?text=${whatsappMessage}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white min-h-[48px] transition-colors"
+          className="w-full py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white min-h-[48px] transition-colors shadow-sm"
         >
-          💬 Order via WhatsApp
+          <WhatsAppIcon className="w-4 h-4" />
+          <span>Order via WhatsApp</span>
         </a>
       </div>
 
@@ -186,7 +198,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
           className="p-3.5 bg-emerald-50 border border-emerald-300 rounded-xl text-emerald-800 text-sm font-semibold flex items-center justify-between"
         >
           <div className="flex items-center gap-2">
-            <span>✅</span>
+            <CheckIcon className="w-4 h-4 text-emerald-600" />
             <span>{addedMessage}</span>
           </div>
           <Link
@@ -198,19 +210,24 @@ export function ProductOptions({ product }: ProductOptionsProps) {
         </div>
       )}
 
-      {/* Trust highlights */}
-      <div className="pt-4 border-t border-stone-100 grid grid-cols-2 gap-3 text-xs text-stone-500">
-        {[
-          { icon: "🧈", text: "Pure Desi Cow Ghee" },
-          { icon: "📦", text: "Vacuum-sealed packing" },
-          { icon: "⚡", text: "Same-day shop pickup" },
-          { icon: "🌿", text: "Zero preservatives" },
-        ].map(({ icon, text }) => (
-          <div key={text} className="flex items-center gap-2">
-            <span>{icon}</span>
-            <span>{text}</span>
-          </div>
-        ))}
+      {/* Trust highlights with vector icons */}
+      <div className="pt-4 border-t border-stone-100 grid grid-cols-2 gap-3 text-xs text-stone-600">
+        <div className="flex items-center gap-2">
+          <ShieldCheckIcon className="w-4 h-4 text-[#871a45]" />
+          <span>Pure Desi Cow Ghee</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <PackageIcon className="w-4 h-4 text-[#871a45]" />
+          <span>Vacuum-sealed packing</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <LightningIcon className="w-4 h-4 text-[#871a45]" />
+          <span>Same-day shop pickup</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <LeafIcon className="w-4 h-4 text-[#871a45]" />
+          <span>Zero preservatives</span>
+        </div>
       </div>
     </div>
   );

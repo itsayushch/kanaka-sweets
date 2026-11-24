@@ -1,53 +1,45 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  PhoneIcon,
+  WhatsAppIcon,
+  ShoppingBagIcon,
+  SearchIcon,
+  SparklesIcon,
+  KanakaEmblemIcon,
+} from "@/components/icons";
 
 const CATEGORIES = [
   {
     slug: "sweets",
     label: "Sweets & Mithai",
-    badge: "Pure Ghee",
-    bg: "bg-[#fce7f3]", // pastel pink
-    border: "border-pink-200",
-    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=200&q=80",
-    emoji: "🍬",
+    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=240&q=80",
   },
   {
     slug: "cakes",
     label: "Fresh Cakes",
-    badge: "Eggless",
-    bg: "bg-[#fef9c3]", // pastel yellow
-    border: "border-yellow-200",
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&q=80",
-    emoji: "🎂",
+    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=240&q=80",
   },
   {
     slug: "snacks",
     label: "Spicy Savouries",
-    badge: "Crunchy",
-    bg: "bg-[#ffedd5]", // pastel peach
-    border: "border-orange-200",
-    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=200&q=80",
-    emoji: "🌶️",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=240&q=80",
   },
   {
     slug: "festival-boxes",
     label: "Festival Hampers",
-    badge: "Best for Gifting",
-    bg: "bg-[#fef08a]", // pastel gold
-    border: "border-amber-300",
-    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200&q=80",
-    emoji: "🪔",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=240&q=80",
   },
 ];
 
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-stone-100">
-      {/* ── Top Announcement Bar (Bombay Sweet Shop plum) ── */}
+      {/* ── Top Announcement Bar (Plum #871a45) ── */}
       <div className="bg-[#871a45] text-white text-xs py-2 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="text-[#F8D030]">✨</span>
+            <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030]" />
             <span className="font-semibold tracking-wide">
               Free Delivery in Vijayawada on orders above ₹999 &nbsp;•&nbsp; 100% Pure Desi Cow Ghee
             </span>
@@ -58,9 +50,10 @@ export function Navbar() {
             <a
               href="tel:+919848022338"
               className="flex items-center gap-1.5 text-[#F8D030] hover:text-white transition-colors font-bold touch-manipulation"
-              aria-label="Call Kanaka Sweets"
+              aria-label="Call Kanaka Sweets at +91 98480 22338"
             >
-              <span>📞</span> +91 98480 22338
+              <PhoneIcon className="w-3.5 h-3.5" />
+              <span>+91 98480 22338</span>
             </a>
           </div>
         </div>
@@ -77,7 +70,7 @@ export function Navbar() {
           >
             {/* Retro emblem badge */}
             <div className="w-11 h-11 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-sm group-hover:scale-105 transition-transform">
-              <span className="text-xl">🪔</span>
+              <KanakaEmblemIcon className="w-6 h-6 text-[#F8D030]" />
             </div>
             <div className="flex flex-col leading-tight">
               <span
@@ -108,9 +101,7 @@ export function Navbar() {
               placeholder="Search for Pootharekulu, Kaju Katli, Mysore Pak..."
               className="w-full bg-[#f4f4f4] hover:bg-[#eaeaea] text-[#002c3f] placeholder-stone-400 text-sm py-2.5 pl-4 pr-10 rounded-full border border-transparent focus:border-[#871a45] focus:outline-none transition-all cursor-pointer"
             />
-            <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-base">
-              🔍
-            </span>
+            <SearchIcon className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 w-4 h-4 pointer-events-none" />
           </div>
 
           {/* Right Action Icons & WhatsApp */}
@@ -119,9 +110,9 @@ export function Navbar() {
             <a
               href="tel:+919848022338"
               className="sm:hidden p-2 rounded-full border border-stone-200 text-[#002c3f] hover:text-[#871a45] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-              aria-label="Call shop"
+              aria-label="Call shop directly"
             >
-              📞
+              <PhoneIcon className="w-5 h-5" />
             </a>
 
             {/* WhatsApp Concierge Order Button */}
@@ -132,7 +123,7 @@ export function Navbar() {
               className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-[#20ba59] transition-all shadow-sm min-h-[44px]"
               aria-label="Chat with Kanaka Sweets on WhatsApp"
             >
-              <span className="text-sm">💬</span>
+              <WhatsAppIcon className="w-4 h-4" />
               <span>WhatsApp Order</span>
             </a>
 
@@ -142,7 +133,7 @@ export function Navbar() {
               className="relative inline-flex items-center justify-center w-11 h-11 rounded-full border border-stone-200 hover:border-[#871a45] hover:text-[#871a45] transition-colors text-stone-800"
               aria-label="Shopping Cart"
             >
-              <span className="text-xl">🛍️</span>
+              <ShoppingBagIcon className="w-5 h-5 text-[#002c3f]" />
               <span
                 id="cart-badge-count"
                 className="absolute -top-1 -right-1 bg-[#871a45] text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm"
@@ -154,7 +145,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* ── Signature BSS Category Stories Ribbon (Full Width Cream Strip) ── */}
+      {/* ── Signature BSS Category Stories Ribbon (Full Width Cream Strip with Real Photography Discs) ── */}
       <div className="bg-[#FAF6EF] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-start sm:justify-center gap-6 sm:gap-10 overflow-x-auto no-scrollbar py-3.5">
@@ -164,13 +155,15 @@ export function Navbar() {
                 href={`/${cat.slug}`}
                 className="flex flex-col items-center gap-1.5 group shrink-0 min-w-[76px]"
               >
-                {/* Circular Illustrated Avatar Disc (BSS Style) */}
-                <div
-                  className={`w-16 h-16 sm:w-18 sm:h-18 rounded-full ${cat.bg} border ${cat.border} shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-200 flex items-center justify-center relative overflow-hidden`}
-                >
-                  <span className="text-2xl sm:text-3xl select-none group-hover:scale-110 transition-transform">
-                    {cat.emoji}
-                  </span>
+                {/* Real High-Resolution Circular Photography Disc (BSS Style) */}
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-sm group-hover:shadow-md transition-all duration-300 relative bg-stone-100">
+                  <Image
+                    src={cat.image}
+                    alt={cat.label}
+                    fill
+                    sizes="72px"
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
                 </div>
 
                 {/* Category Label */}

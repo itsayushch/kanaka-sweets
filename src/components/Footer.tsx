@@ -1,4 +1,13 @@
 import Link from "next/link";
+import {
+  PhoneIcon,
+  WhatsAppIcon,
+  MapPinIcon,
+  ClockIcon,
+  StarIcon,
+  ArrowRightIcon,
+  KanakaEmblemIcon,
+} from "@/components/icons";
 
 export function Footer() {
   return (
@@ -10,16 +19,21 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Col 1: Brand */}
           <div className="space-y-4">
-            <Link href="/" aria-label="Kanaka Sweets — Home">
-              <span
-                className="font-serif text-2xl font-bold text-[#F8D030] block"
-                style={{ fontFamily: "var(--font-fraunces)" }}
-              >
-                Kanaka
-              </span>
-              <span className="text-xs tracking-[0.2em] uppercase text-white/60 font-semibold">
-                Sweets &amp; Bakery
-              </span>
+            <Link href="/" aria-label="Kanaka Sweets — Home" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030]">
+                <KanakaEmblemIcon className="w-5 h-5 text-[#F8D030]" />
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span
+                  className="font-serif text-2xl font-bold text-[#F8D030]"
+                  style={{ fontFamily: "var(--font-fraunces)" }}
+                >
+                  Kanaka
+                </span>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-white/60 font-semibold -mt-0.5">
+                  Sweets &amp; Bakery
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-white/70 leading-relaxed">
               Family-run sweet shop in Governorpet, Vijayawada since 2011.
@@ -27,14 +41,14 @@ export function Footer() {
               time-honoured Andhra recipes.
             </p>
             <div className="flex items-center gap-2 text-xs text-[#2D5E3F] bg-emerald-900/30 px-3 py-2 rounded-lg w-fit border border-emerald-700/30">
-              <span className="text-emerald-400">★</span>
+              <StarIcon className="w-3.5 h-3.5 text-emerald-400" />
               <span className="font-semibold text-emerald-200">
-                4.8 / 5 · 1,200+ Reviews
+                4.8 / 5 · 1,200+ Verified Reviews
               </span>
             </div>
           </div>
 
-          {/* Col 2: Shop */}
+          {/* Col 2: Shop Categories */}
           <div className="space-y-4">
             <h3
               className="font-serif text-base font-semibold text-[#F8D030]"
@@ -47,7 +61,7 @@ export function Footer() {
                 { href: "/sweets", label: "Pure Ghee Sweets & Mithai" },
                 { href: "/cakes", label: "Fresh Celebration Cakes" },
                 { href: "/snacks", label: "Vijayawada Savouries & Mixture" },
-                { href: "/festival-boxes", label: "🪔 Festival Gift Boxes" },
+                { href: "/festival-boxes", label: "Festive Gift Hampers" },
               ].map(({ href, label }) => (
                 <li key={href}>
                   <Link
@@ -69,18 +83,22 @@ export function Footer() {
             >
               Visit Our Shop
             </h3>
-            <div className="text-sm text-white/70 space-y-2 leading-relaxed">
-              <p className="font-medium text-white/90">
-                📍 Door No. 28-10-15, Eluru Road,
-                <br />
-                Near Old Bus Stand, Governorpet,
-                <br />
-                Vijayawada, AP 520002
-              </p>
-              <p className="text-xs text-white/50">
-                ⏰ Open Daily: 7:00 AM – 10:30 PM
-              </p>
-              <p className="text-xs text-white/50">
+            <div className="text-sm text-white/70 space-y-2.5 leading-relaxed">
+              <div className="flex items-start gap-2">
+                <MapPinIcon className="w-4 h-4 text-[#F8D030] shrink-0 mt-1" />
+                <p className="font-medium text-white/90">
+                  Door No. 28-10-15, Eluru Road,
+                  <br />
+                  Near Old Bus Stand, Governorpet,
+                  <br />
+                  Vijayawada, AP 520002
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-white/60">
+                <ClockIcon className="w-3.5 h-3.5 text-[#F8D030] shrink-0" />
+                <span>Open Daily: 7:00 AM – 10:30 PM</span>
+              </div>
+              <p className="text-xs text-white/40">
                 FSSAI Certified · Bulk &amp; Wedding Orders Welcome
               </p>
             </div>
@@ -90,7 +108,8 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-300 transition-colors min-h-[44px]"
             >
-              🗺️ Get Directions
+              <span>Get Directions</span>
+              <ArrowRightIcon className="w-4 h-4" />
             </a>
           </div>
 
@@ -103,20 +122,21 @@ export function Footer() {
               Reach Us Instantly
             </h3>
             <p className="text-xs text-white/60">
-              Custom gift boxes, same-day pickup or urgent orders — call or
-              message us directly.
+              Custom gift boxes, same-day pickup or urgent orders — call or message us directly.
             </p>
             <div className="space-y-3">
               <a
                 href="tel:+919848022338"
                 className="flex items-center gap-3 bg-white/10 hover:bg-white/15 px-4 py-3 rounded-xl transition-colors text-sm font-semibold min-h-[52px]"
               >
-                <span className="text-xl">📞</span>
+                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
+                  <PhoneIcon className="w-4 h-4 text-white" />
+                </div>
                 <div>
                   <div className="text-xs text-white/50 font-normal">
                     Call Shop Directly
                   </div>
-                  <div className="text-white">+91 98480 22338</div>
+                  <div className="text-white font-bold">+91 98480 22338</div>
                 </div>
               </a>
               <a
@@ -125,7 +145,9 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] px-4 py-3 rounded-xl transition-colors text-sm font-bold min-h-[52px]"
               >
-                <span className="text-xl">💬</span>
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0">
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
+                </div>
                 <div>
                   <div className="text-xs text-green-100 font-normal">
                     WhatsApp Ordering
