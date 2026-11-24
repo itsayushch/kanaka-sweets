@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CartBadge } from "@/components/CartBadge";
 import {
   PhoneIcon,
   ShoppingBagIcon,
@@ -1041,12 +1042,7 @@ export function Navbar() {
               >
                 <div className="relative w-6 h-6 flex items-center justify-center">
                   <ShoppingBagIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
-                  <span
-                    id="cart-badge-count"
-                    className="absolute -top-1 -right-1.5 bg-[#871a45] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs"
-                  >
-                    0
-                  </span>
+                  <CartBadge />
                 </div>
                 <span
                   className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"

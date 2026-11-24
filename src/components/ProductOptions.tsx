@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { FormattedProduct } from "@/lib/db-products";
+import { useCartStore } from "@/lib/cart-store";
 import {
   ShoppingBagIcon,
   WhatsAppIcon,
@@ -26,6 +27,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
   );
   const [quantity, setQuantity] = useState<number>(1);
   const [addedMessage, setAddedMessage] = useState<string | null>(null);
+  const addItem = useCartStore((state) => state.addItem);
 
   const selectedVariant =
     product.variants.find((v) => v.id === selectedVariantId) || initialVariant;
@@ -35,13 +37,14 @@ export function ProductOptions({ product }: ProductOptionsProps) {
   const handleAddToCart = () => {
     if (!selectedVariant || isCurrentOutOfStock) return;
 
-    // Update cart count badge (Phase 2 will replace with Zustand)
-    const badge = document.getElementById("cart-badge-count");
-    if (badge) {
-      const current = parseInt(badge.textContent || "0", 10) || 0;
-      badge.textContent = String(current + quantity);
-    }
+    // Only ids and a quantity go into the cart. The price is never stored (F1).
+    addItem({
+      productId: product.id,
+      variantId: selectedVariant.id,
+      quantity,
+    });
 
+    // Clear feedback (Rule B4): message here + the header badge count updates.
     setAddedMessage(`Added ${quantity} × ${selectedVariant.name} to cart!`);
     setTimeout(() => setAddedMessage(null), 4000);
   };
