@@ -77,7 +77,7 @@ export default async function HomePage() {
           ✦
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Headline & Call-to-actions */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -187,7 +187,7 @@ export default async function HomePage() {
           2. AS SEEN IN / PRESS STRIP (BSS Signature Social Proof)
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-white py-10 border-b border-stone-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 text-center">
           <h2
             className="text-xs font-bold uppercase tracking-[0.25em] text-stone-400 mb-6"
             style={{ fontFamily: "var(--font-jost)" }}
@@ -213,7 +213,7 @@ export default async function HomePage() {
           3. OUR GIFTING FAVOURITES (Products Grid)
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-14 sm:py-20 bg-white" aria-labelledby="gifting-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <h2
               id="gifting-heading"
@@ -255,7 +255,7 @@ export default async function HomePage() {
         className="py-16 sm:py-24 bg-[#FAF6EF] border-y border-stone-200/70"
         aria-labelledby="experience-heading"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <h2
               id="experience-heading"
@@ -419,7 +419,7 @@ export default async function HomePage() {
           className="py-14 sm:py-20 bg-gradient-to-br from-[#871a45] via-[#691436] to-[#4a0e28] text-white relative overflow-hidden"
           aria-labelledby="festival-heading"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="space-y-5">
                 <div className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -490,7 +490,7 @@ export default async function HomePage() {
           6. CUSTOMER REVIEWS (Emerald Star Badges)
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 bg-white" aria-labelledby="reviews-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2
               id="reviews-heading"

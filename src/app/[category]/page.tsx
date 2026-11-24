@@ -8,6 +8,7 @@ import {
   getAllCategories,
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
+import { SparklesIcon, LeafIcon, PackageIcon } from "@/components/icons";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -94,7 +95,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           ✦
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-8 space-y-4">
               {/* Breadcrumb */}
@@ -126,18 +127,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </p>
 
               <div className="flex flex-wrap gap-2.5 pt-2">
-                {[
-                  `✨ ${products.length} Fresh Varieties`,
-                  "🧈 100% Pure Cow Ghee",
-                  "📦 Same-Day Counter Pickup",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
+                  <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030]" />
+                  <span>{products.length} Fresh Varieties</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
+                  <LeafIcon className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>100% Pure Cow Ghee</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
+                  <PackageIcon className="w-3.5 h-3.5 text-[#F8D030]" />
+                  <span>Same-Day Counter Pickup</span>
+                </div>
               </div>
             </div>
 
@@ -159,7 +160,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
       {/* ── Category Switcher Strip (NOT sticky) ── */}
       <div className="bg-[#FAF6EF] border-b border-stone-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-3.5">
             {allCategories.map((c) => (
               <Link
@@ -183,10 +184,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         className="py-12 sm:py-16 bg-white"
         aria-label={`${category.name} products`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
           {products.length === 0 ? (
             <div className="text-center py-20 space-y-4">
-              <span className="text-5xl">🍬</span>
+              <div className="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mx-auto text-[#871a45]">
+                <PackageIcon className="w-8 h-8" />
+              </div>
               <h2
                 className="text-xl font-bold text-[#002c3f]"
                 style={{ fontFamily: "var(--font-fraunces)" }}
@@ -215,7 +218,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
       {/* ── SEO Footer Copy ── */}
       <div className="bg-[#FAF6EF] border-t border-stone-200/60 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <h2
             className="font-serif text-base font-bold text-[#871a45] mb-2"
             style={{ fontFamily: "var(--font-fraunces)" }}

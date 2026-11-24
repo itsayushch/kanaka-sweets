@@ -9,6 +9,7 @@ import {
 } from "@/lib/db-products";
 import { ProductOptions } from "@/components/ProductOptions";
 import { ProductCard } from "@/components/ProductCard";
+import { GiftIcon } from "@/components/icons";
 
 interface ProductPageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -131,7 +132,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       />
 
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12"
+        className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12 space-y-12"
         style={{ fontFamily: "var(--font-jost)" }}
       >
         {/* Breadcrumb */}
@@ -167,8 +168,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 className="object-cover object-center"
               />
               {product.isBestForGifting && (
-                <div className="absolute top-4 left-4 bg-[#871a45] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
-                  🎁 Best for Gifting
+                <div className="absolute top-4 left-4 bg-[#871a45] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                  <GiftIcon className="w-3.5 h-3.5 text-[#F8D030]" />
+                  <span>Best for Gifting</span>
                 </div>
               )}
             </div>
