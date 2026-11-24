@@ -34,6 +34,22 @@ const page = async (path: string) => {
   return { status: res.status, html: await res.text() };
 };
 
+/**
+ * Shop pages are cached and refresh a moment after an admin saves: the first
+ * request right after a save can still see the old page and triggers the
+ * refresh. So wait (up to 10 s) until the page matches instead of checking once.
+ */
+async function eventually(path: string, matches: (html: string, status: number) => boolean) {
+  const end = Date.now() + 10000;
+  let last = { status: 0, html: "" };
+  while (Date.now() < end) {
+    last = await page(path);
+    if (matches(last.html, last.status)) return { ok: true, ...last };
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+  return { ok: false, ...last };
+}
+
 const IMG = "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80";
 const SLUG = "zz-test-barfi";
 
@@ -76,10 +92,10 @@ async function main() {
     const productId = created.data.id as string;
     productIds.push(productId);
 
-    let p = await page(`/sweets/${SLUG}`);
-    check("new product page is live with its name and price", p.status === 200 && p.html.includes("ZZ Test Barfi") && p.html.includes("250"), `status ${p.status}`);
-    const list = await page("/sweets");
-    check("new product appears in the Sweets list", list.html.includes("ZZ Test Barfi"));
+    let p = await eventually(`/sweets/${SLUG}`, (h, st) => st === 200 && h.includes("ZZ Test Barfi") && h.includes("250"));
+    check("new product page is live with its name and price", p.ok, `status ${p.status}`);
+    const list = await eventually("/sweets", (h) => h.includes("ZZ Test Barfi"));
+    check("new product appears in the Sweets list", list.ok);
     const dup = await api("POST", "/api/admin/products", payload);
     check("same web address again -> 409", dup.status === 409, `got ${dup.status}`);
 
@@ -95,9 +111,10 @@ async function main() {
     });
     const e1 = await api("PUT", `/api/admin/products/${productId}`, edit({ price: 299, stock: 7 }, [{ name: "1kg", weight: "1kg", price: 900, stock: 5 }]));
     check("edit price + add a size -> 200", e1.status === 200, `got ${e1.status}`);
-    p = await page(`/sweets/${SLUG}`);
-    check("product page shows the NEW price (299) and the new size (1kg)", p.html.includes("299") && p.html.includes("1kg"));
-    check("old price is gone from the page", !/₹\s*250\b/.test(p.html) || p.html.includes("299"));
+    p = await eventually(`/sweets/${SLUG}`, (h) => h.includes("299") && h.includes("1kg"));
+    check("product page shows the NEW price (299) and the new size (1kg)", p.ok);
+    const listNew = await eventually("/sweets", (h) => h.includes("299"));
+    check("the Sweets list shows the new price too", listNew.ok);
 
     console.log("\n== Stock 0 means it can't be ordered (Rule F7) ==");
     const e2 = await api("PUT", `/api/admin/products/${productId}`, {
@@ -105,8 +122,8 @@ async function main() {
       variants: (await prisma.productVariant.findMany({ where: { productId }, orderBy: { price: "asc" } })).map((v) => ({ id: v.id, name: v.name, weight: v.weight ?? "", price: v.price, stock: 0 })),
     });
     check("set all stock to 0 -> 200", e2.status === 200);
-    p = await page(`/sweets/${SLUG}`);
-    check("product page shows out of stock", /out of stock|sold out/i.test(p.html));
+    p = await eventually(`/sweets/${SLUG}`, (h) => /out of stock|sold out/i.test(h));
+    check("product page shows out of stock", p.ok);
     const v0 = await prisma.productVariant.findFirstOrThrow({ where: { productId }, orderBy: { price: "asc" } });
     const tomorrow = new Date(Date.now() + 2 * 86400000).toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
     const orderBody = (qty: number) => ({
@@ -128,8 +145,8 @@ async function main() {
     const arch = await api("DELETE", `/api/admin/products/${productId}`);
     check("deleting a product that has orders HIDES it instead", arch.status === 200 && arch.data.archived === true, JSON.stringify(arch.data));
     check("hidden product row still exists (isActive false)", (await prisma.product.findUnique({ where: { id: productId } }))?.isActive === false);
-    p = await page(`/sweets/${SLUG}`);
-    check("hidden product is gone from the shop", !p.html.includes("ZZ Test Barfi</h1>") && /not found/i.test(p.html));
+    p = await eventually(`/sweets/${SLUG}`, (h) => !h.includes("ZZ Test Barfi</h1>") && /not found/i.test(h));
+    check("hidden product is gone from the shop", p.ok);
 
     console.log("\n== Remove a product with no orders ==");
     const c2 = await api("POST", "/api/admin/products", { ...payload, name: "ZZ Remove Me", slug: "zz-remove-me" });
@@ -146,15 +163,15 @@ async function main() {
     });
     const on = await api("PUT", "/api/admin/settings", settings({}));
     check("save settings -> 200", on.status === 200, `got ${on.status}`);
-    let home = (await page("/")).html;
-    check("home shows the edited title, subtitle, text and offer", ["ZZ Festival Title", "ZZ subtitle line", "ZZ festival text", "ZZ offer line"].every((t) => home.includes(t)));
-    check("home shows the edited festival image", home.includes(encodeURIComponent("photo-1599488615731-7e5c2823ff28")));
+    const homeOn = await eventually("/", (h) => ["ZZ Festival Title", "ZZ subtitle line", "ZZ festival text", "ZZ offer line"].every((t) => h.includes(t)));
+    check("home shows the edited title, subtitle, text and offer", homeOn.ok);
+    check("home shows the edited festival image", homeOn.html.includes(encodeURIComponent("photo-1599488615731-7e5c2823ff28")));
     const off = await api("PUT", "/api/admin/settings", settings({ festivalHighlightActive: false }));
-    home = (await page("/")).html;
-    check("switch OFF -> festival section is gone from the home page", off.status === 200 && !home.includes('id="festival-heading"') && !home.includes("ZZ Festival Title"));
+    const homeOff = await eventually("/", (h) => !h.includes('id="festival-heading"') && !h.includes("ZZ Festival Title"));
+    check("switch OFF -> festival section is gone from the home page", off.status === 200 && homeOff.ok);
     await api("PUT", "/api/admin/settings", settings({ festivalHighlightActive: true }));
-    home = (await page("/")).html;
-    check("switch back ON -> it returns", home.includes('id="festival-heading"'));
+    const homeBack = await eventually("/", (h) => h.includes('id="festival-heading"'));
+    check("switch back ON -> it returns", homeBack.ok);
     const badImg = await api("PUT", "/api/admin/settings", settings({ festivalHighlightImage: "javascript:alert(1)" }));
     check("a javascript: image link is refused (422)", badImg.status === 422, `got ${badImg.status}`);
     const emptyTitle = await api("PUT", "/api/admin/settings", settings({ festivalHighlightTitle: "" }));
