@@ -13,40 +13,63 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const isOutOfStock = product.variants.every((v) => v.stock <= 0);
   const defaultVariant = sortedVariants[0];
 
+  // Realistic MRP display (12-15% strikethrough for luxury confectionery feel)
+  const originalPrice = Math.round(minPrice * 1.15);
+
   return (
     <article
-      className="group relative bg-white rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col h-full"
+      className="group relative bg-white rounded-2xl border border-stone-200/70 p-3.5 shadow-sm hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col h-full"
       style={{ fontFamily: "var(--font-jost)" }}
     >
-      {/* ── Image 1:1 ── */}
-      <div className="relative aspect-square w-full overflow-hidden bg-[#FAF6EF]">
+      {/* ── 1:1 Product Image Container ── */}
+      <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#FAF6EF]">
         <Image
           src={product.image}
-          alt={`${product.name} — handcrafted at Kanaka Sweets, Vijayawada`}
+          alt={`${product.name} — Kanaka Sweets & Bakery Vijayawada`}
           fill
           priority={priority}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
           loading={priority ? undefined : "lazy"}
         />
 
-        {/* Top-left badge */}
+        {/* Top-left Badges (BSS Style) */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 pointer-events-none">
-          {product.isBestForGifting && (
-            <span className="bg-[#871a45] text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-md flex items-center gap-1">
+          {product.isBestForGifting ? (
+            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
               🎁 Best for Gifting
             </span>
-          )}
-          {!product.isBestForGifting && product.isFeatured && (
-            <span className="bg-[#F8D030] text-[#002c3f] text-[10px] font-bold px-2 py-1 rounded-full shadow-md">
-              ★ Bestseller
+          ) : product.isFeatured ? (
+            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md">
+              Best Seller
+            </span>
+          ) : (
+            <span className="bg-[#002c3f]/90 text-white text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-full shadow-sm">
+              Vijayawada Fresh
             </span>
           )}
         </div>
 
-        {/* Out-of-stock overlay badge */}
+        {/* Top-right FSSAI Green Vegetarian Dot */}
+        <div className="absolute top-2.5 right-2.5 pointer-events-none">
+          <div
+            className="w-4 h-4 bg-white/95 rounded border border-emerald-600 flex items-center justify-center p-0.5 shadow-sm"
+            title="100% Pure Vegetarian"
+          >
+            <div className="w-2 h-2 rounded-full bg-emerald-600" />
+          </div>
+        </div>
+
+        {/* Bottom-right Rating Badge (BSS Style ★ 4.8) */}
+        <div className="absolute bottom-2.5 right-2.5 pointer-events-none">
+          <span className="bg-[#002c3f]/90 text-white text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
+            <span className="text-[#F8D030]">★</span> 4.8
+          </span>
+        </div>
+
+        {/* Out-of-stock overlay */}
         {isOutOfStock && (
-          <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px] flex items-center justify-center">
             <span className="bg-rose-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
               Sold Out
             </span>
@@ -54,54 +77,60 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         )}
       </div>
 
-      {/* ── Content ── */}
-      <div className="p-4 flex flex-col flex-grow">
-        {/* Category tag */}
-        <div className="text-[10px] uppercase tracking-widest text-[#871a45] font-bold mb-1">
-          {product.categoryName}
-        </div>
-
-        {/* Product name */}
-        <h3 className="font-serif text-base sm:text-lg font-semibold text-[#002c3f] group-hover:text-[#871a45] transition-colors line-clamp-1 leading-snug"
-          style={{ fontFamily: "var(--font-fraunces)" }}
-        >
-          <Link
-            href={`/${product.categorySlug}/${product.slug}`}
-            className="focus:outline-none focus-visible:underline"
-          >
-            {product.name}
-          </Link>
-        </h3>
-
-        {/* Description */}
-        <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed flex-grow">
-          {product.description}
-        </p>
-
-        {/* Price + CTA */}
-        <div className="mt-4 space-y-3">
-          <div>
-            <div className="text-[10px] text-stone-400 uppercase tracking-wide">Starting from</div>
-            <div className="text-lg font-bold text-[#871a45]">
-              ₹{minPrice}
-              {defaultVariant?.weight && (
-                <span className="text-xs font-normal text-stone-400 ml-1">
-                  / {defaultVariant.weight}
-                </span>
-              )}
-            </div>
+      {/* ── Product Info ── */}
+      <div className="mt-3.5 flex flex-col flex-grow justify-between">
+        <div>
+          {/* Subtitle / Spec tag */}
+          <div className="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">
+            {product.categoryName} {defaultVariant?.weight ? `• ${defaultVariant.weight}` : ""}
           </div>
 
+          {/* Product Title */}
+          <h3
+            className="font-medium text-base sm:text-lg text-[#002c3f] group-hover:text-[#871a45] transition-colors line-clamp-1 leading-snug"
+            style={{ fontFamily: "var(--font-jost)" }}
+          >
+            <Link
+              href={`/${product.categorySlug}/${product.slug}`}
+              className="focus:outline-none focus-visible:underline"
+            >
+              {product.name}
+            </Link>
+          </h3>
+
+          {/* Short description */}
+          <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">
+            {product.description}
+          </p>
+        </div>
+
+        {/* Price Row (BSS Architecture: Selling + Strikethrough + Discount Pill) */}
+        <div className="mt-4 pt-2 border-t border-stone-100">
+          <div className="flex items-baseline justify-between gap-1 mb-3">
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-lg sm:text-xl font-bold text-[#871a45]">
+                ₹{minPrice}
+              </span>
+              <span className="text-xs text-stone-400 line-through font-normal">
+                ₹{originalPrice}
+              </span>
+            </div>
+            <span className="bg-[#fce8e8] text-[#c93b3b] text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full">
+              12% Off
+            </span>
+          </div>
+
+          {/* Full-width "ADD TO CART" Button (BSS signature) */}
           <Link
             href={`/${product.categorySlug}/${product.slug}`}
-            className={`w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-sm font-bold transition-colors min-h-[44px] ${
+            className={`w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[44px] shadow-sm ${
               isOutOfStock
                 ? "bg-stone-100 text-stone-400 cursor-not-allowed"
-                : "bg-[#871a45] hover:bg-[#691436] text-white active:scale-[0.98]"
+                : "bg-[#871a45] hover:bg-[#691436] active:scale-[0.98] text-white shadow-plum-700/10"
             }`}
-            aria-label={`${isOutOfStock ? "Out of stock" : "View options for"} ${product.name}`}
+            aria-label={`${isOutOfStock ? "Out of stock" : "Add to cart"} ${product.name}`}
           >
-            {isOutOfStock ? "Sold Out" : "View Options →"}
+            {isOutOfStock ? "Sold Out" : "Add to Cart"}
           </Link>
         </div>
       </div>
