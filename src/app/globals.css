@@ -1,30 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  
-  --color-maroon-950: #380b11;
-  --color-maroon-900: #4c0e17;
-  --color-maroon-800: #691421;
-  --color-maroon-700: #86162a;
-  --color-maroon-600: #a31c36;
-  
-  --color-saffron-700: #b45309;
-  --color-saffron-600: #d97706;
-  --color-saffron-500: #f59e0b;
-  --color-saffron-400: #fbbf24;
-  --color-saffron-100: #fef3c7;
-  
-  --color-cream-50: #fdfbf7;
-  --color-cream-100: #f9f5eb;
-  --color-cream-200: #f3ebdb;
-  --color-cream-300: #e7dac3;
+  /* ── Fonts ── */
+  --font-serif: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-jost), system-ui, -apple-system, sans-serif;
+
+  /* ── Brand Palette ── */
+  --color-plum-900: #4a0e28;
+  --color-plum-800: #691436;
+  --color-plum-700: #871a45;
+  --color-plum-600: #a32057;
+
+  --color-navy-950: #012a3e;
+  --color-navy-900: #002c3f;
+  --color-navy-800: #023e5a;
+
+  --color-cream-100: #FAF6EF;
+  --color-cream-200: #FBF7EE;
+  --color-cream-300: #F3EDE0;
+
+  --color-gold-400: #F8D030;
+  --color-gold-500: #f9c021;
+
+  --color-emerald-700: #2D5E3F;
+
+  --color-blush-200: #edc4c4;
+  --color-sale-700: #C33C3C;
 }
 
 :root {
-  --background: #fdfbf7;
-  --foreground: #231815;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
 }
 
 html {
@@ -40,27 +46,54 @@ body {
   overflow-x: hidden;
 }
 
-/* Heading font hierarchy */
-h1, h2, h3, h4 {
+/* Heading hierarchy using Fraunces */
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-serif);
-  color: #4c0e17;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
-/* Ensure mobile tap targets are at least 44px (Rule C6) */
-button, 
-a.button-link, 
-input[type="button"], 
+/* Tap targets ≥ 44px (Rule C6) */
+button,
+a.btn,
+input[type="button"],
 input[type="submit"] {
   min-height: 44px;
 }
 
-/* Ensure inputs use at least 16px font to prevent mobile auto-zoom (Rule C6) */
-input, select, textarea {
+/* Prevent iOS auto-zoom on inputs (Rule C6) */
+input,
+select,
+textarea {
   font-size: 16px !important;
 }
 
-/* Respect reduced motion (Rule D7) */
+/* Hide scrollbar while keeping scrollability */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee animation for press bar */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Respect prefers-reduced-motion (Rule D7) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

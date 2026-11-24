@@ -1,20 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Fraunces, Jost } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-fraunces",
   display: "swap",
-  weight: ["600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-jost",
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#4c0e17",
+  themeColor: "#871a45",
 };
 
 export const metadata: Metadata = {
@@ -72,7 +73,9 @@ export const metadata: Metadata = {
     title: "Kanaka Sweets & Bakery Vijayawada",
     description:
       "Handcrafted pure desi ghee sweets, cakes & festival boxes from Vijayawada.",
-    images: ["https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80"],
+    images: [
+      "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+    ],
   },
   robots: {
     index: true,
@@ -88,11 +91,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${jakarta.variable} scroll-smooth`}
+      className={`${fraunces.variable} ${jost.variable}`}
       suppressHydrationWarning
     >
       <body
-        className="flex flex-col min-h-screen bg-[#fdfbf7] text-[#231815] pb-16 md:pb-0"
+        className="flex flex-col min-h-screen bg-white text-[#1a1a1a] pb-16 md:pb-0"
         suppressHydrationWarning
       >
         <Navbar />
