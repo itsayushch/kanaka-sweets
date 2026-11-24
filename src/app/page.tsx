@@ -356,6 +356,12 @@ export default async function HomePage() {
                     "Celebrate with our Royal Festival Gift Boxes"}
                 </h2>
 
+                {siteSettings.festivalHighlightSubtitle && (
+                  <p className="text-[#F8D030] text-sm sm:text-base font-semibold">
+                    {siteSettings.festivalHighlightSubtitle}
+                  </p>
+                )}
+
                 <p
                   className="text-white/80 text-sm sm:text-base leading-relaxed"
                   style={{ fontFamily: "var(--font-jost)" }}
@@ -384,16 +390,18 @@ export default async function HomePage() {
                   </a>
                 </div>
 
-                <p className="text-xs text-[#F8D030]/80 italic pt-1">
-                  ★ &ldquo;Best for Gifting&rdquo; — includes personalized greeting card &amp; tamper-proof seal.
-                </p>
+                {siteSettings.festivalHighlightDiscount && (
+                  <p className="text-xs text-[#F8D030]/80 italic pt-1">
+                    ★ {siteSettings.festivalHighlightDiscount}
+                  </p>
+                )}
               </div>
 
-              {topFestivalBox.image && (
+              {(siteSettings.festivalHighlightImage || topFestivalBox.image) && (
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20">
                   <Image
-                    src={topFestivalBox.image}
-                    alt={`${topFestivalBox.name} — Kanaka Sweets Festival Box`}
+                    src={siteSettings.festivalHighlightImage || topFestivalBox.image}
+                    alt="Kanaka Sweets festival gift boxes"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
