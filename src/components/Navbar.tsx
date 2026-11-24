@@ -7,11 +7,10 @@ import {
   SearchIcon,
   SparklesIcon,
   KanakaEmblemIcon,
-  MapPinIcon,
-  StarIcon,
   ChevronDownIcon,
   GiftIcon,
   ClockIcon,
+  UserIcon,
 } from "@/components/icons";
 
 const CATEGORY_STORIES = [
@@ -76,9 +75,9 @@ const CATEGORY_STORIES = [
 export function Navbar() {
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-stone-200/80">
-        {/* ── 1. Top Announcement Bar (Plum #871a45 - Edge-to-Edge Fluid X-Axis) ── */}
-        <div className="bg-[#871a45] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-stone-200/80">
+        {/* ── 1. Top Announcement Bar (Plum #871a45 - Tight, Clean Padding) ── */}
+        <div className="bg-[#871a45] text-white text-xs py-1.5 px-4 sm:px-6 lg:px-8">
           <div className="w-full flex items-center justify-between gap-4">
             {/* Left: Free delivery badge */}
             <div className="flex items-center gap-2">
@@ -89,7 +88,7 @@ export function Navbar() {
             </div>
 
             {/* Center: Heritage note (desktop) */}
-            <div className="hidden 2xl:flex items-center gap-2 text-white/80 text-[11px] font-medium tracking-wide">
+            <div className="hidden xl:flex items-center gap-2 text-white/80 text-[11px] font-medium tracking-wide">
               <span>Governorpet, Vijayawada</span>
               <span>•</span>
               <span className="text-[#F8D030]">Estd. 2011</span>
@@ -101,7 +100,7 @@ export function Navbar() {
             <div className="hidden sm:flex items-center gap-5 text-xs font-medium shrink-0">
               <div className="flex items-center gap-1.5 text-white/80">
                 <ClockIcon className="w-3.5 h-3.5 text-[#F8D030]" />
-                <span>Shop: 7:00 AM – 10:30 PM</span>
+                <span>7:00 AM – 10:30 PM</span>
               </div>
               <a
                 href="tel:+919848022338"
@@ -115,29 +114,29 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. Main Brand Header (Edge-to-Edge, Expansive Search, Full X-Axis) ── */}
-        <div className="bg-white border-b border-stone-100">
-          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-3 sm:py-3.5 flex items-center justify-between gap-4 lg:gap-6">
-            {/* Brand Logo & Quick Feature Badges */}
-            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+        {/* ── 2. Main Brand Header (Single Unified Line: Logo + Reduced Links + Compact Search + Profile & Cart) ── */}
+        <div className="bg-white">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4 lg:gap-6">
+            {/* Left Group: Logo + Reduced Category Links on the SAME LINE */}
+            <div className="flex items-center gap-6 lg:gap-8 shrink-0">
               <Link
                 href="/"
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-2.5 group shrink-0"
                 aria-label="Kanaka Sweets & Bakery Homepage"
               >
-                <div className="w-11 h-11 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-sm group-hover:scale-105 transition-transform">
-                  <KanakaEmblemIcon className="w-6 h-6 text-[#F8D030]" />
+                <div className="w-10 h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-xs group-hover:scale-105 transition-transform">
+                  <KanakaEmblemIcon className="w-5 h-5 text-[#F8D030]" />
                 </div>
                 <div className="flex flex-col leading-tight">
                   <span
-                    className="font-serif text-2xl sm:text-3xl font-extrabold text-[#002c3f] tracking-tight group-hover:text-[#871a45] transition-colors"
+                    className="font-serif text-2xl font-extrabold text-[#002c3f] tracking-tight group-hover:text-[#871a45] transition-colors"
                     style={{ fontFamily: "var(--font-fraunces)" }}
                   >
                     Kanaka
                   </span>
-                  <div className="flex items-center gap-1.5 -mt-0.5">
+                  <div className="flex items-center gap-1 -mt-0.5">
                     <span
-                      className="text-[10px] tracking-[0.25em] uppercase text-[#871a45] font-bold"
+                      className="text-[9px] tracking-[0.2em] uppercase text-[#871a45] font-bold"
                       style={{ fontFamily: "var(--font-jost)" }}
                     >
                       Sweets &amp; Bakery
@@ -149,163 +148,34 @@ export function Navbar() {
                 </div>
               </Link>
 
-              {/* BSS-style "Bestsellers" Badge Pill */}
-              <Link
-                href="/sweets"
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs font-semibold text-[#002c3f] hover:border-[#871a45] hover:text-[#871a45] transition-colors bg-stone-50/50"
+              {/* Reduced Category Links (Same Line!) */}
+              <nav
+                aria-label="Primary Categories"
+                className="hidden lg:flex items-center gap-5 xl:gap-7 text-xs sm:text-sm font-semibold text-[#002c3f]"
                 style={{ fontFamily: "var(--font-jost)" }}
               >
-                <StarIcon className="w-3.5 h-3.5 text-[#F8D030]" />
-                <span>Bestsellers</span>
-              </Link>
-
-              {/* "Gifting Special" Badge Pill */}
-              <Link
-                href="/festival-boxes"
-                className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#fce8e8] bg-[#fff5f5] text-xs font-semibold text-[#871a45] hover:bg-[#871a45] hover:text-white transition-colors"
-                style={{ fontFamily: "var(--font-jost)" }}
-              >
-                <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
-                <span>Festival Hampers</span>
-              </Link>
-            </div>
-
-            {/* Expansive Fluid Search Bar (Takes all available center space) */}
-            <div className="hidden md:flex flex-1 min-w-[280px] mx-2 lg:mx-6 items-center bg-[#f4f4f4] hover:bg-[#eaeaea] rounded-full border border-stone-200/80 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all p-1">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#002c3f] px-3.5 py-1 border-r border-stone-300 shrink-0 cursor-pointer select-none">
-                <span>All Sweets</span>
-                <ChevronDownIcon className="w-3 h-3 text-stone-500" />
-              </div>
-              <input
-                type="text"
-                readOnly
-                placeholder="Search Pootharekulu, Kaju Katli, Mysore Pak, Festival Boxes..."
-                className="w-full bg-transparent text-[#002c3f] placeholder-stone-500 text-xs sm:text-sm py-1.5 px-3 focus:outline-none cursor-pointer"
-              />
-              <button
-                type="button"
-                className="h-9 px-4 rounded-full bg-[#871a45] hover:bg-[#691436] text-white flex items-center justify-center gap-1.5 shrink-0 shadow-sm transition-colors text-xs font-bold"
-                aria-label="Search catalog"
-              >
-                <SearchIcon className="w-4 h-4" />
-                <span className="hidden lg:inline">Search</span>
-              </button>
-            </div>
-
-            {/* Right Action Items: Visit Shop + WhatsApp + Shopping Cart */}
-            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              {/* Store Location Link (desktop) */}
-              <a
-                href="https://maps.google.com/?q=Kanaka+Sweets+Governorpet+Vijayawada"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden lg:flex items-center gap-2 text-xs text-stone-600 hover:text-[#871a45] transition-colors py-1 px-2.5 rounded-lg border border-transparent hover:border-stone-200"
-                style={{ fontFamily: "var(--font-jost)" }}
-              >
-                <MapPinIcon className="w-4 h-4 text-[#871a45]" />
-                <div className="text-left leading-tight">
-                  <div className="font-bold text-[#002c3f]">Governorpet</div>
-                  <div className="text-[10px] text-stone-400">Vijayawada Shop</div>
-                </div>
-              </a>
-
-              {/* WhatsApp Concierge Order Button */}
-              <a
-                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20place%20an%20order"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-[#20ba59] transition-all shadow-sm min-h-[44px]"
-                aria-label="Chat with Kanaka Sweets on WhatsApp"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                <span>WhatsApp Order</span>
-              </a>
-
-              {/* Shopping Bag Pill with Counter */}
-              <Link
-                href="/cart"
-                className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border border-stone-200 hover:border-[#871a45] hover:text-[#871a45] transition-all text-[#002c3f] bg-stone-50/50 hover:bg-white min-h-[44px]"
-                aria-label="Shopping Cart"
-              >
-                <div className="relative flex items-center justify-center">
-                  <ShoppingBagIcon className="w-5 h-5 text-[#002c3f]" />
-                  <span
-                    id="cart-badge-count"
-                    className="absolute -top-1.5 -right-2 bg-[#871a45] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm"
-                  >
-                    0
-                  </span>
-                </div>
-                <div className="hidden sm:flex flex-col text-left leading-tight">
-                  <span className="text-xs font-bold text-[#002c3f]">Cart</span>
-                  <span className="text-[10px] text-stone-400">0 items</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* ── 3. Expansive E-Commerce Secondary Category Navigation Row (Full X-Axis) ── */}
-        <nav
-          aria-label="Main Navigation"
-          className="bg-white border-t border-stone-100 hidden md:block"
-          style={{ fontFamily: "var(--font-jost)" }}
-        >
-          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-            <div className="flex items-center justify-between gap-4 py-2.5 text-xs sm:text-sm font-semibold text-[#002c3f]">
-              {/* Primary Product Categories across width */}
-              <div className="flex items-center gap-5 lg:gap-7 xl:gap-8 flex-wrap">
                 <Link
                   href="/sweets"
                   className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1 border-b-2 border-transparent hover:border-[#871a45]"
                 >
-                  <span>All Sweets &amp; Mithai</span>
+                  <span>All Sweets</span>
                   <ChevronDownIcon className="w-3 h-3 text-stone-400" />
-                </Link>
-
-                <Link
-                  href="/sweets/ghee-mysore-pak"
-                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45]"
-                >
-                  Pure Ghee Mysore Pak
-                </Link>
-
-                <Link
-                  href="/sweets/pootharekulu"
-                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45]"
-                >
-                  Atreyapuram Pootharekulu
-                </Link>
-
-                <Link
-                  href="/sweets/kaju-katli"
-                  className="hidden lg:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45]"
-                >
-                  Kaju Katli
                 </Link>
 
                 <Link
                   href="/cakes"
                   className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45]"
                 >
-                  Fresh Cakes &amp; Bakery
+                  Cakes
                 </Link>
 
                 <Link
                   href="/snacks"
                   className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45]"
                 >
-                  Vijayawada Savouries
+                  Savouries
                 </Link>
 
-                <Link
-                  href="/sweets/bobbatlu"
-                  className="hidden xl:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700"
-                >
-                  Traditional Bobbatlu
-                </Link>
-
-                {/* Festival Boxes with glowing pill */}
                 <Link
                   href="/festival-boxes"
                   className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1.5 text-[#871a45] font-bold"
@@ -316,58 +186,109 @@ export function Navbar() {
                     Gifting
                   </span>
                 </Link>
-              </div>
+              </nav>
+            </div>
 
-              {/* Right utility links to gracefully anchor the row */}
-              <div className="flex items-center gap-5 lg:gap-6 text-xs text-stone-500 font-medium shrink-0">
-                <span className="hidden 2xl:inline text-[#2D5E3F] font-semibold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                  100% Desi Cow Ghee
+            {/* Center: Reduced Size Professional Search Bar */}
+            <div className="hidden md:flex items-center w-56 lg:w-72 xl:w-80 h-9.5 bg-stone-50 hover:bg-stone-100/80 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3 gap-2">
+              <SearchIcon className="w-4 h-4 text-stone-400 shrink-0" />
+              <input
+                type="text"
+                readOnly
+                placeholder="Search sweets, hampers..."
+                className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
+              />
+              <button
+                type="button"
+                className="w-6 h-6 rounded-full bg-[#871a45] hover:bg-[#691436] text-white flex items-center justify-center shrink-0 shadow-2xs transition-colors"
+                aria-label="Search"
+              >
+                <SearchIcon className="w-3 h-3" />
+              </button>
+            </div>
+
+            {/* Right Action Items: Profile & Cart Icons with short pinpoint title below */}
+            <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+              {/* WhatsApp Quick Link */}
+              <a
+                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden xl:inline-flex items-center gap-1.5 text-xs text-stone-600 hover:text-[#25D366] transition-colors font-medium"
+                aria-label="Order on WhatsApp"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>WhatsApp</span>
+              </a>
+
+              {/* Profile Icon with Short Title Below */}
+              <Link
+                href="/admin"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                aria-label="Profile and Admin Login"
+              >
+                <div className="w-7 h-7 flex items-center justify-center">
+                  <UserIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
+                </div>
+                <span
+                  className="text-[11px] font-semibold leading-none mt-0.5 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  Profile
                 </span>
-                <Link
-                  href="/sweets"
-                  className="hover:text-[#871a45] transition-colors text-stone-600 font-semibold"
+              </Link>
+
+              {/* Cart Icon with Counter Badge & Short Title Below */}
+              <Link
+                href="/cart"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                aria-label="Shopping Cart"
+              >
+                <div className="relative w-7 h-7 flex items-center justify-center">
+                  <ShoppingBagIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
+                  <span
+                    id="cart-badge-count"
+                    className="absolute -top-0.5 -right-1 bg-[#871a45] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs"
+                  >
+                    0
+                  </span>
+                </div>
+                <span
+                  className="text-[11px] font-semibold leading-none mt-0.5 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  style={{ fontFamily: "var(--font-jost)" }}
                 >
-                  Bulk &amp; Wedding Orders
-                </Link>
-                <a
-                  href="https://maps.google.com/?q=Kanaka+Sweets+Governorpet+Vijayawada"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#871a45] transition-colors font-medium text-[#002c3f]"
-                >
-                  Store Directions
-                </a>
-              </div>
+                  Cart
+                </span>
+              </Link>
             </div>
           </div>
-        </nav>
+        </div>
       </header>
 
-      {/* ── 4. Full-Width Category Stories Ribbon (8 Rich Curated Items, Uses Full X-Axis) ── */}
+      {/* ── 3. Category Stories Ribbon (8 Curated Visual Stories, Compact Edge Spacing) ── */}
       <nav
         aria-label="Category Stories"
         className="bg-[#FAF6EF] border-b border-stone-200/80 w-full"
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="flex items-center justify-between gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar py-3.5 sm:py-4">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar py-3 sm:py-3.5">
             {CATEGORY_STORIES.map((cat) => (
               <Link
                 key={cat.href}
                 href={cat.href}
-                className="flex flex-col items-center gap-1.5 group shrink-0 min-w-[76px] sm:min-w-[90px] flex-1 text-center"
+                className="flex flex-col items-center gap-1 group shrink-0 min-w-[72px] sm:min-w-[84px] flex-1 text-center"
               >
                 {/* Real High-Resolution Circular Photography Disc */}
-                <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-sm group-hover:shadow-md transition-all duration-300 relative bg-stone-100">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-xs group-hover:shadow-md transition-all duration-300 relative bg-stone-100">
                   <Image
                     src={cat.image}
                     alt={cat.label}
                     fill
-                    sizes="80px"
+                    sizes="72px"
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   {cat.badge && (
-                    <span className="absolute bottom-0 inset-x-0 bg-[#871a45]/90 text-white text-[8px] font-bold uppercase tracking-wider py-0.5 text-center backdrop-blur-xs">
+                    <span className="absolute bottom-0 inset-x-0 bg-[#871a45]/90 text-white text-[7.5px] font-bold uppercase tracking-wider py-0.5 text-center backdrop-blur-xs">
                       {cat.badge}
                     </span>
                   )}
@@ -376,7 +297,7 @@ export function Navbar() {
                 {/* Category Label and Subtitle */}
                 <div className="flex flex-col items-center leading-tight">
                   <span
-                    className="text-xs sm:text-sm font-semibold text-[#002c3f] group-hover:text-[#871a45] transition-colors whitespace-nowrap"
+                    className="text-xs font-semibold text-[#002c3f] group-hover:text-[#871a45] transition-colors whitespace-nowrap"
                     style={{ fontFamily: "var(--font-jost)" }}
                   >
                     {cat.label}

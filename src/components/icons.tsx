@@ -412,3 +412,24 @@ export function KanakaEmblemIcon({ className = "w-6 h-6", size, ...props }: Icon
     </svg>
   );
 }
+
+export function UserIcon({ className = "w-5 h-5", size, ...props }: IconProps) {
+  return (
+    <svg
+      width={size || 20}
+      height={size || 20}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
