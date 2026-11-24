@@ -26,6 +26,11 @@ type Db = Prisma.TransactionClient;
 /** Unpaid orders keep their reserved stock for this long. */
 export const RESERVATION_MINUTES = 30;
 
+/** True if an unpaid order is older than the reservation window (can't be paid). */
+export function isReservationExpired(createdAt: Date): boolean {
+  return Date.now() - createdAt.getTime() > RESERVATION_MINUTES * 60 * 1000;
+}
+
 /** An error we expect and can explain to the customer (not a crash). */
 export class CheckoutError extends Error {
   code: "ITEM_NOT_FOUND" | "OUT_OF_STOCK" | "INVALID_QUANTITY";

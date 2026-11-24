@@ -174,9 +174,10 @@ export function CheckoutForm() {
       const data = await res.json();
 
       if (res.ok) {
-        // Order created and stock reserved. Phase 3 adds the payment step here.
+        // Order created and stock reserved. The cart is cleared now (the order
+        // holds the items). ?pay=1 makes the order page open the payment window.
         clearCart();
-        router.push(`/order/${data.orderNumber}`);
+        router.push(`/order/${data.orderNumber}?pay=1`);
         return;
       }
 

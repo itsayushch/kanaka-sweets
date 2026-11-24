@@ -12,7 +12,7 @@
  *     PAID (Rule F2). Anything else changes nothing.
  */
 import { prisma } from "@/lib/prisma";
-import { RESERVATION_MINUTES } from "@/lib/orders";
+import { isReservationExpired } from "@/lib/orders";
 import {
   getRazorpayClient,
   getRazorpayKeyId,
@@ -51,8 +51,7 @@ export async function createPaymentForOrder(orderNumber: string) {
   }
 
   // Only an unpaid order whose stock is still held can be paid.
-  const ageMinutes = (Date.now() - order.createdAt.getTime()) / 60000;
-  if (order.status !== "PENDING" || ageMinutes > RESERVATION_MINUTES) {
+  if (order.status !== "PENDING" || isReservationExpired(order.createdAt)) {
     throw new PaymentError(
       "ORDER_NOT_PAYABLE",
       order.status === "PAID"
