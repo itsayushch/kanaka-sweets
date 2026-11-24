@@ -29,9 +29,7 @@ export async function generateMetadata({
   const product = await getProductBySlug(categorySlug, productSlug);
 
   if (!product) {
-    return {
-      title: "Product Not Found",
-    };
+    return { title: "Product Not Found" };
   }
 
   const prices = product.variants.map((v) => v.price);
@@ -73,11 +71,11 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  // Related products from same category
   const relatedAll = await getProductsByCategory(categorySlug);
-  const relatedProducts = relatedAll.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const relatedProducts = relatedAll
+    .filter((p) => p.slug !== product.slug)
+    .slice(0, 3);
 
-  // Lowest and highest prices for JSON-LD structured data (Rule E6)
   const prices = product.variants.map((v) => v.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
@@ -124,62 +122,68 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <>
-      {/* Inject JSON-LD Structured Data (Rule E6) */}
+      {/* JSON-LD (Rule E6) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
 
-      <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="text-xs text-stone-500 flex items-center gap-2 flex-wrap">
-          <Link href="/" className="hover:text-amber-800 transition-colors">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12"
+        style={{ fontFamily: "var(--font-jost)" }}
+      >
+        {/* Breadcrumb */}
+        <nav
+          aria-label="Breadcrumb"
+          className="text-xs text-stone-400 flex items-center gap-1.5 flex-wrap"
+        >
+          <Link href="/" className="hover:text-[#871a45] transition-colors">
             Home
           </Link>
           <span>/</span>
           <Link
             href={`/${product.categorySlug}`}
-            className="hover:text-amber-800 transition-colors"
+            className="hover:text-[#871a45] transition-colors"
           >
             {product.categoryName}
           </Link>
           <span>/</span>
-          <span className="text-stone-800 font-semibold">{product.name}</span>
+          <span className="text-stone-700 font-semibold">{product.name}</span>
         </nav>
 
-        {/* Main Product Showcase Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Left Column: Product Image Gallery */}
+        {/* Main product section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+          {/* Left: Image */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full rounded-3xl overflow-hidden bg-amber-50/50 border border-amber-900/10 shadow-md">
+            <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-3xl overflow-hidden bg-[#FAF6EF] border border-stone-100 shadow-sm">
               <Image
                 src={product.image}
-                alt={`${product.name} made with pure desi ghee at Kanaka Sweets Vijayawada`}
+                alt={`${product.name} — handcrafted at Kanaka Sweets, Vijayawada`}
                 fill
-                priority // Priority for Product Detail LCP (Rule D1)
+                priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-center"
               />
               {product.isBestForGifting && (
-                <div className="absolute top-4 left-4 bg-[#4c0e17] text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-amber-400/40">
+                <div className="absolute top-4 left-4 bg-[#871a45] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
                   🎁 Best for Gifting
                 </div>
               )}
             </div>
 
-            {/* Extra Images Gallery if present */}
+            {/* Additional images */}
             {product.images.length > 1 && (
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-4 gap-3">
                 {product.images.map((imgUrl, idx) => (
                   <div
                     key={idx}
-                    className="relative aspect-[4/3] rounded-xl overflow-hidden border border-amber-900/10 bg-amber-50"
+                    className="relative aspect-square rounded-xl overflow-hidden border border-stone-100 bg-[#FAF6EF]"
                   >
                     <Image
                       src={imgUrl}
-                      alt={`${product.name} view ${idx + 1}`}
+                      alt={`${product.name} — view ${idx + 1}`}
                       fill
-                      sizes="(max-width: 768px) 33vw, 15vw"
+                      sizes="(max-width: 768px) 25vw, 10vw"
                       className="object-cover"
                       loading="lazy"
                     />
@@ -189,41 +193,53 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             )}
           </div>
 
-          {/* Right Column: Details & Interactive Variant Selector */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Right: Product details */}
+          <div className="lg:col-span-5 space-y-5">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#871a45]">
                 {product.categoryName}
               </span>
-              {/* Single H1 on Product Page (Rule E4) */}
-              <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mt-1">
+
+              {/* H1 — Rule E4 */}
+              <h1
+                className="text-3xl sm:text-4xl font-bold text-[#002c3f] mt-2 leading-tight"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
                 {product.name}
               </h1>
+
               <p className="text-sm text-stone-600 mt-3 leading-relaxed">
                 {product.description}
               </p>
             </div>
 
-            {/* Interactive Options, Dynamic Price & Stock (Rule A3, F7, B4) */}
+            {/* Interactive options (Rule A3, F7, B4) */}
             <ProductOptions product={product} />
           </div>
         </div>
 
-        {/* Related Products from Category */}
+        {/* Related products */}
         {relatedProducts.length > 0 && (
-          <section className="pt-8 border-t border-amber-900/10 space-y-6">
+          <section
+            className="pt-8 border-t border-stone-100 space-y-6"
+            aria-labelledby="related-heading"
+          >
             <div className="flex items-center justify-between">
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+              <h2
+                id="related-heading"
+                className="text-xl sm:text-2xl font-bold text-[#002c3f]"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
                 More from {product.categoryName}
               </h2>
               <Link
                 href={`/${product.categorySlug}`}
-                className="text-xs sm:text-sm font-semibold text-amber-800 hover:text-amber-900"
+                className="text-sm font-bold text-[#871a45] hover:text-[#691436] transition-colors"
               >
                 View all →
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {relatedProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

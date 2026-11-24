@@ -29,9 +29,7 @@ export async function generateMetadata({
   const category = await getCategoryBySlug(categorySlug);
 
   if (!category) {
-    return {
-      title: "Category Not Found",
-    };
+    return { title: "Category Not Found" };
   }
 
   const categoryTitles: Record<string, string> = {
@@ -42,7 +40,7 @@ export async function generateMetadata({
   };
 
   const title = `${categoryTitles[categorySlug] || category.name} | Kanaka Sweets Vijayawada`;
-  const description = `${category.description} Handcrafted daily at our Governorpet shop with pure desi cow ghee. Delivery & same-day shop pickup in Vijayawada.`;
+  const description = `${category.description} Handcrafted daily at our Governorpet shop with pure desi cow ghee. Same-day shop pickup available in Vijayawada.`;
 
   return {
     title,
@@ -53,7 +51,9 @@ export async function generateMetadata({
       url: `https://kanaka-sweets.vercel.app/${categorySlug}`,
       images: [
         {
-          url: category.image || "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+          url:
+            category.image ||
+            "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
           width: 1200,
           height: 630,
           alt: `${category.name} at Kanaka Sweets & Bakery Vijayawada`,
@@ -64,7 +64,10 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [category.image || "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80"],
+      images: [
+        category.image ||
+          "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+      ],
     },
   };
 }
@@ -82,115 +85,142 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const allCategories = await getAllCategories();
 
   return (
-    <div className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="text-xs text-stone-500 flex items-center gap-2">
-        <Link href="/" className="hover:text-amber-800 transition-colors">
-          Home
-        </Link>
-        <span>/</span>
-        <span className="text-stone-800 font-semibold">{category.name}</span>
-      </nav>
+    <div style={{ fontFamily: "var(--font-jost)" }}>
+      {/* ── Category Hero ── */}
+      <section className="bg-[#002c3f] text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              {/* Breadcrumb */}
+              <nav aria-label="Breadcrumb" className="text-xs text-white/50 flex items-center gap-1.5">
+                <Link href="/" className="hover:text-white/80 transition-colors">
+                  Home
+                </Link>
+                <span>/</span>
+                <span className="text-white/80 font-medium">{category.name}</span>
+              </nav>
 
-      {/* Category Hero Banner */}
-      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#4c0e17] to-[#6b1422] text-[#fdfbf7] p-6 sm:p-10 shadow-lg border border-amber-500/20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          <div className="md:col-span-8 space-y-3">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-300 font-semibold">
-              Kanaka Sweets & Bakery • Vijayawada
-            </span>
-            {/* Single H1 per page (Rule E4) */}
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
-              {category.name}
-            </h1>
-            <p className="text-sm sm:text-base text-amber-100/90 max-w-2xl leading-relaxed">
-              {category.description}
-            </p>
-            <div className="pt-2 flex flex-wrap gap-3 text-xs text-amber-200">
-              <span className="bg-[#380b11] px-3 py-1.5 rounded-full border border-amber-400/20">
-                ✨ {products.length} Varieties Available
-              </span>
-              <span className="bg-[#380b11] px-3 py-1.5 rounded-full border border-amber-400/20">
-                🧈 100% Pure Desi Ghee
-              </span>
-              <span className="bg-[#380b11] px-3 py-1.5 rounded-full border border-amber-400/20">
-                📦 Same-day Pickup Available
-              </span>
+              <p className="text-[#F8D030] text-xs font-bold uppercase tracking-[0.2em]">
+                Kanaka Sweets &amp; Bakery · Vijayawada
+              </p>
+
+              {/* H1 — Rule E4 */}
+              <h1
+                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
+                {category.name}
+              </h1>
+
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed max-w-lg">
+                {category.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2.5 pt-1">
+                {[
+                  `✨ ${products.length} Varieties`,
+                  "🧈 100% Pure Ghee",
+                  "📦 Same-day Pickup",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-white/10 border border-white/20 text-white/80 text-xs px-3 py-1.5 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden md:block">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                <Image
+                  src={category.image}
+                  alt={`${category.name} at Kanaka Sweets Vijayawada`}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="md:col-span-4 hidden md:block">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-amber-400/30 shadow-md">
-              <Image
-                src={category.image}
-                alt={`${category.name} collection`}
-                fill
-                priority // Priority for category hero image
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-              />
-            </div>
+      {/* ── Category Switcher ── */}
+      <div className="bg-[#FAF6EF] border-b border-stone-200 sticky top-[var(--navbar-h,0px)] z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-3">
+            {allCategories.map((c) => (
+              <Link
+                key={c.id}
+                href={`/${c.slug}`}
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-colors min-h-[36px] inline-flex items-center ${
+                  c.slug === categorySlug
+                    ? "bg-[#871a45] text-white shadow-sm"
+                    : "bg-white text-stone-700 border border-stone-200 hover:border-[#871a45] hover:text-[#871a45]"
+                }`}
+              >
+                {c.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Other Categories Switcher Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar text-xs">
-        <span className="text-stone-500 font-medium whitespace-nowrap mr-1">Switch:</span>
-        {allCategories.map((c) => (
-          <Link
-            key={c.id}
-            href={`/${c.slug}`}
-            className={`px-3.5 py-1.5 rounded-full font-semibold whitespace-nowrap transition-colors min-h-[36px] inline-flex items-center ${
-              c.slug === categorySlug
-                ? "bg-[#4c0e17] text-amber-300"
-                : "bg-stone-100 text-stone-700 hover:bg-amber-100"
-            }`}
-          >
-            {c.name}
-          </Link>
-        ))}
-      </div>
-
-      {/* Products Grid */}
-      <section aria-label={`${category.name} list`}>
-        {products.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-2xl border border-stone-200 p-8 space-y-4">
-            <span className="text-4xl">🍬</span>
-            <h2 className="text-xl font-serif font-bold text-stone-800">
-              No products found in this category
-            </h2>
-            <p className="text-sm text-stone-600 max-w-md mx-auto">
-              Our master confectioners are preparing a fresh batch. Check back shortly or browse other categories.
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 bg-amber-500 text-stone-900 px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-amber-400 transition-colors"
-            >
-              Back to Home
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
+      {/* ── Products Grid ── */}
+      <section
+        className="py-10 sm:py-14 bg-white"
+        aria-label={`${category.name} products`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {products.length === 0 ? (
+            <div className="text-center py-20 space-y-4">
+              <span className="text-5xl">🍬</span>
+              <h2
+                className="text-xl font-bold text-[#002c3f]"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
+                Fresh batch coming soon
+              </h2>
+              <p className="text-sm text-stone-500 max-w-sm mx-auto">
+                Our confectioners are preparing a fresh batch. Check back shortly or browse other categories.
+              </p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 bg-[#871a45] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#691436] transition-colors min-h-[44px]"
+              >
+                Back to Home
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
-      {/* Category Footer SEO Copy (Rule C4 & E7) */}
-      <div className="bg-amber-50/60 rounded-2xl p-6 border border-amber-900/10 text-xs text-stone-600 space-y-2 leading-relaxed">
-        <h2 className="font-serif text-sm font-bold text-[#4c0e17]">
-          Ordering {category.name} from Kanaka Sweets Vijayawada
-        </h2>
-        <p>
-          All our {category.name.toLowerCase()} are prepared fresh every day at our
-          Governorpet shop on Eluru Road. We use cold-pressed oils, pure butter ghee,
-          and farm-fresh ingredients. Whether you are ordering for daily consumption,
-          a wedding celebration, or festival gifts, we ensure tamper-proof, vacuum-sealed
-          packaging so every item reaches you in peak freshness.
-        </p>
+      {/* ── SEO footer copy ── */}
+      <div className="bg-[#FAF6EF] border-t border-stone-100 py-8 sm:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            className="font-serif text-sm font-bold text-[#871a45] mb-2"
+            style={{ fontFamily: "var(--font-fraunces)" }}
+          >
+            Ordering {category.name} from Kanaka Sweets Vijayawada
+          </h2>
+          <p className="text-xs text-stone-500 leading-relaxed max-w-3xl">
+            All our {category.name.toLowerCase()} are prepared fresh daily at our Governorpet
+            shop on Eluru Road. We use cold-pressed oils, pure butter ghee, and farm-fresh
+            ingredients. Whether ordering for daily consumption, a wedding celebration, or festival
+            gifts, we ensure tamper-proof, vacuum-sealed packaging so every item reaches you at
+            peak freshness.
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,27 @@ import {
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
 
+const REVIEWS = [
+  {
+    name: "Priya Reddy",
+    location: "Vijayawada",
+    stars: 5,
+    text: "The Pootharekulu here is absolutely divine — paper-thin rice sheets, pure ghee filling. We order every Diwali without fail.",
+  },
+  {
+    name: "Srinivas Rao",
+    location: "Hyderabad",
+    stars: 5,
+    text: "Drove all the way from Hyderabad just for their Mysore Pak. Worth every kilometre. The ghee quality is unmatched anywhere in AP.",
+  },
+  {
+    name: "Deepika Sharma",
+    location: "Governorpet",
+    stars: 5,
+    text: "Ordered a custom Festival Box for my wedding — beautifully presented, fresh, and all guests asked where we got the sweets from!",
+  },
+];
+
 export default async function HomePage() {
   "use cache";
   const [categories, featuredProducts, siteSettings, festivalProducts] =
@@ -21,310 +42,430 @@ export default async function HomePage() {
   const topFestivalBox = festivalProducts[0];
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-12">
-      {/* 1. Hero Section (Rule B1, B5, D1, E4) */}
-      <section className="relative bg-gradient-to-b from-[#4c0e17] via-[#5e121d] to-[#380b11] text-[#fdfbf7] pt-8 pb-14 sm:pt-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background decorative watermark */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fbbf24_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+    <div>
+      {/* ═══════════════════════════════════
+          1. HERO — navy bg, editorial layout
+      ═══════════════════════════════════ */}
+      <section
+        className="bg-[#002c3f] text-white overflow-hidden"
+        aria-labelledby="hero-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left: copy */}
+            <div className="space-y-6 text-center lg:text-left">
+              {/* Eyebrow */}
+              <p
+                className="text-[#F8D030] text-xs sm:text-sm font-bold uppercase tracking-[0.2em]"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
+                Kanaka Sweets &amp; Bakery · Vijayawada · Est. 2011
+              </p>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Heading, Trust Badges, CTAs */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              {/* Trust Badge Bar (Rule B5) */}
-              <div className="inline-flex items-center gap-2 bg-[#380b11]/80 border border-amber-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-amber-200">
-                <span className="text-amber-400">🏛️ Since 2011</span>
-                <span>•</span>
-                <span>15 Years in Vijayawada</span>
-                <span>•</span>
-                <span className="text-amber-300">★ 4.8 (1,200+ Reviews)</span>
-              </div>
-
-              {/* Single H1 per page (Rule E4) */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15]">
-                Pure Desi Ghee Sweets & Fresh Bakery in{" "}
-                <span className="text-amber-300 underline decoration-amber-500/50 underline-offset-8">
-                  Vijayawada
+              {/* H1 — Rule E4 */}
+              <h1
+                id="hero-heading"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
+                Pure Ghee Sweets,
+                <br />
+                <span className="italic text-[#F8D030]">
+                  Handcrafted Daily
                 </span>
               </h1>
 
-              {/* Subtitle / Value proposition (Rule B1 & C4) */}
-              <p className="text-sm sm:text-base md:text-lg text-amber-100/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Handcrafted every morning at our Governorpet shop using authentic
-                Andhra recipes, pure cow ghee, and zero preservatives. Famous for
-                Atreyapuram Pootharekulu, Kaju Katli, and customized celebration boxes.
+              <p
+                className="text-white/75 text-sm sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
+                From our Governorpet kitchen to your doorstep — Pootharekulu,
+                Kaju Katli, Mysore Pak and celebration cakes made fresh every
+                morning with pure cow ghee and zero preservatives.
               </p>
 
-              {/* Primary Call to Actions (Rule B1 & B2) */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-                <Link
-                  href="/festival-boxes"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-maroon-950 px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:from-amber-300 hover:to-amber-400 transition-all transform hover:-translate-y-0.5 min-h-[48px]"
-                >
-                  <span>🪔</span>
-                  <span>Order Festival Boxes</span>
-                </Link>
-
+              {/* CTAs */}
+              <div
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
                 <Link
                   href="/sweets"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#691421] text-amber-200 border border-amber-400/30 px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base hover:bg-[#86162a] transition-all min-h-[48px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F8D030] text-[#002c3f] px-7 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-lg hover:bg-yellow-300 transition-colors min-h-[52px]"
                 >
-                  <span>🍬</span>
-                  <span>Explore All Sweets</span>
+                  🛒 Shop Now
                 </Link>
-
-                <a
-                  href="tel:+919848022338"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/30 text-stone-200 px-4 py-3.5 rounded-xl font-medium text-xs sm:text-sm hover:bg-black/40 transition-colors min-h-[48px]"
-                  aria-label="Call shop directly"
+                <Link
+                  href="/festival-boxes"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/30 text-white px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-white/10 transition-colors min-h-[52px]"
                 >
-                  <span>📞</span>
-                  <span>Call: +91 98480 22338</span>
-                </a>
+                  🪔 Festival Boxes
+                </Link>
               </div>
 
-              {/* Quick Trust Highlights (Rule B5) */}
-              <div className="pt-4 grid grid-cols-3 gap-2 text-center text-xs text-amber-200/80 border-t border-amber-500/20 max-w-lg mx-auto lg:mx-0">
-                <div className="p-2">
-                  <div className="font-bold text-amber-300 text-sm">100%</div>
-                  <div className="text-[11px]">Pure Desi Ghee</div>
-                </div>
-                <div className="p-2 border-x border-amber-500/20">
-                  <div className="font-bold text-amber-300 text-sm">Same-Day</div>
-                  <div className="text-[11px]">Shop Pickup</div>
-                </div>
-                <div className="p-2">
-                  <div className="font-bold text-amber-300 text-sm">Governorpet</div>
-                  <div className="text-[11px]">Eluru Road Shop</div>
-                </div>
+              {/* Trust badges row */}
+              <div
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-white/60 pt-2"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
+                {[
+                  { icon: "🥛", label: "100% Vegetarian" },
+                  { icon: "🧈", label: "Pure Desi Ghee" },
+                  { icon: "🌿", label: "No Preservatives" },
+                  { icon: "⚡", label: "Same-Day Pickup" },
+                ].map(({ icon, label }) => (
+                  <span key={label} className="flex items-center gap-1.5">
+                    <span>{icon}</span>
+                    <span className="font-medium text-white/80">{label}</span>
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Right Column: LCP Hero Image (Rule D1 & D5) */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] sm:aspect-square w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/30">
-                <Image
-                  src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=900&q=80"
-                  alt="Assorted handcrafted pure desi ghee sweets from Kanaka Sweets Vijayawada"
-                  fill
-                  priority // Only priority image for LCP (Rule D1)
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                  className="object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white text-xs bg-black/60 backdrop-blur-sm p-3 rounded-xl border border-white/10">
-                  <span className="font-bold text-amber-300">Fresh Daily Batch: </span>
-                  Kaju Katli, Pootharekulu & Pure Ghee Mysore Pak prepared every morning.
-                </div>
-              </div>
+            {/* Right: 2×2 product image grid */}
+            <div className="hidden lg:grid grid-cols-2 gap-3">
+              {featuredProducts.slice(0, 4).map((p, i) => (
+                <Link
+                  key={p.id}
+                  href={`/${p.categorySlug}/${p.slug}`}
+                  className="relative aspect-square rounded-2xl overflow-hidden group border border-white/10"
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    priority={i < 2}
+                    sizes="(max-width: 1280px) 25vw, 240px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div
+                    className="absolute bottom-2.5 left-3 text-xs text-white font-semibold"
+                    style={{ fontFamily: "var(--font-jost)" }}
+                  >
+                    {p.name}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Festival Highlight Section (Rule A5 & B2) - Controlled by SiteSettings */}
-      {siteSettings.festivalHighlightActive && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#4c0e17] to-[#731524] text-white border-2 border-amber-500/40 shadow-xl p-6 sm:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-7 space-y-4">
-                <div className="inline-flex items-center gap-2 bg-amber-500 text-maroon-950 font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
-                  <span>🪔</span> Festive Highlight
+      {/* ═══════════════════════════════════
+          2. TRUST STATS BAR
+      ═══════════════════════════════════ */}
+      <section
+        className="bg-[#FAF6EF] border-b border-stone-200"
+        aria-label="Trust statistics"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div
+            className="flex items-center justify-around gap-6 text-center flex-wrap"
+            style={{ fontFamily: "var(--font-jost)" }}
+          >
+            {[
+              { stat: "15+", label: "Years in Vijayawada" },
+              { stat: "1,200+", label: "Happy Reviews" },
+              { stat: "100%", label: "Pure Desi Ghee" },
+              { stat: "Fresh", label: "Every Morning" },
+            ].map(({ stat, label }) => (
+              <div key={stat} className="flex flex-col items-center gap-0.5">
+                <span
+                  className="text-2xl sm:text-3xl font-bold text-[#871a45]"
+                  style={{ fontFamily: "var(--font-fraunces)" }}
+                >
+                  {stat}
+                </span>
+                <span className="text-xs text-stone-500 font-medium uppercase tracking-wide">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════
+          3. FEATURED SWEETS GRID (Rule A6, B2)
+      ═══════════════════════════════════ */}
+      <section
+        className="py-14 sm:py-20 bg-white"
+        aria-labelledby="featured-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between mb-8 sm:mb-10">
+            <div>
+              <p
+                className="text-[#871a45] text-xs font-bold uppercase tracking-[0.2em] mb-2"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
+                Our Kitchen, Daily
+              </p>
+              <h2
+                id="featured-heading"
+                className="text-3xl sm:text-4xl font-bold text-[#002c3f]"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
+                Signature Sweets
+              </h2>
+            </div>
+            <Link
+              href="/sweets"
+              className="text-sm font-bold text-[#871a45] hover:text-[#691436] transition-colors whitespace-nowrap"
+              style={{ fontFamily: "var(--font-jost)" }}
+            >
+              View all →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {featuredProducts.slice(0, 8).map((product, i) => (
+              <ProductCard key={product.id} product={product} priority={i < 4} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════
+          4. CATEGORY EXPERIENCE GRID
+      ═══════════════════════════════════ */}
+      <section
+        className="py-14 sm:py-20 bg-[#FAF6EF]"
+        aria-labelledby="categories-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 sm:mb-10 text-center">
+            <p
+              className="text-[#871a45] text-xs font-bold uppercase tracking-[0.2em] mb-2"
+              style={{ fontFamily: "var(--font-jost)" }}
+            >
+              Browse by Category
+            </p>
+            <h2
+              id="categories-heading"
+              className="text-3xl sm:text-4xl font-bold text-[#002c3f]"
+              style={{ fontFamily: "var(--font-fraunces)" }}
+            >
+              The Kanaka Experience
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {categories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/${cat.slug}`}
+                className="relative aspect-[3/4] sm:aspect-square rounded-2xl overflow-hidden group shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <Image
+                  src={cat.image}
+                  alt={`${cat.name} at Kanaka Sweets Vijayawada`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002c3f]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3
+                    className="text-white font-bold text-lg sm:text-xl"
+                    style={{ fontFamily: "var(--font-fraunces)" }}
+                  >
+                    {cat.name}
+                  </h3>
+                  <span
+                    className="text-white/70 text-xs font-medium"
+                    style={{ fontFamily: "var(--font-jost)" }}
+                  >
+                    Shop now →
+                  </span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-amber-200">
-                  {siteSettings.festivalHighlightTitle}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════
+          5. FESTIVAL HIGHLIGHT (Rule A5, C5)
+      ═══════════════════════════════════ */}
+      {siteSettings?.festivalHighlightActive && topFestivalBox && (
+        <section
+          className="py-14 sm:py-20 bg-gradient-to-br from-[#871a45] to-[#4a0e28] text-white overflow-hidden"
+          aria-labelledby="festival-heading"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-5">
+                <p
+                  className="text-[#F8D030] text-xs font-bold uppercase tracking-[0.2em]"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  🪔 Festival Season Special
+                </p>
+                <h2
+                  id="festival-heading"
+                  className="text-3xl sm:text-4xl font-bold leading-tight"
+                  style={{ fontFamily: "var(--font-fraunces)" }}
+                >
+                  {siteSettings.festivalHighlightTitle ||
+                    "Celebrate Every Occasion with Our Festival Gift Boxes"}
                 </h2>
-                <p className="text-amber-100 font-medium text-sm sm:text-base">
-                  {siteSettings.festivalHighlightSubtitle}
+                <p
+                  className="text-white/75 text-sm sm:text-base leading-relaxed"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  {siteSettings.festivalHighlightText ||
+                    "Beautifully curated gift hampers filled with handcrafted Andhra sweets, Pootharekulu, Kaju Katli and more. Perfect for Diwali, Ugadi, weddings and corporate gifting."}
                 </p>
-                <p className="text-xs sm:text-sm text-stone-200 leading-relaxed">
-                  {siteSettings.festivalHighlightText}
-                </p>
-                {siteSettings.festivalHighlightDiscount && (
-                  <div className="text-xs font-semibold text-amber-300 bg-black/30 p-2.5 rounded-lg border border-amber-400/20 inline-block">
-                    🏷️ {siteSettings.festivalHighlightDiscount}
-                  </div>
-                )}
-                <div className="pt-2 flex flex-wrap gap-3">
+                <div
+                  className="flex flex-wrap gap-3"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
                   <Link
                     href="/festival-boxes"
-                    className="inline-flex items-center justify-center gap-2 bg-amber-400 text-maroon-950 px-5 py-3 rounded-xl font-bold text-sm hover:bg-amber-300 transition-colors shadow-md min-h-[44px]"
+                    className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-6 py-3 rounded-full font-bold text-sm hover:bg-yellow-300 transition-colors min-h-[48px]"
                   >
-                    <span>🎁</span> Browse Festival Boxes
+                    🎁 Order a Festival Box
                   </Link>
-                  {topFestivalBox && (
-                    <Link
-                      href={`/festival-boxes/${topFestivalBox.slug}`}
-                      className="inline-flex items-center justify-center gap-2 bg-[#380b11] text-amber-200 border border-amber-400/40 px-5 py-3 rounded-xl font-semibold text-sm hover:bg-[#52101b] transition-colors min-h-[44px]"
-                    >
-                      Quick Order: {topFestivalBox.name} (from ₹{topFestivalBox.variants[0]?.price})
-                    </Link>
-                  )}
+                  <a
+                    href="https://wa.me/919848022338?text=Hello,%20I%20would%20like%20to%20enquire%20about%20Festival%20Gift%20Boxes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition-colors min-h-[48px]"
+                  >
+                    💬 Custom Order via WhatsApp
+                  </a>
                 </div>
+                {/* Best for Gifting label (C5) */}
+                <p
+                  className="text-xs text-white/50 italic"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  ★ &ldquo;Best for Gifting&rdquo; — our most popular choice for weddings &amp; corporate events
+                </p>
               </div>
 
-              <div className="md:col-span-5">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-amber-400/30 shadow-lg">
+              {topFestivalBox.image && (
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/20">
                   <Image
-                    src={siteSettings.festivalHighlightImage}
-                    alt="Festive sweet gift hamper from Kanaka Sweets"
+                    src={topFestivalBox.image}
+                    alt={`${topFestivalBox.name} — Kanaka Sweets Festival Gift Box`}
                     fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                     loading="lazy"
                   />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
       )}
 
-      {/* 3. Categories Overview (Rule A2, E1, E2) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-2 mb-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-amber-700">
-            Fresh From Our Kitchen
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900">
-            Explore by Category
-          </h2>
-          <p className="text-sm text-stone-600 max-w-xl mx-auto">
-            Each recipe perfected over 15 years in Vijayawada. Freshly prepared, hygienic, and authentic.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/${cat.slug}`}
-              className="group relative rounded-2xl overflow-hidden bg-white border border-amber-900/10 shadow-sm hover:shadow-md transition-all flex flex-col"
+      {/* ═══════════════════════════════════
+          6. CUSTOMER REVIEWS (Rule B5)
+      ═══════════════════════════════════ */}
+      <section
+        className="py-14 sm:py-20 bg-white"
+        aria-labelledby="reviews-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p
+              className="text-[#871a45] text-xs font-bold uppercase tracking-[0.2em] mb-2"
+              style={{ fontFamily: "var(--font-jost)" }}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-amber-50">
-                <Image
-                  src={cat.image}
-                  alt={`${cat.name} at Kanaka Sweets Vijayawada`}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-amber-200">
-                    {cat.name}
-                  </h3>
+              Real Customers · Google &amp; Instagram
+            </p>
+            <h2
+              id="reviews-heading"
+              className="text-3xl sm:text-4xl font-bold text-[#002c3f]"
+              style={{ fontFamily: "var(--font-fraunces)" }}
+            >
+              What Our Customers Say
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {REVIEWS.map((review) => (
+              <div
+                key={review.name}
+                className="bg-[#FAF6EF] rounded-2xl p-6 border border-stone-100 space-y-3"
+                style={{ fontFamily: "var(--font-jost)" }}
+              >
+                <div className="flex gap-0.5">
+                  {Array.from({ length: review.stars }).map((_, i) => (
+                    <span key={i} className="text-[#2D5E3F] text-sm">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-stone-700 leading-relaxed italic">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+                <div>
+                  <div className="font-bold text-[#002c3f] text-sm">
+                    {review.name}
+                  </div>
+                  <div className="text-xs text-stone-400">{review.location}</div>
                 </div>
               </div>
-              <div className="p-3 sm:p-4 flex-grow flex flex-col justify-between">
-                <p className="text-xs text-stone-600 line-clamp-2">
-                  {cat.description}
-                </p>
-                <span className="text-xs font-bold text-amber-700 mt-2 inline-flex items-center gap-1 group-hover:text-amber-800">
-                  Browse {cat.name} →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Featured Specialties Grid (Rule A3, A6, C1) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-700">
-              Customer Favorites
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mt-1">
-              Kanaka Signature Specialties
-            </h2>
-            <p className="text-sm text-stone-600 mt-1">
-              The dishes that made our Governorpet shop famous across Andhra Pradesh.
-            </p>
+            ))}
           </div>
-          <Link
-            href="/sweets"
-            className="inline-flex items-center text-sm font-bold text-amber-700 hover:text-amber-800 transition-colors"
-          >
-            View all sweets ({featuredProducts.length}+) →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.slice(0, 8).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
         </div>
       </section>
 
-      {/* 5. Trust Story & Shop Heritage (Rule B5, C4) */}
-      <section className="bg-amber-50/70 border-y border-amber-900/10 py-12 sm:py-16">
+      {/* ═══════════════════════════════════
+          7. CONTACT STRIP (Rule B3, B5)
+      ═══════════════════════════════════ */}
+      <section
+        className="bg-[#FAF6EF] border-t border-stone-200 py-10 sm:py-12"
+        aria-label="Contact and visit"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-700">
-                15 Years of Tradition
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900">
-                A Family Sweet Shop Built on Pure Cow Ghee & Trust
+          <div
+            className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left"
+            style={{ fontFamily: "var(--font-jost)" }}
+          >
+            <div>
+              <h2
+                className="text-xl sm:text-2xl font-bold text-[#002c3f] mb-1"
+                style={{ fontFamily: "var(--font-fraunces)" }}
+              >
+                Visit Us in Governorpet
               </h2>
-              <p className="text-sm text-stone-700 leading-relaxed">
-                Founded in 2011 on Eluru Road in Governorpet, Kanaka Sweets began with
-                one simple promise: never compromise on ghee or ingredients. While
-                commercial factories turned to preservatives and palm oils, we continued
-                handcrafting our Pootharekulu with authentic Atreyapuram rice sheets,
-                simmering Mysore Pak in bubbling pure butter ghee, and roasting cashews
-                for our diamond Kaju Katli daily.
+              <p className="text-sm text-stone-600">
+                📍 Door No. 28-10-15, Eluru Road, Vijayawada AP 520002
               </p>
-              <p className="text-sm text-stone-700 leading-relaxed">
-                Today, families across Vijayawada and travelers passing through the city
-                rely on us for weddings, festival celebrations, and sweet memories.
+              <p className="text-xs text-stone-400 mt-0.5">
+                Open Daily 7:00 AM – 10:30 PM
               </p>
-
-              <div className="pt-2 flex flex-wrap gap-4">
-                <a
-                  href="https://maps.google.com/?q=Kanaka+Sweets+Governorpet+Vijayawada"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#4c0e17] text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-[#681320] transition-colors"
-                >
-                  <span>📍</span> Get Directions to Shop
-                </a>
-                <a
-                  href="tel:+919848022338"
-                  className="inline-flex items-center gap-2 bg-white text-stone-800 border border-stone-300 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-stone-50 transition-colors"
-                >
-                  <span>📞</span> Call +91 98480 22338
-                </a>
-              </div>
             </div>
-
-            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-              <div className="p-6 bg-white rounded-2xl border border-amber-900/10 shadow-sm space-y-2">
-                <div className="text-3xl font-serif font-bold text-[#4c0e17]">15+</div>
-                <div className="text-xs uppercase tracking-wider text-amber-700 font-semibold">Years of Quality</div>
-                <p className="text-xs text-stone-600">Open 7 days a week since 2011 on Eluru Road, Vijayawada.</p>
-              </div>
-
-              <div className="p-6 bg-white rounded-2xl border border-amber-900/10 shadow-sm space-y-2">
-                <div className="text-3xl font-serif font-bold text-[#4c0e17]">100%</div>
-                <div className="text-xs uppercase tracking-wider text-amber-700 font-semibold">Pure Desi Ghee</div>
-                <p className="text-xs text-stone-600">Locally sourced cow milk ghee with zero vanaspati or palm oil.</p>
-              </div>
-
-              <div className="p-6 bg-white rounded-2xl border border-amber-900/10 shadow-sm space-y-2">
-                <div className="text-3xl font-serif font-bold text-[#4c0e17]">4.8 ★</div>
-                <div className="text-xs uppercase tracking-wider text-amber-700 font-semibold">Customer Trust</div>
-                <p className="text-xs text-stone-600">Over 1,200 verified reviews from families and Instagram foodies.</p>
-              </div>
-
-              <div className="p-6 bg-white rounded-2xl border border-amber-900/10 shadow-sm space-y-2">
-                <div className="text-3xl font-serif font-bold text-[#4c0e17]">Fresh</div>
-                <div className="text-xs uppercase tracking-wider text-amber-700 font-semibold">Daily Preparation</div>
-                <p className="text-xs text-stone-600">Every morning batch made fresh for same-day shop pickup & delivery.</p>
-              </div>
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <a
+                href="tel:+919848022338"
+                className="inline-flex items-center gap-2 bg-[#002c3f] text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-[#023e5a] transition-colors min-h-[48px]"
+              >
+                📞 +91 98480 22338
+              </a>
+              <a
+                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-[#20ba59] transition-colors min-h-[48px]"
+              >
+                💬 WhatsApp Order
+              </a>
+              <a
+                href="https://maps.google.com/?q=Kanaka+Sweets+Governorpet+Vijayawada"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-[#002c3f] border border-stone-200 px-5 py-3 rounded-xl font-semibold text-sm hover:bg-stone-50 transition-colors min-h-[48px]"
+              >
+                🗺️ Get Directions
+              </a>
             </div>
           </div>
         </div>
