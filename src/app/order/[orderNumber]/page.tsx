@@ -7,7 +7,7 @@ import { RESERVATION_MINUTES } from "@/lib/orders";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Your Order | Kanaka Sweets & Bakery",
+  title: "Your Order",
   description: "Order status for your Kanaka Sweets & Bakery order.",
   robots: { index: false },
 };

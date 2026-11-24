@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CheckoutForm } from "@/components/CheckoutForm";
 
 export const metadata: Metadata = {
-  title: "Checkout | Kanaka Sweets & Bakery",
+  title: "Checkout",
   description:
     "Choose home delivery in Vijayawada or shop pickup at Kanaka Sweets & Bakery, Governorpet.",
   robots: { index: false },

@@ -45,7 +45,8 @@ export async function generateMetadata({
   const description = `${category.description} Handcrafted daily at our Governorpet shop with pure desi cow ghee. Same-day shop pickup available in Vijayawada.`;
 
   return {
-    title,
+    // absolute: the title already ends with the shop name, so skip the layout template
+    title: { absolute: title },
     description,
     openGraph: {
       title,

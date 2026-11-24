@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CartView } from "@/components/CartView";
 
 export const metadata: Metadata = {
-  title: "Shopping Cart | Kanaka Sweets & Bakery",
+  title: "Shopping Cart",
   description:
     "View and manage your freshly selected sweets, cakes, and festive boxes.",
   robots: { index: false },

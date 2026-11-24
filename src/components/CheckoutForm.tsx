@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/cart-store";
 import { useCartLines } from "@/lib/use-cart-lines";
-import { PICKUP_SLOTS } from "@/lib/shop-constants";
+import { PICKUP_SLOTS, isSlotPast } from "@/lib/shop-constants";
 import { ArrowRightIcon, ShoppingBagIcon } from "@/components/icons";
 
 type FieldName =
@@ -97,8 +97,16 @@ export function CheckoutForm() {
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const set = <K extends keyof FormValues>(key: K, value: FormValues[K]) =>
+  const set = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues((v) => ({ ...v, [key]: value }));
+    // Remove that field's error as soon as the customer edits it.
+    setErrors((prev) => {
+      if (!(key in prev)) return prev;
+      const next = { ...prev };
+      delete next[key as FieldName];
+      return next;
+    });
+  };
 
   // ── Page states (B8) ──
   if (status === "loading") {
@@ -328,9 +336,15 @@ export function CheckoutForm() {
                   className={inputClass(!!errors.pickupTimeSlot)}
                 >
                   <option value="">Choose a time slot</option>
-                  {PICKUP_SLOTS.map((slot) => (
-                    <option key={slot} value={slot}>{slot}</option>
-                  ))}
+                  {PICKUP_SLOTS.map((slot) => {
+                    // Slots that already started today can't be booked.
+                    const past = !!values.pickupDate && isSlotPast(slot, values.pickupDate);
+                    return (
+                      <option key={slot} value={slot} disabled={past}>
+                        {slot}{past ? " (not available today)" : ""}
+                      </option>
+                    );
+                  })}
                 </select>
               </Field>
             </>

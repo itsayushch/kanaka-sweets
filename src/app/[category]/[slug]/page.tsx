@@ -40,7 +40,8 @@ export async function generateMetadata({
   const description = `${product.description} Order freshly made ${product.name} in Vijayawada with same-day shop pickup or doorstep delivery. Prepared with pure desi cow ghee.`;
 
   return {
-    title,
+    // absolute: the title already ends with the shop name, so skip the layout template
+    title: { absolute: title },
     description,
     openGraph: {
       title,

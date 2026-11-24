@@ -9,7 +9,7 @@
  * it is thrown away before any code can use it.
  */
 import { z } from "zod";
-import { MAX_QUANTITY, PICKUP_SLOTS } from "@/lib/shop-constants";
+import { MAX_QUANTITY, PICKUP_SLOTS, isSlotPast } from "@/lib/shop-constants";
 
 /** One cart line: only IDs and a quantity, never a price. */
 export const cartItemSchema = z.object({
@@ -107,6 +107,12 @@ export const checkoutSchema = z
           code: "custom",
           path: ["pickupTimeSlot"],
           message: "Choose a pickup time slot",
+        });
+      } else if (data.pickupDate && isSlotPast(data.pickupTimeSlot, data.pickupDate)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["pickupTimeSlot"],
+          message: "That time slot has already started. Choose a later slot or date.",
         });
       }
     }
