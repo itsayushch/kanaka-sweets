@@ -7,6 +7,16 @@ import {
   getProductsByCategory,
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
+import {
+  LeafIcon,
+  ShieldCheckIcon,
+  HeartHandIcon,
+  StarIcon,
+  GiftIcon,
+  WhatsAppIcon,
+  SparklesIcon,
+  ArrowRightIcon,
+} from "@/components/icons";
 
 const REVIEWS = [
   {
@@ -57,13 +67,13 @@ export default async function HomePage() {
         aria-labelledby="hero-heading"
       >
         {/* Subtle decorative gold starbursts */}
-        <div className="absolute top-6 left-8 text-[#F8D030]/30 text-3xl font-serif pointer-events-none select-none">
+        <div className="absolute top-6 left-8 text-[#F8D030]/25 text-3xl font-serif pointer-events-none select-none">
           ✦
         </div>
-        <div className="absolute bottom-8 left-1/4 text-[#F8D030]/25 text-4xl font-serif pointer-events-none select-none">
+        <div className="absolute bottom-8 left-1/4 text-[#F8D030]/20 text-4xl font-serif pointer-events-none select-none">
           ✦
         </div>
-        <div className="absolute top-12 right-12 text-[#F8D030]/20 text-5xl font-serif pointer-events-none select-none">
+        <div className="absolute top-12 right-12 text-[#F8D030]/15 text-5xl font-serif pointer-events-none select-none">
           ✦
         </div>
 
@@ -73,7 +83,7 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               {/* Eyebrow badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#F8D030]">
-                <span>✦</span>
+                <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030]" />
                 <span className="tracking-widest uppercase">
                   VIJAYAWADA&apos;S HERITAGE SWEET SHOP • EST. 2011
                 </span>
@@ -113,26 +123,27 @@ export default async function HomePage() {
                   href="/festival-boxes"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 hover:border-white px-7 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-all min-h-[50px]"
                 >
-                  🪔 Festival Boxes
+                  <GiftIcon className="w-4 h-4 text-[#F8D030]" />
+                  <span>Festival Boxes</span>
                 </Link>
               </div>
 
-              {/* BSS Trust Micro-Badges Row */}
+              {/* BSS Trust Micro-Badges Row with Vectors */}
               <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-white/70 border-t border-white/15">
                 <div className="flex items-center gap-2">
-                  <span className="text-emerald-400 text-base">🌱</span>
+                  <LeafIcon className="w-4 h-4 text-emerald-400" />
                   <span className="font-semibold uppercase tracking-wider text-[11px]">
                     100% Vegetarian
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#F8D030] text-base">🧈</span>
+                  <ShieldCheckIcon className="w-4 h-4 text-[#F8D030]" />
                   <span className="font-semibold uppercase tracking-wider text-[11px]">
                     Pure Desi Ghee
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-pink-400 text-base">❤️</span>
+                  <HeartHandIcon className="w-4 h-4 text-pink-400" />
                   <span className="font-semibold uppercase tracking-wider text-[11px]">
                     Handmade Daily
                   </span>
@@ -230,7 +241,8 @@ export default async function HomePage() {
               href="/sweets"
               className="inline-flex items-center gap-2 border-2 border-[#871a45] text-[#871a45] hover:bg-[#871a45] hover:text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all min-h-[48px]"
             >
-              View All Sweets &amp; Treats →
+              <span>View All Sweets &amp; Treats</span>
+              <ArrowRightIcon className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -288,8 +300,9 @@ export default async function HomePage() {
                     Atreyapuram Pootharekulu, diamond Kaju Katli, and melt-in-mouth Mysore Pak simmered daily.
                   </p>
                 </div>
-                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider">
-                  Shop Sweets →
+                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider flex items-center gap-1">
+                  <span>Shop Sweets</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
                 </div>
               </div>
             </Link>
@@ -320,8 +333,9 @@ export default async function HomePage() {
                     Velvet-finish gift boxes with personalized foil cards. Perfect for weddings &amp; corporate Diwali gifts.
                   </p>
                 </div>
-                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider">
-                  Explore Hampers →
+                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider flex items-center gap-1">
+                  <span>Explore Hampers</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
                 </div>
               </div>
             </Link>
@@ -352,8 +366,9 @@ export default async function HomePage() {
                     Spicy mixture, crunchy bellam gavvalu, and chekkalu prepared in fresh cold-pressed groundnut oil.
                   </p>
                 </div>
-                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider">
-                  Shop Snacks →
+                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider flex items-center gap-1">
+                  <span>Shop Snacks</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
                 </div>
               </div>
             </Link>
@@ -386,8 +401,9 @@ export default async function HomePage() {
                     Door No. 28-10-15, Eluru Road. Open 7 days from 7:00 AM to 10:30 PM. Same-day counter pickup.
                   </p>
                 </div>
-                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider">
-                  Get Directions →
+                <div className="mt-4 text-xs font-bold text-[#871a45] uppercase tracking-wider flex items-center gap-1">
+                  <span>Get Directions</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
                 </div>
               </div>
             </a>
@@ -403,15 +419,11 @@ export default async function HomePage() {
           className="py-14 sm:py-20 bg-gradient-to-br from-[#871a45] via-[#691436] to-[#4a0e28] text-white relative overflow-hidden"
           aria-labelledby="festival-heading"
         >
-          <div className="absolute top-4 right-10 text-[#F8D030]/20 text-7xl font-serif select-none pointer-events-none">
-            🪔
-          </div>
-
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="space-y-5">
                 <div className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                  <span>🪔</span>
+                  <SparklesIcon className="w-3.5 h-3.5 text-[#002c3f]" />
                   <span>Festival Season Special</span>
                 </div>
 
@@ -437,7 +449,8 @@ export default async function HomePage() {
                     href="/festival-boxes"
                     className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-7 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-300 active:scale-95 transition-all shadow-lg min-h-[48px]"
                   >
-                    🎁 Order a Festival Box
+                    <GiftIcon className="w-4 h-4 text-[#002c3f]" />
+                    <span>Order a Festival Box</span>
                   </Link>
 
                   <a
@@ -446,7 +459,8 @@ export default async function HomePage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-all min-h-[48px]"
                   >
-                    💬 WhatsApp Bulk Order
+                    <WhatsAppIcon className="w-4 h-4 text-white" />
+                    <span>WhatsApp Bulk Order</span>
                   </a>
                 </div>
 
@@ -498,10 +512,12 @@ export default async function HomePage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="flex gap-1 text-[#2D5E3F] text-base">
-                      {"★".repeat(review.stars)}
+                    <div className="flex gap-1 text-[#2D5E3F]">
+                      {Array.from({ length: review.stars }).map((_, i) => (
+                        <StarIcon key={i} className="w-4 h-4 text-[#2D5E3F]" />
+                      ))}
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-[#2D5E3F] px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-[#2D5E3F] px-2.5 py-0.5 rounded-full">
                       {review.tag}
                     </span>
                   </div>
@@ -527,16 +543,16 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          7. FLOATING WHATSAPP BUTTON (BSS Signature)
+          7. FLOATING WHATSAPP BUTTON (BSS Signature with official vector)
       ═══════════════════════════════════════════════════════════ */}
       <a
         href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl shadow-2xl flex items-center justify-center text-3xl transition-all duration-200 hover:scale-110 active:scale-95"
+        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
         aria-label="Direct WhatsApp Ordering Concierge"
       >
-        💬
+        <WhatsAppIcon className="w-7 h-7 text-white" />
       </a>
     </div>
   );
