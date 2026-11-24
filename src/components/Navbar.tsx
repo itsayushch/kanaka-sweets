@@ -189,35 +189,31 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Center: Reduced Size Professional Search Bar */}
-            <div className="hidden md:flex items-center w-56 lg:w-72 xl:w-80 h-9.5 bg-stone-50 hover:bg-stone-100/80 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3 gap-2">
-              <SearchIcon className="w-4 h-4 text-stone-400 shrink-0" />
+            {/* Center: Sleek & Professional Search Bar */}
+            <div className="hidden md:flex items-center w-56 lg:w-72 xl:w-80 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
+              <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
               <input
                 type="text"
                 readOnly
-                placeholder="Search sweets, hampers..."
+                placeholder="Search Pootharekulu, Kaju Katli..."
                 className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
               />
-              <button
-                type="button"
-                className="w-6 h-6 rounded-full bg-[#871a45] hover:bg-[#691436] text-white flex items-center justify-center shrink-0 shadow-2xs transition-colors"
-                aria-label="Search"
-              >
-                <SearchIcon className="w-3 h-3" />
-              </button>
+              <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
+                ⌘K
+              </span>
             </div>
 
-            {/* Right Action Items: Profile & Cart Icons with short pinpoint title below */}
+            {/* Right Action Items: WhatsApp + Profile & Cart Icons with short pinpoint title below */}
             <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-              {/* WhatsApp Quick Link */}
+              {/* WhatsApp Concierge Order Button */}
               <a
-                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets"
+                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden xl:inline-flex items-center gap-1.5 text-xs text-stone-600 hover:text-[#25D366] transition-colors font-medium"
+                className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-xs hover:shadow transition-all active:scale-95 shrink-0"
                 aria-label="Order on WhatsApp"
               >
-                <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                <WhatsAppIcon className="w-4 h-4 text-white" />
                 <span>WhatsApp</span>
               </a>
 
