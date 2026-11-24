@@ -8,6 +8,7 @@ import {
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryStories } from "@/components/CategoryStories";
+import { HeroCarousel, type HeroBanner } from "@/components/HeroCarousel";
 import {
   LeafIcon,
   ShieldCheckIcon,
@@ -18,6 +19,37 @@ import {
   SparklesIcon,
   ArrowRightIcon,
 } from "@/components/icons";
+
+const HERO_BANNERS: HeroBanner[] = [
+  {
+    id: "festival-launch",
+    image: "/images/banners/banner-festival-collection.jpg",
+    alt: "Kanaka Sweets & Bakery Festive Hampers and Handcrafted Gift Boxes",
+    title: "Explore Festive Gift Boxes & Hampers",
+    href: "/festival-boxes",
+  },
+  {
+    id: "pure-ghee-sweets",
+    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1920&auto=format&fit=crop&q=85",
+    alt: "Authentic Andhra Mithai handcrafted with 100% Pure Desi Cow Ghee",
+    title: "Pure Desi Cow Ghee Sweets & Mithai",
+    href: "/sweets",
+  },
+  {
+    id: "fresh-cakes",
+    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1920&auto=format&fit=crop&q=85",
+    alt: "Freshly baked celebration cakes and artisan pastries at Kanaka Bakery",
+    title: "Celebration Cakes & Bakery Treats",
+    href: "/cakes",
+  },
+  {
+    id: "andhra-savouries",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=1920&auto=format&fit=crop&q=85",
+    alt: "Vijayawada special spicy mixture, crunchy murukku and savouries",
+    title: "Crunchy Savouries & Vijayawada Mixture",
+    href: "/snacks",
+  },
+];
 
 const REVIEWS = [
   {
@@ -61,128 +93,12 @@ export default async function HomePage() {
   return (
     <div suppressHydrationWarning className="bg-white">
       {/* ═══════════════════════════════════════════════════════════
-          1. HERO BANNER — Royal Blue Canvas (BSS Signature Style)
+          1. HERO CAROUSEL — Full-Width Visual Banners (BSS Style)
       ═══════════════════════════════════════════════════════════ */}
-      <section
-        className="relative bg-[#023757] text-white overflow-hidden py-12 sm:py-16 lg:py-20"
-        aria-labelledby="hero-heading"
-      >
-        {/* Subtle decorative gold starbursts */}
-        <div className="absolute top-6 left-8 text-[#F8D030]/25 text-3xl font-serif pointer-events-none select-none">
-          ✦
-        </div>
-        <div className="absolute bottom-8 left-1/4 text-[#F8D030]/20 text-4xl font-serif pointer-events-none select-none">
-          ✦
-        </div>
-        <div className="absolute top-12 right-12 text-[#F8D030]/15 text-5xl font-serif pointer-events-none select-none">
-          ✦
-        </div>
-
-        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left: Headline & Call-to-actions */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              {/* Eyebrow badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#F8D030]">
-                <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030]" />
-                <span className="tracking-widest uppercase">
-                  VIJAYAWADA&apos;S HERITAGE SWEET SHOP • EST. 2011
-                </span>
-              </div>
-
-              {/* H1 (Rule E4) */}
-              <h1
-                id="hero-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15]"
-                style={{ fontFamily: "var(--font-fraunces)" }}
-              >
-                Make every celebration sweeter with{" "}
-                <span className="text-[#F8D030] italic block sm:inline">
-                  our bestsellers.
-                </span>
-              </h1>
-
-              <p
-                className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0"
-                style={{ fontFamily: "var(--font-jost)" }}
-              >
-                Handcrafted every morning in Governorpet using 100% pure cow ghee,
-                authentic Atreyapuram rice sheets, and zero preservatives. From
-                traditional Pootharekulu to luxury festival hampers.
-              </p>
-
-              {/* CTAs: Golden Pill (BSS signature) */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-                <Link
-                  href="/sweets"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F8D030] text-[#002c3f] px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider shadow-xl hover:bg-yellow-300 active:scale-95 transition-all min-h-[50px]"
-                >
-                  Shop Now
-                </Link>
-
-                <Link
-                  href="/festival-boxes"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 hover:border-white px-7 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-all min-h-[50px]"
-                >
-                  <GiftIcon className="w-4 h-4 text-[#F8D030]" />
-                  <span>Festival Boxes</span>
-                </Link>
-              </div>
-
-              {/* BSS Trust Micro-Badges Row with Vectors */}
-              <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-white/70 border-t border-white/15">
-                <div className="flex items-center gap-2">
-                  <LeafIcon className="w-4 h-4 text-emerald-400" />
-                  <span className="font-semibold uppercase tracking-wider text-[11px]">
-                    100% Vegetarian
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheckIcon className="w-4 h-4 text-[#F8D030]" />
-                  <span className="font-semibold uppercase tracking-wider text-[11px]">
-                    Pure Desi Ghee
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <HeartHandIcon className="w-4 h-4 text-pink-400" />
-                  <span className="font-semibold uppercase tracking-wider text-[11px]">
-                    Handmade Daily
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Opulent Photography Arrangement */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-gradient-to-tr from-[#012a3e] to-[#023757]">
-                <Image
-                  src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1000&q=85"
-                  alt="Kanaka Sweets Royal Festive Hampers and Pure Ghee Mithai"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#F8D030]">
-                    Limited Festive Edition
-                  </div>
-                  <div
-                    className="font-serif text-lg font-bold"
-                    style={{ fontFamily: "var(--font-fraunces)" }}
-                  >
-                    Royal Vijayawada Gift Hamper
-                  </div>
-                  <div className="text-xs text-white/80">
-                    Kaju Katli • Pootharekulu • Mysore Pak • Dry Fruits
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <h1 className="sr-only">
+        Kanaka Sweets &amp; Bakery — Authentic Andhra Mithai, Cakes &amp; Festival Hampers
+      </h1>
+      <HeroCarousel banners={HERO_BANNERS} />
 
       {/* ── 2. SIGNATURE CATEGORY STORIES RIBBON (Shifted Below Hero) ── */}
       <CategoryStories />

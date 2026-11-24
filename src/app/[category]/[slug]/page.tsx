@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -14,8 +15,6 @@ import { GiftIcon } from "@/components/icons";
 interface ProductPageProps {
   params: Promise<{ category: string; slug: string }>;
 }
-
-export const instant = false;
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -65,8 +64,34 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductDetailPage({ params }: ProductPageProps) {
-  "use cache";
+function ProductPageSkeleton() {
+  return (
+    <div className="bg-[#FAF7F2] min-h-[70vh] py-10 animate-pulse">
+      <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-8">
+        <div className="h-4 w-48 bg-stone-200 rounded" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-6 aspect-square bg-stone-200 rounded-2xl" />
+          <div className="lg:col-span-6 space-y-6">
+            <div className="h-8 w-3/4 bg-stone-200 rounded" />
+            <div className="h-6 w-32 bg-stone-200 rounded" />
+            <div className="h-20 w-full bg-stone-200 rounded" />
+            <div className="h-12 w-48 bg-stone-200 rounded-xl" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductDetailPage({ params }: ProductPageProps) {
+  return (
+    <Suspense fallback={<ProductPageSkeleton />}>
+      <ProductDetailContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ProductDetailContent({ params }: ProductPageProps) {
   const { category: categorySlug, slug: productSlug } = await params;
   const product = await getProductBySlug(categorySlug, productSlug);
 
