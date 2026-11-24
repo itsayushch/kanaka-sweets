@@ -10,6 +10,8 @@ import {
   GiftIcon,
   ClockIcon,
   UserIcon,
+  HeartIcon,
+  StarIcon,
 } from "@/components/icons";
 
 const CATEGORY_STORIES = [
@@ -74,7 +76,7 @@ const CATEGORY_STORIES = [
 export function Navbar() {
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-stone-200/80">
+      <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-stone-200/80 relative">
         {/* ── 1. Top Announcement Bar (Plum #871a45 - Clean, Crisp Padding) ── */}
         <div className="bg-[#871a45] text-white text-xs py-1.5 px-4 sm:px-6 lg:px-8">
           <div className="w-full flex items-center justify-between gap-4">
@@ -113,15 +115,14 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* ── 2. Main Brand Header (Single Line: Logo + Expanded Links + RHS Search, Profile & Cart) ── */}
+        {/* ── 2. Main Brand Header (Myntra-Style Mega Menu Navigation Bar) ── */}
         <div className="bg-white">
-          <div className="w-full px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4 lg:gap-6">
-            {/* Left Group: Logo + Increased Category Links on the SAME LINE */}
-            <div className="flex items-center gap-6 xl:gap-8 min-w-0">
-              {/* Brand Logo */}
+          <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-6 h-18">
+            {/* Left: Logo */}
+            <div className="flex items-center gap-6 lg:gap-8 shrink-0 h-full">
               <Link
                 href="/"
-                className="flex items-center gap-2.5 group shrink-0"
+                className="flex items-center gap-2.5 group shrink-0 py-2"
                 aria-label="Kanaka Sweets & Bakery Homepage"
               >
                 <div className="w-10 h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-xs group-hover:scale-105 transition-transform">
@@ -148,84 +149,450 @@ export function Navbar() {
                 </div>
               </Link>
 
-              {/* Increased Category Links (Expanded & Beautifully Distributed on Same Line) */}
+              {/* Myntra-Style Navigation Tabs with Mega Menus */}
               <nav
-                aria-label="Primary Categories"
-                className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-semibold text-[#002c3f] flex-wrap"
+                aria-label="Store Categories"
+                className="hidden lg:flex items-center h-full text-xs font-bold tracking-wider uppercase text-[#002c3f]"
                 style={{ fontFamily: "var(--font-jost)" }}
               >
+                {/* ── TAB 1: SWEETS & MITHAI (Mega Menu Dropdown) ── */}
+                <div className="group/sweets static h-full flex items-center">
+                  <Link
+                    href="/sweets"
+                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-all gap-1"
+                  >
+                    <span>Sweets</span>
+                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/sweets:text-[#871a45] group-hover/sweets:rotate-180 transition-transform duration-200" />
+                  </Link>
+
+                  {/* Mega Menu Dropdown */}
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-2xl invisible opacity-0 group-hover/sweets:visible group-hover/sweets:opacity-100 transition-all duration-150 z-50 text-left">
+                    <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
+                      <div className="grid grid-cols-5 gap-8">
+                        {/* Col 1 */}
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                              Pure Ghee Mithai
+                            </h3>
+                            <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                              <li>
+                                <Link href="/sweets/ghee-mysore-pak" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Pure Ghee Mysore Pak
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/sweets/pootharekulu" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Atreyapuram Pootharekulu
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/sweets/ariselu" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Ghee Ariselu (Nethi Ariselu)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/sweets/boondi-ladoo" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Tirupati Style Boondi Ladoo
+                                </Link>
+                              </li>
+                              <li>
+                                <Link href="/sweets/bobbatlu" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Traditional Bobbatlu (Puran Poli)
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className="text-[#871a45] font-bold text-[11px] uppercase tracking-wider mb-2">
+                              Laddus &amp; Halwas
+                            </h4>
+                            <ul className="space-y-1.5 text-xs text-stone-600 font-normal">
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Besan Ladoo</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Moong Dal Halwa</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Dry Fruit Halwa</Link></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Col 2 */}
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                              Kaju &amp; Dry Fruits
+                            </h3>
+                            <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                              <li>
+                                <Link href="/sweets/kaju-katli" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                  Diamond Kaju Katli
+                                </Link>
+                              </li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Kaju Pista Roll</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Anjeer Dry Fruit Barfi</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Badam Katli &amp; Halwa</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Roasted Cashew Bites</Link></li>
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className="text-[#871a45] font-bold text-[11px] uppercase tracking-wider mb-2">
+                              Milk &amp; Khoya Mithai
+                            </h4>
+                            <ul className="space-y-1.5 text-xs text-stone-600 font-normal">
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Kesar Peda</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Malai Kalakand</Link></li>
+                              <li><Link href="/sweets" className="hover:text-[#871a45] block">Gulab Jamun &amp; Rasgulla</Link></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Col 3 */}
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Andhra Traditional
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/sweets/pootharekulu" className="hover:text-[#871a45] block">Bellam Pootharekulu</Link></li>
+                            <li><Link href="/sweets/pootharekulu" className="hover:text-[#871a45] block">Sugar Dry Fruit Pootharekulu</Link></li>
+                            <li><Link href="/sweets/ariselu" className="hover:text-[#871a45] block">Sankranti Nethi Ariselu</Link></li>
+                            <li><Link href="/sweets" className="hover:text-[#871a45] block">Kakinada Gottam Khaja</Link></li>
+                            <li><Link href="/sweets" className="hover:text-[#871a45] block">Tapeswaram Madatha Khaja</Link></li>
+                            <li><Link href="/sweets" className="hover:text-[#871a45] block">Bandar Thokkudu Laddu</Link></li>
+                            <li><Link href="/sweets" className="hover:text-[#871a45] block">Sunnundalu (Urad Dal)</Link></li>
+                            <li><Link href="/sweets" className="hover:text-[#871a45] block">Bellam Jalebi</Link></li>
+                          </ul>
+                        </div>
+
+                        {/* Col 4 */}
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Gifting Collections
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Royal Vijayawada Hamper</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Diwali Delight Box</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Sankranti Celebration Box</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Classic Assorted Box</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Wedding Return Gift Trays</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Custom Velvet Gift Tins</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Corporate Bulk Mithai Packs</Link></li>
+                          </ul>
+                        </div>
+
+                        {/* Col 5: Promo Card */}
+                        <div className="bg-[#FAF6EF] rounded-xl p-4 border border-stone-200/80 flex flex-col justify-between">
+                          <div>
+                            <div className="relative aspect-video rounded-lg overflow-hidden mb-3">
+                              <Image
+                                src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=320&q=80"
+                                alt="Fresh Mithai"
+                                fill
+                                sizes="200px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#871a45]">
+                              100% Pure Cow Ghee
+                            </span>
+                            <h4 className="font-serif text-sm font-bold text-[#002c3f] mt-0.5">
+                              15 Years of Governorpet Heritage
+                            </h4>
+                            <p className="text-[11px] text-stone-600 font-normal mt-1 leading-relaxed">
+                              Simmered fresh daily in Vijayawada with zero preservatives.
+                            </p>
+                          </div>
+                          <Link
+                            href="/sweets"
+                            className="mt-3 text-xs font-bold text-[#871a45] hover:text-[#691436] flex items-center gap-1"
+                          >
+                            <span>Explore All Sweets</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── TAB 2: CAKES & BAKERY (Mega Menu Dropdown) ── */}
+                <div className="group/cakes static h-full flex items-center">
+                  <Link
+                    href="/cakes"
+                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-all gap-1"
+                  >
+                    <span>Cakes</span>
+                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/cakes:text-[#871a45] group-hover/cakes:rotate-180 transition-transform duration-200" />
+                  </Link>
+
+                  {/* Mega Menu Dropdown */}
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-2xl invisible opacity-0 group-hover/cakes:visible group-hover/cakes:opacity-100 transition-all duration-150 z-50 text-left">
+                    <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
+                      <div className="grid grid-cols-4 gap-8">
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Celebration Cakes
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/cakes/plum-cake" className="hover:text-[#871a45] block">Rich Holiday Plum Cake (Best for Gifting)</Link></li>
+                            <li><Link href="/cakes/black-forest" className="hover:text-[#871a45] block">Black Forest Delight</Link></li>
+                            <li><Link href="/cakes/butterscotch-cake" className="hover:text-[#871a45] block">Butterscotch Crunch Cake</Link></li>
+                            <li><Link href="/cakes/pineapple-pastry" className="hover:text-[#871a45] block">Fresh Pineapple Pastry</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Dutch Truffle Dark Chocolate</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Red Velvet Cream Cheese</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Pastries &amp; Tea Cakes
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Eggless Cupcakes (Box of 4)</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Almond Tea Cake</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Fruit &amp; Nut Bar Cake</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Choco Lava Cake</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Bakery &amp; Puffs
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Warm Spiced Veg Puff</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Paneer Tikka Puff</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Milk Toast &amp; Rusk</Link></li>
+                            <li><Link href="/cakes" className="hover:text-[#871a45] block">Butter Cashew Cookies</Link></li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-[#FAF6EF] rounded-xl p-4 border border-stone-200/80 flex flex-col justify-between">
+                          <div>
+                            <div className="relative aspect-video rounded-lg overflow-hidden mb-3">
+                              <Image
+                                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=320&q=80"
+                                alt="Fresh Celebration Cakes"
+                                fill
+                                sizes="200px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#871a45]">
+                              Baked Fresh Daily
+                            </span>
+                            <h4 className="font-serif text-sm font-bold text-[#002c3f] mt-0.5">
+                              Custom Birthday &amp; Event Cakes
+                            </h4>
+                            <p className="text-[11px] text-stone-600 font-normal mt-1 leading-relaxed">
+                              Order same-day counter pickup at our Governorpet shop.
+                            </p>
+                          </div>
+                          <Link
+                            href="/cakes"
+                            className="mt-3 text-xs font-bold text-[#871a45] hover:text-[#691436] flex items-center gap-1"
+                          >
+                            <span>View All Cakes</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── TAB 3: SAVOURIES & MIXTURE (Mega Menu Dropdown) ── */}
+                <div className="group/snacks static h-full flex items-center">
+                  <Link
+                    href="/snacks"
+                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-all gap-1"
+                  >
+                    <span>Savouries</span>
+                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/snacks:text-[#871a45] group-hover/snacks:rotate-180 transition-transform duration-200" />
+                  </Link>
+
+                  {/* Mega Menu Dropdown */}
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-2xl invisible opacity-0 group-hover/snacks:visible group-hover/snacks:opacity-100 transition-all duration-150 z-50 text-left">
+                    <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
+                      <div className="grid grid-cols-4 gap-8">
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Spicy Andhra Mixtures
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/snacks/vijayawada-mixture" className="hover:text-[#871a45] block">Special Vijayawada Mixture</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Spicy Karapusa (Fine Sev)</Link></li>
+                            <li><Link href="/snacks/ribbon-pakoda" className="hover:text-[#871a45] block">Ribbon Pakoda</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Cornflakes Chivda</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Boondi Mixture</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Traditional Crunch
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/snacks/bellam-gavvalu" className="hover:text-[#871a45] block">Crunchy Bellam Gavvalu</Link></li>
+                            <li><Link href="/snacks/chekkalu" className="hover:text-[#871a45] block">Crispy Andhra Chekkalu</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Nethi Murukulu</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Masala Roasted Kaju</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Salted Cashew Nuts</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Tea-Time Favorites
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Onion Pakoda (Counter Fresh)</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Garelu &amp; Vada Mix</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Kara Boondi</Link></li>
+                            <li><Link href="/snacks" className="hover:text-[#871a45] block">Peanut Masala Fry</Link></li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-[#FAF6EF] rounded-xl p-4 border border-stone-200/80 flex flex-col justify-between">
+                          <div>
+                            <div className="relative aspect-video rounded-lg overflow-hidden mb-3">
+                              <Image
+                                src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=320&q=80"
+                                alt="Vijayawada Savouries"
+                                fill
+                                sizes="200px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#871a45]">
+                              Cold-Pressed Oil
+                            </span>
+                            <h4 className="font-serif text-sm font-bold text-[#002c3f] mt-0.5">
+                              Famous Vijayawada Mixture
+                            </h4>
+                            <p className="text-[11px] text-stone-600 font-normal mt-1 leading-relaxed">
+                              Crunchy curry leaves, cashews, and peanuts fried in fresh groundnut oil.
+                            </p>
+                          </div>
+                          <Link
+                            href="/snacks"
+                            className="mt-3 text-xs font-bold text-[#871a45] hover:text-[#691436] flex items-center gap-1"
+                          >
+                            <span>Shop Savouries</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── TAB 4: FESTIVAL BOXES (GIFTING) ── */}
+                <div className="group/boxes static h-full flex items-center">
+                  <Link
+                    href="/festival-boxes"
+                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/boxes:border-[#871a45] text-[#871a45] transition-all gap-1.5"
+                  >
+                    <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
+                    <span>Festival Boxes</span>
+                    <span className="bg-[#fce8e8] text-[#c93b3b] text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Gifting
+                    </span>
+                  </Link>
+
+                  {/* Mega Menu Dropdown */}
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-2xl invisible opacity-0 group-hover/boxes:visible group-hover/boxes:opacity-100 transition-all duration-150 z-50 text-left">
+                    <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
+                      <div className="grid grid-cols-4 gap-8">
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Curated Gift Hampers
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/festival-boxes/royal-vijayawada-hamper" className="hover:text-[#871a45] block">Royal Vijayawada Gift Hamper</Link></li>
+                            <li><Link href="/festival-boxes/diwali-delight-box" className="hover:text-[#871a45] block">Diwali Delight Box</Link></li>
+                            <li><Link href="/festival-boxes/sankranti-celebration-box" className="hover:text-[#871a45] block">Sankranti Celebration Box</Link></li>
+                            <li><Link href="/festival-boxes/classic-assorted-box" className="hover:text-[#871a45] block">Classic Assorted Sweets Box</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Wedding &amp; Occasions
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Pellikoduku / Pellikuthuru Gift Trays</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Housewarming (Gruhapravesam) Sweets</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Baby Shower (Seemantham) Hampers</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Custom Velvet Tins with Foil Names</Link></li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[#871a45] font-bold text-xs uppercase tracking-wider mb-2.5 pb-1 border-b border-stone-100">
+                            Corporate Gifting
+                          </h3>
+                          <ul className="space-y-2 text-xs text-stone-600 font-normal">
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Diwali Corporate Boxes (50+ units)</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Client Appreciation Sweet Tins</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Dry Fruit &amp; Kaju Executive Hampers</Link></li>
+                            <li><Link href="/festival-boxes" className="hover:text-[#871a45] block">Custom Logo Ribbon Sleeves</Link></li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-[#FAF6EF] rounded-xl p-4 border border-stone-200/80 flex flex-col justify-between">
+                          <div>
+                            <div className="relative aspect-video rounded-lg overflow-hidden mb-3">
+                              <Image
+                                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=320&q=80"
+                                alt="Royal Festive Hampers"
+                                fill
+                                sizes="200px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#871a45]">
+                              Premium Velvet Packaging
+                            </span>
+                            <h4 className="font-serif text-sm font-bold text-[#002c3f] mt-0.5">
+                              Festive Delivery Across Vijayawada
+                            </h4>
+                            <p className="text-[11px] text-stone-600 font-normal mt-1 leading-relaxed">
+                              Order boxes with same-day shop pickup or doorstep delivery.
+                            </p>
+                          </div>
+                          <Link
+                            href="/festival-boxes"
+                            className="mt-3 text-xs font-bold text-[#871a45] hover:text-[#691436] flex items-center gap-1"
+                          >
+                            <span>Explore Hampers</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── TAB 5: BULK & WEDDINGS ── */}
                 <Link
                   href="/sweets"
-                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-0.5 border-b-2 border-transparent hover:border-[#871a45]"
+                  className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-all whitespace-nowrap"
                 >
-                  <span>All Sweets</span>
-                  <ChevronDownIcon className="w-3 h-3 text-stone-400" />
-                </Link>
-
-                <Link
-                  href="/sweets/ghee-mysore-pak"
-                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
-                >
-                  Mysore Pak
-                </Link>
-
-                <Link
-                  href="/sweets/pootharekulu"
-                  className="hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
-                >
-                  Pootharekulu
-                </Link>
-
-                <Link
-                  href="/sweets/kaju-katli"
-                  className="hidden xl:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700 hover:border-b-2 hover:border-[#871a45] whitespace-nowrap"
-                >
-                  Kaju Katli
-                </Link>
-
-                <Link
-                  href="/cakes"
-                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45] whitespace-nowrap"
-                >
-                  Cakes
-                </Link>
-
-                <Link
-                  href="/snacks"
-                  className="hover:text-[#871a45] transition-colors py-1 border-b-2 border-transparent hover:border-[#871a45] whitespace-nowrap"
-                >
-                  Savouries
-                </Link>
-
-                <Link
-                  href="/sweets/bobbatlu"
-                  className="hidden 2xl:inline-block hover:text-[#871a45] transition-colors py-1 text-stone-700 whitespace-nowrap"
-                >
-                  Bobbatlu
-                </Link>
-
-                <Link
-                  href="/festival-boxes"
-                  className="hover:text-[#871a45] transition-colors py-1 flex items-center gap-1.5 text-[#871a45] font-bold whitespace-nowrap"
-                >
-                  <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
-                  <span>Festival Boxes</span>
-                  <span className="bg-[#fce8e8] text-[#c93b3b] text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">
-                    Gifting
-                  </span>
+                  <span>Bulk &amp; Weddings</span>
                 </Link>
               </nav>
             </div>
 
-            {/* RHS: Slightly Longer Sleek Search Bar + Profile & Cart Icons */}
+            {/* Right: Search Bar + Profile + Wishlist + Cart (Myntra Triad) */}
             <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
-              {/* Search Bar on the RHS (Slightly Longer) */}
+              {/* Search Bar on the RHS (Myntra Style, Clean & Wide) */}
               <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
                 <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
                 <input
                   type="text"
                   readOnly
-                  placeholder="Search Pootharekulu, Mysore Pak, Hampers..."
+                  placeholder="Search for sweets, gift boxes, cakes..."
                   className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
                 />
                 <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
@@ -239,14 +606,31 @@ export function Navbar() {
                 className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
                 aria-label="Profile and Admin Login"
               >
-                <div className="w-7 h-7 flex items-center justify-center">
+                <div className="w-6 h-6 flex items-center justify-center">
                   <UserIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
                 </div>
                 <span
-                  className="text-[11px] font-semibold leading-none mt-0.5 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
                   style={{ fontFamily: "var(--font-jost)" }}
                 >
                   Profile
+                </span>
+              </Link>
+
+              {/* Wishlist Icon with Short Title Below (Myntra Triad) */}
+              <Link
+                href="/sweets"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                aria-label="Wishlist"
+              >
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <HeartIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
+                </div>
+                <span
+                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  Wishlist
                 </span>
               </Link>
 
@@ -256,17 +640,17 @@ export function Navbar() {
                 className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
                 aria-label="Shopping Cart"
               >
-                <div className="relative w-7 h-7 flex items-center justify-center">
+                <div className="relative w-6 h-6 flex items-center justify-center">
                   <ShoppingBagIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
                   <span
                     id="cart-badge-count"
-                    className="absolute -top-0.5 -right-1 bg-[#871a45] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs"
+                    className="absolute -top-1 -right-1.5 bg-[#871a45] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs"
                   >
                     0
                   </span>
                 </div>
                 <span
-                  className="text-[11px] font-semibold leading-none mt-0.5 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
                   style={{ fontFamily: "var(--font-jost)" }}
                 >
                   Cart
