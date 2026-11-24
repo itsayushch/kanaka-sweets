@@ -6,7 +6,7 @@ export const CATEGORY_STORIES = [
     href: "/sweets",
     label: "All Sweets",
     sublabel: "Pure Ghee",
-    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=300&q=80",
     badge: "Bestseller",
   },
   {
@@ -27,7 +27,7 @@ export const CATEGORY_STORIES = [
     href: "/sweets/kaju-katli",
     label: "Kaju Katli",
     sublabel: "Goan Cashew",
-    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&q=80",
     badge: "Pure Silver",
   },
   {

@@ -30,7 +30,7 @@ const HERO_BANNERS: HeroBanner[] = [
   },
   {
     id: "pure-ghee-sweets",
-    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1920&auto=format&fit=crop&q=85",
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1920&auto=format&fit=crop&q=85",
     alt: "Authentic Andhra Mithai handcrafted with 100% Pure Desi Cow Ghee",
     title: "Pure Desi Cow Ghee Sweets & Mithai",
     href: "/sweets",

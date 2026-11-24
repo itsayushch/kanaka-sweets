@@ -73,27 +73,27 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
       {/* ── Slide Images (Aspect Ratio ~2.8:1 matching BSS Banners) ── */}
       <div className="relative w-full aspect-[2.8/1] min-h-[160px] sm:min-h-[260px] md:min-h-[340px] lg:min-h-[420px] xl:min-h-[480px]">
         {banners.map((banner, index) => {
+          if (!banner) return null;
           const isActive = index === current;
           return (
             <div
-              key={banner.id}
+              key={banner.id || `banner-${index}`}
               className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
               }`}
               aria-hidden={!isActive}
             >
               <Link
-                href={banner.href}
+                href={banner.href || "#"}
                 className="block relative w-full h-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#871a45] focus:ring-inset"
                 tabIndex={isActive ? 0 : -1}
-                aria-label={banner.title}
+                aria-label={banner.title || banner.alt || "Banner"}
               >
                 <Image
                   src={banner.image}
-                  alt={banner.alt}
+                  alt={banner.alt || "Kanaka Sweets & Bakery"}
                   fill
                   priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
                   sizes="100vw"
                   className="object-cover object-center select-none"
                 />
