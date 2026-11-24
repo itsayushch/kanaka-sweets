@@ -89,8 +89,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${playfair.variable} ${jakarta.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="flex flex-col min-h-screen bg-[#fdfbf7] text-[#231815] pb-16 md:pb-0">
+      <body
+        className="flex flex-col min-h-screen bg-[#fdfbf7] text-[#231815] pb-16 md:pb-0"
+        suppressHydrationWarning
+      >
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
