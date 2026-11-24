@@ -46,17 +46,17 @@ function daysFromTodayInIndia(days: number): string {
 export const checkoutSchema = z
   .object({
     customerName: z
-      .string()
+      .string({ error: "Please enter your full name" })
       .trim()
       .min(2, "Please enter your full name")
       .max(80, "Name is too long"),
     // Indian mobile number: exactly 10 digits, starting with 6, 7, 8 or 9.
     customerPhone: z
-      .string()
+      .string({ error: "Enter your 10-digit mobile number" })
       .trim()
       .regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number"),
     customerEmail: z
-      .string()
+      .string({ error: "Enter your email address" })
       .trim()
       .max(120, "Email is too long")
       .pipe(z.email("Enter a valid email address")),
