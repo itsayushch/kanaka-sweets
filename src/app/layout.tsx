@@ -94,12 +94,20 @@ export default function RootLayout({
       className={`${fraunces.variable} ${jost.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Strip browser extension injected attributes (e.g. Bitdefender, Urban VPN bis_skin_checked) before React hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){const c=()=>{try{document.querySelectorAll('[bis_skin_checked]').forEach(e=>e.removeAttribute('bis_skin_checked'))}catch(e){}};c();if(typeof MutationObserver!=='undefined'){const o=new MutationObserver(c);o.observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked']});window.addEventListener('DOMContentLoaded',()=>o.disconnect())}})();`,
+          }}
+        />
+      </head>
       <body
         className="flex flex-col min-h-screen bg-white text-[#1a1a1a] pb-16 md:pb-0"
         suppressHydrationWarning
       >
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow" suppressHydrationWarning>{children}</main>
         <Footer />
         <FloatingContact />
       </body>

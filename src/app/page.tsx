@@ -42,7 +42,7 @@ export default async function HomePage() {
   const topFestivalBox = festivalProducts[0];
 
   return (
-    <div>
+    <div suppressHydrationWarning>
       {/* ═══════════════════════════════════
           1. HERO — navy bg, editorial layout
       ═══════════════════════════════════ */}
