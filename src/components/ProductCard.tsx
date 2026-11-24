@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { FormattedProduct } from "@/lib/db-products";
 import { StarIcon, GiftIcon, VegetarianMarkIcon } from "@/components/icons";
+import { QuickAddButton } from "@/components/QuickAddButton";
 
 interface ProductCardProps {
   product: FormattedProduct;
@@ -118,18 +119,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             </span>
           </div>
 
-          {/* Full-width "ADD TO CART" Button (BSS signature) */}
-          <Link
-            href={`/${product.categorySlug}/${product.slug}`}
-            className={`w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[44px] shadow-sm ${
-              isOutOfStock
-                ? "bg-stone-100 text-stone-400 cursor-not-allowed"
-                : "bg-[#871a45] hover:bg-[#691436] active:scale-[0.98] text-white shadow-plum-700/10"
-            }`}
-            aria-label={`${isOutOfStock ? "Out of stock" : "Add to cart"} ${product.name}`}
-          >
-            {isOutOfStock ? "Sold Out" : "Add to Cart"}
-          </Link>
+          {/* Real add-to-cart (adds the cheapest in-stock size) */}
+          <QuickAddButton product={product} />
         </div>
       </div>
     </article>
