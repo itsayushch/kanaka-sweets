@@ -7,6 +7,7 @@ import {
   getProductsByCategory,
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
+import { CategoryStories } from "@/components/CategoryStories";
 import {
   LeafIcon,
   ShieldCheckIcon,
@@ -183,8 +184,11 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ── 2. SIGNATURE CATEGORY STORIES RIBBON (Shifted Below Hero) ── */}
+      <CategoryStories />
+
       {/* ═══════════════════════════════════════════════════════════
-          2. AS SEEN IN / PRESS STRIP (BSS Signature Social Proof)
+          3. AS SEEN IN / PRESS STRIP (BSS Signature Social Proof)
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-white py-10 border-b border-stone-100">
         <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 text-center">
