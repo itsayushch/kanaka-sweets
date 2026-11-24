@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  
+  --color-maroon-950: #380b11;
+  --color-maroon-900: #4c0e17;
+  --color-maroon-800: #691421;
+  --color-maroon-700: #86162a;
+  --color-maroon-600: #a31c36;
+  
+  --color-saffron-700: #b45309;
+  --color-saffron-600: #d97706;
+  --color-saffron-500: #f59e0b;
+  --color-saffron-400: #fbbf24;
+  --color-saffron-100: #fef3c7;
+  
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f9f5eb;
+  --color-cream-200: #f3ebdb;
+  --color-cream-300: #e7dac3;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdfbf7;
+  --foreground: #231815;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Heading font hierarchy */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: #4c0e17;
+  letter-spacing: -0.01em;
+}
+
+/* Ensure mobile tap targets are at least 44px (Rule C6) */
+button, 
+a.button-link, 
+input[type="button"], 
+input[type="submit"] {
+  min-height: 44px;
+}
+
+/* Ensure inputs use at least 16px font to prevent mobile auto-zoom (Rule C6) */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Respect reduced motion (Rule D7) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
