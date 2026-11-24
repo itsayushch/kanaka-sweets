@@ -160,10 +160,10 @@ export function Navbar() {
                 style={{ fontFamily: "var(--font-jost)" }}
               >
                 {/* ── TAB 1: SWEETS & MITHAI (Deluxe Multi-Column Visual Mega Menu) ── */}
-                <div className="group/sweets static h-full flex items-center">
+                <div className="group/sweets static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/sweets"
-                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-all gap-1"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-all"
                   >
                     <span>Sweets</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/sweets:text-[#871a45] group-hover/sweets:rotate-180 transition-transform duration-200" />
@@ -607,10 +607,10 @@ export function Navbar() {
                 </div>
 
                 {/* ── TAB 2: CAKES & BAKERY (Mega Menu Dropdown) ── */}
-                <div className="group/cakes static h-full flex items-center">
+                <div className="group/cakes static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/cakes"
-                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-all gap-1"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-all"
                   >
                     <span>Cakes</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/cakes:text-[#871a45] group-hover/cakes:rotate-180 transition-transform duration-200" />
@@ -764,10 +764,10 @@ export function Navbar() {
                 </div>
 
                 {/* ── TAB 3: SAVOURIES & MIXTURE (Mega Menu Dropdown) ── */}
-                <div className="group/snacks static h-full flex items-center">
+                <div className="group/snacks static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/snacks"
-                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-all gap-1"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-all"
                   >
                     <span>Savouries</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/snacks:text-[#871a45] group-hover/snacks:rotate-180 transition-transform duration-200" />
@@ -933,10 +933,10 @@ export function Navbar() {
                 </div>
 
                 {/* ── TAB 4: FESTIVAL BOXES (GIFTING) (Mega Menu Dropdown) ── */}
-                <div className="group/boxes static h-full flex items-center">
+                <div className="group/boxes static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/festival-boxes"
-                    className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent group-hover/boxes:border-[#871a45] text-[#871a45] transition-all gap-1.5"
+                    className="py-1 flex items-center gap-1.5 border-b-2 border-transparent group-hover/boxes:border-[#871a45] text-[#871a45] transition-all"
                   >
                     <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
                     <span>Festival Boxes</span>
@@ -1083,12 +1083,14 @@ export function Navbar() {
                 </div>
 
                 {/* ── TAB 5: BULK & WEDDINGS ── */}
-                <Link
-                  href="/sweets"
-                  className="h-full flex items-center px-3.5 xl:px-4.5 border-b-4 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-all whitespace-nowrap"
-                >
-                  <span>Bulk &amp; Weddings</span>
-                </Link>
+                <div className="h-full flex items-center px-2 xl:px-2.5">
+                  <Link
+                    href="/sweets"
+                    className="py-1 flex items-center border-b-2 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-all whitespace-nowrap"
+                  >
+                    <span>Bulk &amp; Weddings</span>
+                  </Link>
+                </div>
               </nav>
             </div>
 
