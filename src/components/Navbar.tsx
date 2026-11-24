@@ -4,11 +4,14 @@ import { CartBadge } from "@/components/CartBadge";
 import {
   PhoneIcon,
   ShoppingBagIcon,
+  SearchIcon,
   SparklesIcon,
   KanakaEmblemIcon,
   ChevronDownIcon,
   GiftIcon,
   ClockIcon,
+  UserIcon,
+  HeartIcon,
   StarIcon,
   LeafIcon,
   ShieldCheckIcon,
@@ -1032,8 +1035,56 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Right: Cart (search, profile and wishlist removed: not built) */}
+            {/* Right: Search Bar + Profile + Wishlist + Cart (search/profile/wishlist are dummies for now) */}
             <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
+              {/* Search Bar on the RHS (Myntra Style, Clean & Wide) */}
+              <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
+                <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
+                <input
+                  type="text"
+                  readOnly
+                  placeholder="Search for sweets, gift boxes, cakes..."
+                  className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
+                />
+                <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
+                  ⌘K
+                </span>
+              </div>
+
+              {/* Profile Icon with Short Title Below */}
+              <Link
+                href="/admin"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                aria-label="Profile and Admin Login"
+              >
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <UserIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
+                </div>
+                <span
+                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  Profile
+                </span>
+              </Link>
+
+              {/* Wishlist Icon with Short Title Below (Myntra Triad) */}
+              <Link
+                href="/sweets"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                aria-label="Wishlist"
+              >
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <HeartIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
+                </div>
+                <span
+                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
+                  style={{ fontFamily: "var(--font-jost)" }}
+                >
+                  Wishlist
+                </span>
+              </Link>
+
               {/* Cart Icon with Counter Badge & Short Title Below */}
               <Link
                 href="/cart"
