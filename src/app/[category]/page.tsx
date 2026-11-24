@@ -85,24 +85,31 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const allCategories = await getAllCategories();
 
   return (
-    <div style={{ fontFamily: "var(--font-jost)" }}>
-      {/* ── Category Hero ── */}
-      <section className="bg-[#002c3f] text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
+    <div style={{ fontFamily: "var(--font-jost)" }} className="bg-white">
+      {/* ── Category Hero Banner (Royal Blue & Gold Starbursts) ── */}
+      <section className="relative bg-[#023757] text-white overflow-hidden py-12 sm:py-16">
+        <div className="absolute top-4 right-10 text-[#F8D030]/20 text-5xl font-serif pointer-events-none select-none">
+          ✦
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-8 space-y-4">
               {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="text-xs text-white/50 flex items-center gap-1.5">
-                <Link href="/" className="hover:text-white/80 transition-colors">
+              <nav aria-label="Breadcrumb" className="text-xs text-white/60 flex items-center gap-2">
+                <Link href="/" className="hover:text-[#F8D030] transition-colors">
                   Home
                 </Link>
                 <span>/</span>
-                <span className="text-white/80 font-medium">{category.name}</span>
+                <span className="text-white font-medium">{category.name}</span>
               </nav>
 
-              <p className="text-[#F8D030] text-xs font-bold uppercase tracking-[0.2em]">
-                Kanaka Sweets &amp; Bakery · Vijayawada
-              </p>
+              <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-semibold text-[#F8D030]">
+                <span>✦</span>
+                <span className="tracking-widest uppercase">
+                  KANAKA SWEETS • VIJAYAWADA
+                </span>
+              </div>
 
               {/* H1 — Rule E4 */}
               <h1
@@ -112,19 +119,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 {category.name}
               </h1>
 
-              <p className="text-white/70 text-sm sm:text-base leading-relaxed max-w-lg">
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-xl">
                 {category.description}
               </p>
 
-              <div className="flex flex-wrap gap-2.5 pt-1">
+              <div className="flex flex-wrap gap-2.5 pt-2">
                 {[
-                  `✨ ${products.length} Varieties`,
-                  "🧈 100% Pure Ghee",
-                  "📦 Same-day Pickup",
+                  `✨ ${products.length} Fresh Varieties`,
+                  "🧈 100% Pure Cow Ghee",
+                  "📦 Same-Day Counter Pickup",
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="bg-white/10 border border-white/20 text-white/80 text-xs px-3 py-1.5 rounded-full"
+                    className="bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium"
                   >
                     {tag}
                   </span>
@@ -132,14 +139,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </div>
             </div>
 
-            <div className="hidden md:block">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+            <div className="md:col-span-4 hidden md:block">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
                 <Image
                   src={category.image}
-                  alt={`${category.name} at Kanaka Sweets Vijayawada`}
+                  alt={`${category.name} collection`}
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 35vw"
                   className="object-cover"
                 />
               </div>
@@ -148,15 +155,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* ── Category Switcher ── */}
-      <div className="bg-[#FAF6EF] border-b border-stone-200 sticky top-[var(--navbar-h,0px)] z-10">
+      {/* ── Category Switcher Strip ── */}
+      <div className="bg-[#FAF6EF] border-b border-stone-200/80 sticky top-[var(--navbar-h,0px)] z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-3">
+          <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-3.5">
             {allCategories.map((c) => (
               <Link
                 key={c.id}
                 href={`/${c.slug}`}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-colors min-h-[36px] inline-flex items-center ${
+                className={`flex-shrink-0 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[38px] inline-flex items-center ${
                   c.slug === categorySlug
                     ? "bg-[#871a45] text-white shadow-sm"
                     : "bg-white text-stone-700 border border-stone-200 hover:border-[#871a45] hover:text-[#871a45]"
@@ -169,9 +176,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </div>
 
-      {/* ── Products Grid ── */}
+      {/* ── Products Grid (BSS Style) ── */}
       <section
-        className="py-10 sm:py-14 bg-white"
+        className="py-12 sm:py-16 bg-white"
         aria-label={`${category.name} products`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,7 +196,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </p>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 bg-[#871a45] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#691436] transition-colors min-h-[44px]"
+                className="inline-flex items-center gap-2 bg-[#871a45] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#691436] transition-colors min-h-[44px]"
               >
                 Back to Home
               </Link>
@@ -204,21 +211,21 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* ── SEO footer copy ── */}
-      <div className="bg-[#FAF6EF] border-t border-stone-100 py-8 sm:py-10">
+      {/* ── SEO Footer Copy ── */}
+      <div className="bg-[#FAF6EF] border-t border-stone-200/60 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
-            className="font-serif text-sm font-bold text-[#871a45] mb-2"
+            className="font-serif text-base font-bold text-[#871a45] mb-2"
             style={{ fontFamily: "var(--font-fraunces)" }}
           >
             Ordering {category.name} from Kanaka Sweets Vijayawada
           </h2>
-          <p className="text-xs text-stone-500 leading-relaxed max-w-3xl">
+          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-3xl">
             All our {category.name.toLowerCase()} are prepared fresh daily at our Governorpet
-            shop on Eluru Road. We use cold-pressed oils, pure butter ghee, and farm-fresh
-            ingredients. Whether ordering for daily consumption, a wedding celebration, or festival
-            gifts, we ensure tamper-proof, vacuum-sealed packaging so every item reaches you at
-            peak freshness.
+            shop on Eluru Road. We use cold-pressed groundnut oil, pure butter cow ghee, and farm-fresh
+            ingredients with zero vanaspati. Whether ordering for family consumption, festive Diwali gifts,
+            or wedding hampers, we ensure tamper-proof, vacuum-sealed packaging so every sweet reaches
+            you in peak freshness.
           </p>
         </div>
       </div>
