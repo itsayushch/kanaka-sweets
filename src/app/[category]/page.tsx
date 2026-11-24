@@ -13,6 +13,8 @@ interface CategoryPageProps {
   params: Promise<{ category: string }>;
 }
 
+export const instant = false;
+
 export async function generateStaticParams() {
   return [
     { category: "sweets" },

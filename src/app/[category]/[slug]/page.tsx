@@ -14,6 +14,8 @@ interface ProductPageProps {
   params: Promise<{ category: string; slug: string }>;
 }
 
+export const instant = false;
+
 export async function generateStaticParams() {
   const products = await getAllProducts();
   return products.map((p) => ({
