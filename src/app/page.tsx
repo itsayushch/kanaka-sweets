@@ -23,28 +23,28 @@ import {
 const HERO_BANNERS: HeroBanner[] = [
   {
     id: "festival-boxes",
-    image: "/images/banners/banner-festival-boxes.png",
+    image: "/images/banners/banner-festival-boxes.webp",
     alt: "Kanaka Sweets & Bakery Special Festival Boxes - Spread Happiness This Diwali",
     title: "Shop Festival Specials & Gift Boxes",
     href: "/festival-boxes",
   },
   {
     id: "sweets",
-    image: "/images/banners/banner-sweets.png",
+    image: "/images/banners/banner-sweets.webp",
     alt: "Kanaka Sweets & Bakery - Sweetness in Every Bite, Handcrafted Pure Ghee Sweets",
     title: "Order Fresh Andhra Sweets & Mithai",
     href: "/sweets",
   },
   {
     id: "cakes",
-    image: "/images/banners/banner-cakes.png",
+    image: "/images/banners/banner-cakes.webp",
     alt: "Celebrate with Our Delicious Cakes - Fresh Celebration Cakes and Pastries",
     title: "Order Fresh Celebration Cakes",
     href: "/cakes",
   },
   {
     id: "snacks",
-    image: "/images/banners/banner-snacks.png",
+    image: "/images/banners/banner-snacks.webp",
     alt: "Tasty Snacks for Every Mood - Vijayawada Special Spicy Mixture and Savouries",
     title: "Explore Crunchy Andhra Savouries",
     href: "/snacks",
