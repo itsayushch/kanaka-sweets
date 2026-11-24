@@ -22,7 +22,12 @@ export function invalidJson() {
 /** 422 response listing each field's error so the form can show it next to the field. */
 export function validationError(error: z.ZodError) {
   return NextResponse.json(
-    { error: "VALIDATION", fieldErrors: z.flattenError(error).fieldErrors },
+    {
+      error: "VALIDATION",
+      fieldErrors: z.flattenError(error).fieldErrors,
+      // Full paths such as "variants.0.price" so a form can mark the exact row.
+      issues: error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+    },
     { status: 422 },
   );
 }
