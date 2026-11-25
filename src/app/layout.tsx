@@ -10,7 +10,7 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  // No italic: Fraunces italic is never used on the site, so we don't download it.
 });
 
 const jost = Jost({
