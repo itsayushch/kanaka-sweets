@@ -17,6 +17,11 @@ interface ProductPageProps {
   params: Promise<{ category: string; slug: string }>;
 }
 
+// This page waits for its full content instead of showing a loading placeholder first.
+// Product pages are built in advance, so the wait is short, and nothing jumps while
+// the page loads (Rule D3). This setting tells Next.js that the wait is intentional.
+export const instant = false;
+
 export async function generateStaticParams() {
   const products = await getAllProducts();
   return products.map((p) => ({
