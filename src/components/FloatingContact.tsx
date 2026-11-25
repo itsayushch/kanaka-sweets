@@ -2,6 +2,18 @@ import { PhoneIcon, WhatsAppIcon } from "@/components/icons";
 
 export function FloatingContact() {
   return (
+    <>
+      {/* Desktop: one-tap WhatsApp on every page (Rule B3). Phones use the bar below. */}
+      <a
+        href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl shadow-2xl items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
+        aria-label="Chat with Kanaka Sweets on WhatsApp"
+      >
+        <WhatsAppIcon className="w-7 h-7 text-white" />
+      </a>
+
     <aside
       aria-label="Quick contact actions"
       className="fixed bottom-0 left-0 right-0 z-30 md:hidden bg-white border-t border-stone-200 shadow-2xl"
@@ -32,5 +44,6 @@ export function FloatingContact() {
         </a>
       </div>
     </aside>
+    </>
   );
 }

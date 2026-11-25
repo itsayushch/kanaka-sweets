@@ -19,6 +19,9 @@ interface HeroCarouselProps {
 export function HeroCarousel({ banners }: HeroCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  // Only the first banner loads at first. The others load a moment later, so the
+  // first image (the LCP image) gets all the bandwidth (Rule D1/D2).
+  const [preloadOthers, setPreloadOthers] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
   const length = banners.length;
@@ -31,9 +34,17 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
     setCurrent((prev) => (prev - 1 + length) % length);
   }, [length]);
 
-  // Auto-advance carousel
+  // Start loading the other banners a few seconds after the page is ready.
+  useEffect(() => {
+    const timer = setTimeout(() => setPreloadOthers(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Auto-advance carousel. Visitors who ask for reduced motion (Rule D7) get a
+  // carousel that only moves when they use the arrows or dots.
   useEffect(() => {
     if (isPaused || length <= 1) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [isPaused, length, nextSlide]);
@@ -75,6 +86,13 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
         {banners.map((banner, index) => {
           if (!banner) return null;
           const isActive = index === current;
+          // Render an image only for the visible slide, plus its neighbours once
+          // the page has settled. Hidden slides cost nothing until needed.
+          const shouldRender =
+            isActive ||
+            (preloadOthers &&
+              (index === (current + 1) % length ||
+                index === (current - 1 + length) % length));
           return (
             <div
               key={banner.id || `banner-${index}`}
@@ -89,14 +107,16 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
                 tabIndex={isActive ? 0 : -1}
                 aria-label={banner.title || banner.alt || "Banner"}
               >
-                <Image
-                  src={banner.image}
-                  alt={banner.alt || "Kanaka Sweets & Bakery"}
-                  fill
-                  priority={index === 0}
-                  sizes="100vw"
-                  className="object-cover object-center select-none"
-                />
+                {shouldRender && (
+                  <Image
+                    src={banner.image}
+                    alt={banner.alt || "Kanaka Sweets & Bakery"}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    className="object-cover object-center select-none"
+                  />
+                )}
               </Link>
             </div>
           );
@@ -110,7 +130,7 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
             type="button"
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
           >
             <svg
               className="w-5 h-5"
@@ -127,7 +147,7 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
             type="button"
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
           >
             <svg
               className="w-5 h-5"
@@ -150,14 +170,18 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
               key={index}
               type="button"
               onClick={() => setCurrent(index)}
-              className={`pointer-events-auto h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                index === current
-                  ? "w-7 bg-white shadow-sm"
-                  : "w-2 bg-white/50 hover:bg-white/80"
-              }`}
+              // 44px tap area (Rule C6) around a small visible dot. Only transform and
+              // opacity animate (Rule D6).
+              className="pointer-events-auto w-11 h-11 flex items-center justify-center cursor-pointer"
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === current ? "true" : undefined}
-            />
+            >
+              <span
+                className={`block h-2 w-2 rounded-full bg-white transition-[transform,opacity] duration-300 ${
+                  index === current ? "scale-125 opacity-100 shadow-sm" : "opacity-50"
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}

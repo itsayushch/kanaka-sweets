@@ -465,18 +465,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════
-          7. FLOATING WHATSAPP BUTTON (BSS Signature with official vector)
-      ═══════════════════════════════════════════════════════════ */}
-      <a
-        href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
-        aria-label="Direct WhatsApp Ordering Concierge"
-      >
-        <WhatsAppIcon className="w-7 h-7 text-white" />
-      </a>
     </div>
   );
 }
