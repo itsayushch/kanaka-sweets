@@ -61,6 +61,20 @@ export function isValidPaymentSignature(
 }
 
 /**
+ * Check a Razorpay WEBHOOK signature. Razorpay signs the exact request body with
+ * the webhook secret we chose in their dashboard (a different secret from the
+ * API key secret):
+ *
+ *   expected = HMAC_SHA256( raw request body, RAZORPAY_WEBHOOK_SECRET )
+ */
+export function isValidWebhookSignature(rawBody: string, signature: string, secret: string): boolean {
+  const expected = Buffer.from(createHmac("sha256", secret).update(rawBody).digest("hex"), "utf8");
+  const given = Buffer.from(signature, "utf8");
+  if (expected.length !== given.length) return false;
+  return timingSafeEqual(expected, given);
+}
+
+/**
  * Turn whatever a failed Razorpay call threw into a short, safe log line.
  * The SDK throws a plain object like { statusCode, error: { description } },
  * not an Error. We log only the status and description, never keys.

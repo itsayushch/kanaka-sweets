@@ -10,6 +10,8 @@
  *  4. `verifyAndMarkPaid` checks the signature on the server. Only a valid
  *     signature, for an order that exists in OUR database, can make an order
  *     PAID (Rule F2). Anything else changes nothing.
+ *  5. Backup: Razorpay's signed webhook (`markPaidFromWebhook`) confirms the
+ *     same payment, in case the customer closed the page too early.
  */
 import { prisma } from "@/lib/prisma";
 import { isReservationExpired } from "@/lib/orders";
@@ -27,7 +29,8 @@ export class PaymentError extends Error {
     | "ORDER_NOT_PAYABLE"
     | "BAD_SIGNATURE"
     | "ALREADY_PAID"
-    | "STOCK_UNAVAILABLE";
+    | "STOCK_UNAVAILABLE"
+    | "AMOUNT_MISMATCH";
   status: number;
 
   constructor(code: PaymentError["code"], message: string, status: number) {
@@ -111,16 +114,63 @@ export interface VerifyInput {
   signature: string;
 }
 
+/** Path 1: the browser sends Razorpay's three values (/api/payments/verify). */
 export async function verifyAndMarkPaid(input: VerifyInput) {
   const { razorpayOrderId, razorpayPaymentId, signature } = input;
 
-  // 1. Is the signature genuine? Fake or tampered values stop here and nothing
-  //    in the database changes (Rule F2).
+  // Is the signature genuine? Fake or tampered values stop here and nothing
+  // in the database changes (Rule F2).
   if (!isValidPaymentSignature(razorpayOrderId, razorpayPaymentId, signature)) {
     throw new PaymentError("BAD_SIGNATURE", "Payment could not be verified.", 400);
   }
 
-  // 2. Does this Razorpay order belong to an order in OUR database?
+  return markOrderPaid({ razorpayOrderId, razorpayPaymentId, signature });
+}
+
+/**
+ * Path 2: Razorpay itself tells our server a payment was captured
+ * (/api/payments/webhook). This covers a customer who pays and closes the tab
+ * before path 1 runs. The ROUTE has already verified the webhook signature.
+ * Returns null if the payment is not for one of our orders.
+ */
+export async function markPaidFromWebhook(input: {
+  razorpayOrderId: string;
+  razorpayPaymentId: string;
+  amountPaise: number;
+  currency: string;
+}) {
+  const order = await prisma.order.findUnique({
+    where: { razorpayOrderId: input.razorpayOrderId },
+    select: { totalAmount: true },
+  });
+  if (!order) return null;
+
+  // The captured amount must be exactly what our order costs.
+  if (input.currency !== "INR" || input.amountPaise !== order.totalAmount * 100) {
+    throw new PaymentError("AMOUNT_MISMATCH", "Payment amount does not match the order.", 409);
+  }
+
+  return markOrderPaid({
+    razorpayOrderId: input.razorpayOrderId,
+    razorpayPaymentId: input.razorpayPaymentId,
+    signature: null, // the webhook has no checkout signature to store
+  });
+}
+
+/**
+ * Mark our order PAID for a payment that has ALREADY been proven genuine by one
+ * of the two paths above. Safe to call many times, even at the same moment:
+ * the stock can only be taken once.
+ */
+async function markOrderPaid(input: {
+  razorpayOrderId: string;
+  razorpayPaymentId: string;
+  signature: string | null;
+}) {
+  const { razorpayOrderId, razorpayPaymentId, signature } = input;
+  const paid = { status: "PAID" as const, razorpayPaymentId, razorpaySignature: signature };
+
+  // 1. Does this Razorpay order belong to an order in OUR database?
   const order = await prisma.order.findUnique({
     where: { razorpayOrderId },
     include: { items: true },
@@ -129,33 +179,39 @@ export async function verifyAndMarkPaid(input: VerifyInput) {
     throw new PaymentError("ORDER_NOT_FOUND", "We couldn't find that order.", 404);
   }
 
-  // 3. Already paid? Repeating the same call is harmless; a different payment
-  //    id for an already-paid order is refused.
-  if (order.status === "PAID") {
-    if (order.razorpayPaymentId === razorpayPaymentId) {
+  /** For an order that is already PAID: same payment is fine, another is refused. */
+  const alreadyPaid = (paymentId: string | null) => {
+    if (paymentId === razorpayPaymentId) {
       return { orderNumber: order.orderNumber, restocked: false };
     }
     throw new PaymentError("ALREADY_PAID", "This order is already paid.", 409);
-  }
+  };
+  if (order.status === "PAID") return alreadyPaid(order.razorpayPaymentId);
 
-  // 4. Normal case: the order is PENDING and its stock is still held. The
-  //    "where status = PENDING" makes the change happen only once.
+  // 2. Normal case: the order is PENDING and its stock is still held. The
+  //    "where status = PENDING" means only one caller can make this change.
   if (order.status === "PENDING") {
     const marked = await prisma.order.updateMany({
       where: { id: order.id, status: "PENDING" },
-      data: { status: "PAID", razorpayPaymentId, razorpaySignature: signature },
+      data: paid,
     });
     if (marked.count === 1) {
       return { orderNumber: order.orderNumber, restocked: false };
     }
-    // Lost a race (e.g. it expired a moment ago): fall through to re-check stock.
+    // Someone else changed it a moment ago (paid it, or it expired): look below.
   }
 
-  // 5. The order was cancelled or expired (its stock was given back) but the
-  //    customer paid anyway. Re-check stock now: if every item
-  //    is still available we take the stock again and mark the order PAID.
+  // 3. The order was cancelled or expired (its stock was given back) but the
+  //    customer paid anyway. Re-check stock now. First CLAIM
+  //    the order inside the transaction, so only one caller can take the stock.
   try {
-    await prisma.$transaction(async (tx) => {
+    const claimed = await prisma.$transaction(async (tx) => {
+      const claim = await tx.order.updateMany({
+        where: { id: order.id, status: { in: ["CANCELLED", "FAILED"] } },
+        data: paid,
+      });
+      if (claim.count === 0) return false; // already paid by another caller
+
       for (const item of order.items) {
         const reserved = await tx.productVariant.updateMany({
           where: { id: item.variantId, stock: { gte: item.quantity } },
@@ -163,12 +219,12 @@ export async function verifyAndMarkPaid(input: VerifyInput) {
         });
         if (reserved.count === 0) throw new StockGone(); // rolls everything back
       }
-      await tx.order.update({
-        where: { id: order.id },
-        data: { status: "PAID", razorpayPaymentId, razorpaySignature: signature },
-      });
+      return true;
     });
-    return { orderNumber: order.orderNumber, restocked: true };
+
+    if (claimed) return { orderNumber: order.orderNumber, restocked: true };
+    const latest = await prisma.order.findUnique({ where: { id: order.id } });
+    return alreadyPaid(latest?.razorpayPaymentId ?? null);
   } catch (error) {
     if (!(error instanceof StockGone)) throw error;
 

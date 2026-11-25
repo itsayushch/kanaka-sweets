@@ -152,6 +152,40 @@ async function main() {
       check("order flagged for refund and stock still 0",
         !!noteRow?.notes?.startsWith("REFUND NEEDED") && (await prisma.productVariant.findUnique({ where: { id: soldOut.id } }))?.stock === 0);
     }
+    console.log(String.fromCharCode(10) + "== Webhook and simultaneous confirmations ==");
+    const HOOK = process.env.RAZORPAY_WEBHOOK_SECRET;
+    if (!SECRET || !HOOK) {
+      console.log("SKIP  webhook tests: set RAZORPAY_WEBHOOK_SECRET for the server and this script.");
+    } else {
+      const webhook = async (orderId: string, paymentId: string, amount: number, secret: string) => {
+        const raw = JSON.stringify({ event: "payment.captured", payload: { payment: { entity: { id: paymentId, order_id: orderId, amount, currency: "INR", status: "captured" } } } });
+        const res = await fetch(`${BASE_URL}/api/payments/webhook`, {
+          method: "POST",
+          headers: { "content-type": "application/json", "x-razorpay-signature": createHmac("sha256", secret).update(raw).digest("hex") },
+          body: raw,
+        });
+        return res.status;
+      };
+      const stock = async () => (await prisma.productVariant.findUnique({ where: { id: inStock.id } }))!.stock;
+
+      const D = await makeOrder("PENDING", inStock.id, inStock.productId);
+      created.push(D.id);
+      check("webhook with the wrong secret -> refused", (await webhook(D.razorpayOrderId, "pay_D", 10000, "wrong")) === 400 && (await statusOf(D.id))?.status === "PENDING");
+      check("webhook with the wrong amount -> not paid", (await webhook(D.razorpayOrderId, "pay_D", 100, HOOK)) === 200 && (await statusOf(D.id))?.status === "PENDING");
+      check("genuine webhook -> order PAID", (await webhook(D.razorpayOrderId, "pay_D", 10000, HOOK)) === 200 && (await statusOf(D.id))?.status === "PAID");
+      check("webhook for an unknown order -> acknowledged, nothing created", (await webhook("order_NOPE", "pay_X", 10000, HOOK)) === 200);
+
+      for (let round = 1; round <= 3; round++) {
+        const E = await makeOrder("CANCELLED", inStock.id, inStock.productId, 1);
+        created.push(E.id);
+        const before = await stock();
+        const pay = `pay_E${round}`;
+        const body = { razorpay_order_id: E.razorpayOrderId, razorpay_payment_id: pay, razorpay_signature: sign(E.razorpayOrderId, pay, SECRET) };
+        const statuses = await Promise.all([verify(body), webhook(E.razorpayOrderId, pay, 10000, HOOK), verify(body), webhook(E.razorpayOrderId, pay, 10000, HOOK)]);
+        const after = await stock();
+        check(`round ${round}: 4 simultaneous confirmations take the stock exactly once`, statuses.every((x) => x === 200) && after === before - 1 && (await statusOf(E.id))?.status === "PAID", `statuses ${statuses.join(",")}, stock ${before} -> ${after}`);
+      }
+    }
   } finally {
     // Clean up: remove test orders and put stock back exactly as it was.
     await prisma.order.deleteMany({ where: { id: { in: created } } });
