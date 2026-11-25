@@ -9,6 +9,7 @@
  * real /api/admin endpoints, checks the PUBLIC pages change, and then deletes
  * everything it created and restores the festival settings.
  */
+import "./lib/local-db-only"; // must stay first: blocks runs against a live database
 import { auth } from "../src/lib/auth";
 import { prisma } from "../src/lib/prisma";
 

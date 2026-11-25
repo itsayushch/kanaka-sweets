@@ -16,6 +16,7 @@
  *
  * The secret is read from the environment and is never printed.
  */
+import "./lib/local-db-only"; // must stay first: blocks runs against a live database
 import { createHmac, randomBytes } from "node:crypto";
 import { prisma } from "../src/lib/prisma";
 

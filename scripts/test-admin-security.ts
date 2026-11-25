@@ -8,6 +8,7 @@
  *         and that uploads reject a .txt, a fake image, a wrong type and a big file.
  * Credentials come from ADMIN_EMAIL / ADMIN_PASSWORD in .env and are never printed.
  */
+import "./lib/local-db-only"; // must stay first: blocks runs against a live database
 import { auth } from "../src/lib/auth";
 
 const BASE_URL = process.env.BASE_URL ?? "http://localhost:3000";
