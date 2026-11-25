@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Kanaka Sweets & Bakery Vijayawada",
   },
   description:
-    "Family-run sweet shop in Governorpet, Vijayawada for over 15 years. Handcrafted Pootharekulu, Kaju Katli, Pure Ghee Mysore Pak, fresh celebration cakes & festival gift boxes.",
+    "Family-run sweet shop in Governorpet, Vijayawada for 15 years. Pootharekulu, Kaju Katli, pure ghee Mysore Pak, fresh cakes and festival gift boxes.",
   keywords: [
     "Kanaka Sweets",
     "Kanaka Bakery",

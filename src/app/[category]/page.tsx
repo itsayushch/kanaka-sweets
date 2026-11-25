@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/site";
+import { clip } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -41,8 +42,8 @@ export async function generateMetadata({
     "festival-boxes": "Festive Sweet Gift Boxes & Diwali Hampers",
   };
 
-  const title = `${categoryTitles[categorySlug] || category.name} | Kanaka Sweets Vijayawada`;
-  const description = `${category.description} Handcrafted daily at our Governorpet shop with pure desi cow ghee. Same-day shop pickup available in Vijayawada.`;
+  const title = `${categoryTitles[categorySlug] || category.name} | Kanaka Sweets`;
+  const description = clip(`${category.description} Same-day shop pickup in Governorpet, Vijayawada.`);
 
   return {
     // absolute: the title already ends with the shop name, so skip the layout template
@@ -214,7 +215,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product.id} product={product} headingLevel="h2" />
               ))}
             </div>
           )}

@@ -120,9 +120,9 @@ export function Navbar() {
                               <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                                 <SparklesIcon className="w-3 h-3 text-[#871a45]" />
                               </div>
-                              <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                              <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                                 Pure Ghee Mithai
-                              </h3>
+                              </p>
                             </div>
                             <ul className="space-y-1">
                               <li>
@@ -272,9 +272,9 @@ export function Navbar() {
                               <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                                 <StarIcon className="w-3 h-3 text-[#871a45]" />
                               </div>
-                              <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                              <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                                 Kaju &amp; Dry Fruits
-                              </h3>
+                              </p>
                             </div>
                             <ul className="space-y-1">
                               <li>
@@ -354,9 +354,9 @@ export function Navbar() {
                           </div>
 
                           <div>
-                            <h4 className="text-[11px] font-extrabold uppercase tracking-widest text-[#002c3f] mb-2 pb-1 border-b border-stone-100">
+                            <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#002c3f] mb-2 pb-1 border-b border-stone-100">
                               Milk &amp; Khoya Mithai
-                            </h4>
+                            </p>
                             <ul className="space-y-1.5 text-xs text-stone-600 font-normal">
                               <li><Link href="/sweets" className="hover:text-[#871a45] block transition-colors">Kesar Peda &amp; Mathura Peda</Link></li>
                               <li><Link href="/sweets" className="hover:text-[#871a45] block transition-colors">Malai Kalakand &amp; Milk Cake</Link></li>
@@ -372,9 +372,9 @@ export function Navbar() {
                               <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                                 <LeafIcon className="w-3 h-3 text-[#871a45]" />
                               </div>
-                              <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                              <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                                 Andhra Heritage
-                              </h3>
+                              </p>
                             </div>
                             <ul className="space-y-2 text-xs text-stone-600 font-normal">
                               <li>
@@ -432,9 +432,9 @@ export function Navbar() {
                             <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                               <GiftIcon className="w-3 h-3 text-[#871a45]" />
                             </div>
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                               Gifting &amp; Hampers
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li>
@@ -494,12 +494,12 @@ export function Navbar() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#871a45]">
                               15 Years of Heritage
                             </span>
-                            <h4
+                            <p
                               className="font-serif text-base font-bold text-[#002c3f] mt-0.5 leading-snug"
                               style={{ fontFamily: "var(--font-fraunces)" }}
                             >
                               Royal Vijayawada Gift Hamper
-                            </h4>
+                            </p>
                             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
                               Handcrafted with Kaju Katli, Pootharekulu, Mysore Pak &amp; Dry Fruits in a regal box.
                             </p>
@@ -561,9 +561,9 @@ export function Navbar() {
                             <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                               <SparklesIcon className="w-3 h-3 text-[#871a45]" />
                             </div>
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                               Celebration Cakes
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-1.5">
                             <li>
@@ -626,9 +626,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Pastries &amp; Tea Cakes
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li><Link href="/cakes" className="hover:text-[#871a45] block transition-colors">Eggless Cupcakes (Box of 4)</Link></li>
@@ -640,9 +640,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Bakery &amp; Savouries
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li><Link href="/cakes" className="hover:text-[#871a45] block transition-colors">Warm Spiced Veg Puff</Link></li>
@@ -669,12 +669,12 @@ export function Navbar() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#871a45]">
                               Custom Celebrations
                             </span>
-                            <h4
+                            <p
                               className="font-serif text-base font-bold text-[#002c3f] mt-0.5 leading-snug"
                               style={{ fontFamily: "var(--font-fraunces)" }}
                             >
                               Birthday &amp; Event Cakes
-                            </h4>
+                            </p>
                             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
                               Order same-day counter pickup at our Governorpet shop.
                             </p>
@@ -718,9 +718,9 @@ export function Navbar() {
                             <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                               <SparklesIcon className="w-3 h-3 text-[#871a45]" />
                             </div>
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                               Spicy Andhra Mixtures
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-1.5">
                             <li>
@@ -767,9 +767,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Traditional Andhra Crunch
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-1.5">
                             <li>
@@ -816,9 +816,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Fresh Counter Snacks
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li><Link href="/snacks" className="hover:text-[#871a45] block transition-colors">Golden Onion Pakoda</Link></li>
@@ -845,12 +845,12 @@ export function Navbar() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#871a45]">
                               Zero Palm Oil
                             </span>
-                            <h4
+                            <p
                               className="font-serif text-base font-bold text-[#002c3f] mt-0.5 leading-snug"
                               style={{ fontFamily: "var(--font-fraunces)" }}
                             >
                               Vijayawada Signature Mixture
-                            </h4>
+                            </p>
                             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
                               Crunchy curry leaves, toasted cashews and roasted peanuts in cold-pressed oil.
                             </p>
@@ -890,9 +890,9 @@ export function Navbar() {
                             <div className="w-5 h-5 rounded-md bg-[#871a45]/10 flex items-center justify-center text-[#871a45]">
                               <GiftIcon className="w-3 h-3 text-[#871a45]" />
                             </div>
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#871a45]">
                               Curated Festive Hampers
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-1.5">
                             <li>
@@ -955,9 +955,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Weddings &amp; Occasions
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li><Link href="/festival-boxes" className="hover:text-[#871a45] block transition-colors">Pellikoduku / Pellikuthuru Trays</Link></li>
@@ -969,9 +969,9 @@ export function Navbar() {
 
                         <div>
                           <div className="flex items-center gap-2 mb-3 pb-1.5 border-b border-stone-200/80">
-                            <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
+                            <p className="text-xs font-extrabold uppercase tracking-widest text-[#002c3f]">
                               Corporate Gifting
-                            </h3>
+                            </p>
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li><Link href="/festival-boxes" className="hover:text-[#871a45] block transition-colors">Diwali Corporate Boxes (50+ units)</Link></li>
@@ -995,12 +995,12 @@ export function Navbar() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#871a45]">
                               Premium Velvet Packaging
                             </span>
-                            <h4
+                            <p
                               className="font-serif text-base font-bold text-[#002c3f] mt-0.5 leading-snug"
                               style={{ fontFamily: "var(--font-fraunces)" }}
                             >
                               Festive Delivery in Vijayawada
-                            </h4>
+                            </p>
                             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
                               Order bespoke boxes with same-day shop pickup or doorstep delivery.
                             </p>

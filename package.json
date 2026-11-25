@@ -14,6 +14,7 @@
     "test:rate-limits": "tsx --env-file=.env scripts/test-rate-limits.ts",
     "check:rls": "tsx --env-file=.env scripts/check-rls.ts",
     "scan:secrets": "tsx scripts/scan-secrets.ts",
+    "check:seo": "tsx scripts/check-seo.ts",
     "check:links": "tsx scripts/check-links.ts",
     "test:payments": "tsx --env-file=.env scripts/test-payment-verify.ts"
   },

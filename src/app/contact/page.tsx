@@ -3,7 +3,7 @@ import { LazyMap } from "@/components/LazyMap";
 import { MapPinIcon, PhoneIcon, WhatsAppIcon, ClockIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Visit Our Shop in Governorpet, Vijayawada",
+  title: { absolute: "Visit Kanaka Sweets in Governorpet, Vijayawada" },
   description:
     "Find Kanaka Sweets & Bakery on Eluru Road, Governorpet, Vijayawada. Open 7:00 AM to 10:30 PM. Call, WhatsApp or get directions.",
   alternates: { canonical: "/contact" },

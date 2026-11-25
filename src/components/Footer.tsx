@@ -50,12 +50,12 @@ export function Footer() {
 
           {/* Col 2: Shop Categories */}
           <div className="space-y-4">
-            <h3
+            <h2
               className="font-serif text-base font-semibold text-[#F8D030]"
               style={{ fontFamily: "var(--font-fraunces)" }}
             >
               Our Specialties
-            </h3>
+            </h2>
             <ul className="space-y-2 text-sm text-white/70">
               {[
                 { href: "/sweets", label: "Pure Ghee Sweets & Mithai" },
@@ -78,12 +78,12 @@ export function Footer() {
 
           {/* Col 3: Visit */}
           <div className="space-y-4">
-            <h3
+            <h2
               className="font-serif text-base font-semibold text-[#F8D030]"
               style={{ fontFamily: "var(--font-fraunces)" }}
             >
               Visit Our Shop
-            </h3>
+            </h2>
             <div className="text-sm text-white/70 space-y-2.5 leading-relaxed">
               <div className="flex items-start gap-2">
                 <MapPinIcon className="w-4 h-4 text-[#F8D030] shrink-0 mt-1" />
@@ -116,12 +116,12 @@ export function Footer() {
 
           {/* Col 4: Contact */}
           <div className="space-y-4">
-            <h3
+            <h2
               className="font-serif text-base font-semibold text-[#F8D030]"
               style={{ fontFamily: "var(--font-fraunces)" }}
             >
               Reach Us Instantly
-            </h3>
+            </h2>
             <p className="text-xs text-white/60">
               Custom gift boxes, same-day pickup or urgent orders — call or message us directly.
             </p>

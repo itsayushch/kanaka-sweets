@@ -7,9 +7,12 @@ import { QuickAddButton } from "@/components/QuickAddButton";
 interface ProductCardProps {
   product: FormattedProduct;
   priority?: boolean;
+  /** Heading level of the product name: h2 when the card sits right under the page title, h3 under a section heading. */
+  headingLevel?: "h2" | "h3";
 }
 
-export function ProductCard({ product, priority = false }: ProductCardProps) {
+export function ProductCard({ product, priority = false, headingLevel = "h3" }: ProductCardProps) {
+  const Heading = headingLevel;
   const sortedVariants = [...product.variants].sort((a, b) => a.price - b.price);
   const minPrice = sortedVariants[0]?.price ?? 0;
   const isOutOfStock = product.variants.every((v) => v.stock <= 0);
@@ -83,7 +86,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
 
           {/* Product Title */}
-          <h3
+          <Heading
             className="font-medium text-base sm:text-lg text-[#002c3f] group-hover:text-[#871a45] transition-colors line-clamp-1 leading-snug"
             style={{ fontFamily: "var(--font-jost)" }}
           >
@@ -93,7 +96,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             >
               {product.name}
             </Link>
-          </h3>
+          </Heading>
 
           {/* Short description */}
           <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">
