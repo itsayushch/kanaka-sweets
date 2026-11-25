@@ -49,7 +49,8 @@ pnpm start
 ## Environment variables
 
 Copy `.env.example` to `.env`. **Never commit `.env`** (it is in `.gitignore`). Only the **names** are
-listed here. None of these values are ever sent to the browser.
+listed here. The Razorpay **key id** is public by design (the payment window needs it) and
+`NEXT_PUBLIC_APP_URL` is just the site's address; every other value stays on the server.
 
 | Name | What it is | Where to get it |
 | --- | --- | --- |
@@ -62,6 +63,7 @@ listed here. None of these values are ever sent to the browser.
 | `ADMIN_PASSWORD` | Admin password. **Leave empty** and `pnpm create-admin` generates a strong one and saves it in `.env` | Optional |
 | `RAZORPAY_KEY_ID` | Razorpay **test** key id (starts with `rzp_test_`) | Razorpay dashboard, Test mode, Settings, API Keys |
 | `RAZORPAY_KEY_SECRET` | Razorpay **test** key secret | Same place |
+| `RAZORPAY_WEBHOOK_SECRET` | Secret for the Razorpay webhook (see "Razorpay webhook") | You choose a long random text and enter the same one in Razorpay |
 | `UPSTASH_REDIS_REST_URL` | Upstash Redis address for rate limiting | upstash.com, create a Redis database, "REST API" |
 | `UPSTASH_REDIS_REST_TOKEN` | Upstash Redis token | Same place |
 | `CLOUDINARY_CLOUD_NAME` | Cloudinary account name, for admin image uploads | cloudinary.com dashboard |
@@ -73,6 +75,7 @@ If a variable is missing the site still starts, but that feature is limited:
 - No **Upstash** keys: rate limiting works only inside one server (fine on your computer, **not enough in production**).
 - No **Cloudinary** keys: admin uploads answer "not set up yet". You can still paste an image link from `images.unsplash.com` or `res.cloudinary.com`.
 - No **Razorpay** keys: checkout creates the order but the payment step shows an error.
+- No **webhook secret**: the webhook address answers 503. Paying in the browser still works.
 
 ## Admin login
 
@@ -96,6 +99,20 @@ text and image.
 3. In the Razorpay window use a [Razorpay test card or test UPI](https://razorpay.com/docs/payments/payments/test-card-details/).
 4. The order page changes to "Payment received" only after the **server** verifies the signature.
 
+## Razorpay webhook (backup confirmation)
+
+If a customer pays and closes the page before the browser reports back, Razorpay tells the server directly.
+This needs a public address, so set it up after deploying:
+
+1. Razorpay dashboard, **Test mode**, Settings, **Webhooks**, add a webhook.
+2. URL: `https://your-site/api/payments/webhook`
+3. Secret: a long random text. Put the same text in `RAZORPAY_WEBHOOK_SECRET` (in Vercel), then redeploy.
+4. Tick only the **`payment.captured`** event. Payments must be captured automatically (a setting in the
+   Razorpay dashboard), or this event is not sent.
+
+The server checks the webhook's signature and the amount before marking an order `PAID`. If the browser and
+the webhook arrive together, stock is taken only once. (`src/app/api/payments/webhook/route.ts`)
+
 ## Useful commands
 
 | Command | What it does |
@@ -106,7 +123,7 @@ text and image.
 | `pnpm check:rls` | Checks the database lock-down (Row Level Security on every table) |
 | `pnpm scan:secrets` | Looks for secrets in the repo, the whole git history and the browser JavaScript. Run `pnpm build` first |
 | `pnpm check:links` | Finds broken pages, links and images (server must be running) |
-| `pnpm test:payments` | Proves fake payment calls leave orders unpaid (server must be running with the same `RAZORPAY_KEY_SECRET`) |
+| `pnpm test:payments` | Proves fake payment and webhook calls leave orders unpaid (server must be running with the same `RAZORPAY_KEY_SECRET` and `RAZORPAY_WEBHOOK_SECRET`) |
 | `pnpm test:admin` | Proves the admin is protected on the server and uploads are limited |
 | `pnpm test:admin-crud` | Proves the admin panel really changes products, stock and the festival highlight |
 | `pnpm test:rate-limits` | Proves too many requests get a 429 |
@@ -114,15 +131,20 @@ text and image.
 The test commands talk to a running server. Start one in another terminal and, if it is not on port 3000, set
 `BASE_URL`, for example `BASE_URL=http://localhost:3001 pnpm test:admin`.
 
+`test:payments`, `test:admin` and `test:admin-crud` change data, so they **refuse to run unless `DATABASE_URL`
+points at a database on your own computer**. Use the same local database for the server. Never run them against
+the live shop.
+
 ## Deploy on Vercel
 
 1. Push the code to GitHub and import the repository in Vercel. `vercel.json` already sets the function
    region to **`bom1` (Mumbai)**, next to the database.
-2. In Vercel, Settings, Environment Variables, add every name from the table above with your real values.
-   Set `NEXT_PUBLIC_APP_URL` and `BETTER_AUTH_URL` to your Vercel address (for example `https://your-project.vercel.app`).
+2. In Vercel, Settings, Environment Variables, add every name from the table above with your real values,
+   except `ADMIN_EMAIL` and `ADMIN_PASSWORD` (only `pnpm create-admin` on your computer uses them). Set `NEXT_PUBLIC_APP_URL` and `BETTER_AUTH_URL` to your Vercel address (for example `https://your-project.vercel.app`).
 3. From your computer, with `DIRECT_URL` pointing at Supabase, run the three database commands from
-   "Run it on your computer" (`db push`, `rls.sql`, `db seed`) and `pnpm create-admin`.
-4. Deploy. Then open the site, add an item, and pay with a test card.
+   "Run it on your computer" (`db push`, `rls.sql`, `db seed`) and `pnpm create-admin`. Seed **once**:
+   running it again puts the example prices, stock and settings back over your changes.
+4. Deploy. Set up the Razorpay webhook (above). Then open the site, add an item, and pay with a test card.
 5. Run `pnpm check:rls` against Supabase to confirm every table is locked.
 
 > **Supabase free projects pause when idle.** If the site shows errors after a quiet week, open the
@@ -143,6 +165,8 @@ The test commands talk to a running server. Start one in another terminal and, i
 - **Stock is reserved when the order is created**, inside one database transaction, so two buyers cannot pay for
   the last item. An unpaid order gives the stock back after 30 minutes. If a payment arrives after that, stock is
   checked again and, if it is gone, the order is flagged `REFUND NEEDED` for the owner.
+- **Delivery is limited to Vijayawada** (6-digit PIN codes starting 520); anyone else can choose shop pickup.
+- **Search** (`/search`) finds products by name, description or category.
 - **Admin is protected on the server.** Every admin page and every `/api/admin/*` handler checks the login
   itself (`src/lib/admin-guard.ts`). `src/proxy.ts` adds a quick redirect, but removing it would not expose anything.
 - **The browser never talks to the database.** Row Level Security is on for every table with no policies, and
@@ -176,9 +200,9 @@ scripts/            create-admin and the test / check commands
 - The very first visit to a never-seen unknown URL answers HTTP 200 (with the "Not Found" page and `noindex`);
   after that, the same URL answers a real 404. This is how this version of Next.js streams pages with caching
   turned on.
-- Header Search and Wishlist are placeholders and do not work yet.
-- If a customer pays and closes the browser before the confirmation reaches our server, the order stays
-  unpaid until it expires. A Razorpay webhook would fix this; it is not part of the brief.
+- The phone and WhatsApp number (+91 90000 00000) is a sample. Replace it with the shop's real number.
+- The press names, ratings, review counts, customer quotes and certification labels on the site are example
+  content. A real shop must replace them with true ones or remove them.
 - Product photos are example photos from Wikimedia Commons (CC BY-SA, credited on `/credits` and in
   `src/data/photo-credits.ts`). Replace them with the shop's own photos from the admin panel, and remove the
   matching rows from the credits file.
