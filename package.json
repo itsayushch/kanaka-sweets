@@ -10,6 +10,7 @@
     "create-admin": "tsx --env-file=.env scripts/create-admin.ts",
     "test:admin": "tsx --env-file=.env scripts/test-admin-security.ts",
     "test:admin-crud": "tsx --env-file=.env scripts/test-admin-crud.ts",
+    "test:rate-limits": "tsx --env-file=.env scripts/test-rate-limits.ts",
     "test:payments": "tsx --env-file=.env scripts/test-payment-verify.ts"
   },
   "dependencies": {

@@ -1,19 +1,24 @@
 /**
- * POST /api/checkout  (Phase 2: creates the order; Razorpay is added in Phase 3)
+ * POST /api/checkout 
  *
  * Rule F1: the request holds IDs and quantities only. Any price/amount/total
  *          the browser sends is ignored (the schema has no such field).
  * Rule F6: every field is validated here with Zod.
  * Rule F7: stock is checked and reserved inside a database transaction.
- * Rule F8: rate limiting is added in Phase 5.
+ * Rule F8: rate limited per IP (see src/lib/rate-limit.ts).
  */
 import { NextResponse } from "next/server";
+import { limitByIp } from "@/lib/rate-limit";
 import { z } from "zod";
 import { revalidateTag } from "next/cache";
 import { CheckoutError, createPendingOrder } from "@/lib/orders";
 import { checkoutSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
+  // Rate limit first (Rule F8): stops one visitor hammering this endpoint.
+  const limited = await limitByIp(request, "checkout");
+  if (limited) return limited;
+
   // 1. Read the JSON body.
   let body: unknown;
   try {

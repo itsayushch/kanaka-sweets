@@ -19,6 +19,9 @@ function check(name: string, ok: boolean, detail = "") {
   if (!ok) failures++;
 }
 
+// A random IP for this run, so the rate limit (Rule F8) is not tripped by earlier runs.
+const TEST_IP = `10.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}`;
+
 let cookie = "";
 const api = async (method: string, path: string, body?: unknown) => {
   const res = await fetch(BASE_URL + path, {
@@ -131,12 +134,12 @@ async function main() {
       fulfillmentType: "PICKUP", pickupDate: tomorrow, pickupTimeSlot: "11:00 AM - 1:00 PM",
       items: [{ productId, variantId: v0.id, quantity: qty }],
     });
-    const blocked = await fetch(BASE_URL + "/api/checkout", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(orderBody(1)) });
+    const blocked = await fetch(BASE_URL + "/api/checkout", { method: "POST", headers: { "content-type": "application/json", "x-forwarded-for": TEST_IP }, body: JSON.stringify(orderBody(1)) });
     check("ordering a stock-0 size is refused (409)", blocked.status === 409, `got ${blocked.status}`);
 
     console.log("\n== Order history is protected ==");
     await api("PUT", `/api/admin/products/${productId}`, { ...payload, variants: [{ id: v0.id, name: v0.name, weight: v0.weight ?? "", price: v0.price, stock: 5 }] });
-    const ok = await fetch(BASE_URL + "/api/checkout", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(orderBody(1)) });
+    const ok = await fetch(BASE_URL + "/api/checkout", { method: "POST", headers: { "content-type": "application/json", "x-forwarded-for": TEST_IP }, body: JSON.stringify(orderBody(1)) });
     check("with stock restored, an order is accepted (201)", ok.status === 201, `got ${ok.status}`);
     const del1 = await api("PUT", `/api/admin/products/${productId}`, { ...payload, variants: [{ name: "New only", price: 100, stock: 1 }] });
     check("deleting a size that has orders -> 409", del1.status === 409, `${del1.status} ${del1.data.error}`);

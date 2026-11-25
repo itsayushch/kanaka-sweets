@@ -21,6 +21,8 @@ import { prisma } from "../src/lib/prisma";
 
 const BASE_URL = process.env.BASE_URL ?? "http://localhost:3000";
 const SECRET = process.env.RAZORPAY_KEY_SECRET;
+// A random IP for this run, so the rate limit (Rule F8) is not tripped by earlier runs.
+const TEST_IP = `10.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}`;
 
 let failures = 0;
 function check(name: string, ok: boolean, detail = "") {
@@ -34,7 +36,7 @@ const sign = (orderId: string, paymentId: string, secret: string) =>
 async function verify(body: unknown): Promise<number> {
   const res = await fetch(`${BASE_URL}/api/payments/verify`, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", "x-forwarded-for": TEST_IP },
     body: JSON.stringify(body),
   });
   return res.status;

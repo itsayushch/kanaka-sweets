@@ -3,9 +3,10 @@
  *
  * Creates (or reuses) the Razorpay payment order for one of our PENDING
  * orders. The amount is read from OUR database, never from the request
- * (Rule F1). Rate limiting is added in Phase 5 (Rule F8).
+ * (Rule F1). Rate limited per IP (Rule F8).
  */
 import { NextResponse } from "next/server";
+import { limitByIp } from "@/lib/rate-limit";
 import { z } from "zod";
 import { describeError } from "@/lib/razorpay";
 import { PaymentError, createPaymentForOrder } from "@/lib/payments";
@@ -13,6 +14,10 @@ import { PaymentError, createPaymentForOrder } from "@/lib/payments";
 const bodySchema = z.object({ orderNumber: z.string().trim().min(1).max(40) });
 
 export async function POST(request: Request) {
+  // Rate limit first (Rule F8): stops one visitor hammering this endpoint.
+  const limited = await limitByIp(request, "paymentCreate");
+  if (limited) return limited;
+
   let body: unknown;
   try {
     body = await request.json();

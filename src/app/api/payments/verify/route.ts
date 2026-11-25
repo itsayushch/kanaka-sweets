@@ -4,9 +4,10 @@
  *
  * The ONLY place an order becomes PAID (Rule F2). The signature is checked on
  * the server with our secret key. Fake or missing values leave the order
- * unpaid. Rate limiting is added in Phase 5 (Rule F8).
+ * unpaid. Rate limited per IP (Rule F8).
  */
 import { NextResponse } from "next/server";
+import { limitByIp } from "@/lib/rate-limit";
 import { z } from "zod";
 import { revalidateTag } from "next/cache";
 import { describeError } from "@/lib/razorpay";
@@ -19,6 +20,10 @@ const bodySchema = z.object({
 });
 
 export async function POST(request: Request) {
+  // Rate limit first (Rule F8): stops one visitor hammering this endpoint.
+  const limited = await limitByIp(request, "paymentVerify");
+  if (limited) return limited;
+
   let body: unknown;
   try {
     body = await request.json();
