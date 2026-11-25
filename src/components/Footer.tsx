@@ -62,11 +62,12 @@ export function Footer() {
                 { href: "/cakes", label: "Fresh Celebration Cakes" },
                 { href: "/snacks", label: "Vijayawada Savouries & Mixture" },
                 { href: "/festival-boxes", label: "Festive Gift Hampers" },
+                { href: "/contact", label: "Visit Us & Map" },
               ].map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className="hover:text-white transition-colors inline-block py-0.5"
+                    className="hover:text-white transition-colors inline-block py-2"
                   >
                     {label}
                   </Link>
