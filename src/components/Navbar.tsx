@@ -1051,9 +1051,6 @@ export function Navbar() {
                   placeholder="Search for sweets, gift boxes, cakes..."
                   className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
                 />
-                <span className="hidden xl:inline-flex text-[10px] text-stone-600 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
-                  ⌘K
-                </span>
               </div>
 
               {/* Profile Icon with Short Title Below */}
