@@ -178,15 +178,21 @@ export async function expireOldReservations(db: Db): Promise<number> {
 }
 
 /**
+ * Release expired reservations in their OWN transaction, so the release is
+ * saved even if whatever comes next fails (for example a sold-out checkout).
+ * Returns how many orders were cancelled. Called by /api/cart and /api/checkout.
+ */
+export async function releaseExpiredReservations(): Promise<number> {
+  return prisma.$transaction((tx) => expireOldReservations(tx), { timeout: 15000 });
+}
+
+/**
  * Create a PENDING order and reserve its stock, all in one transaction.
  * `input` has already passed checkoutSchema validation.
  */
 export async function createPendingOrder(input: CheckoutInput) {
   return prisma.$transaction(
     async (tx) => {
-      // Free up stock held by abandoned orders first.
-      await expireOldReservations(tx);
-
       // 1. Price the cart from the database (Rule F1).
       const { lines, missing } = await priceCart(tx, input.items);
       if (missing.length > 0) {

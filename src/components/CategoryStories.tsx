@@ -75,7 +75,7 @@ export function CategoryStories() {
               className="flex flex-col items-center gap-1.5 group shrink-0 min-w-[76px] sm:min-w-[92px] flex-1 text-center"
             >
               {/* Real High-Resolution Circular Photography Disc */}
-              <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-xs group-hover:shadow-md transition-all duration-300 relative bg-stone-100">
+              <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-xs group-hover:shadow-md transition-transform duration-300 relative bg-stone-100">
                 <Image
                   src={cat.image}
                   alt={cat.label}

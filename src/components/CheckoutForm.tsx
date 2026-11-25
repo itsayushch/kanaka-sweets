@@ -307,7 +307,7 @@ export function CheckoutForm() {
                   className={inputClass(!!errors.deliveryAddress) + " py-3"}
                 />
               </Field>
-              <Field id="deliveryPostalCode" label="PIN code" error={errors.deliveryPostalCode}>
+              <Field id="deliveryPostalCode" label="PIN code" error={errors.deliveryPostalCode} hint="Vijayawada only (starts with 520)">
                 <input
                   id="deliveryPostalCode"
                   inputMode="numeric"

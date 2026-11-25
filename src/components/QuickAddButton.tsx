@@ -53,7 +53,7 @@ export function QuickAddButton({ product }: { product: FormattedProduct }) {
         type="button"
         onClick={handleAdd}
         aria-label={`Add ${product.name} (${variant.name}) to cart`}
-        className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider min-h-[44px] bg-[#871a45] hover:bg-[#691436] active:scale-[0.98] text-white shadow-sm transition-all"
+        className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider min-h-[44px] bg-[#871a45] hover:bg-[#691436] active:scale-[0.98] text-white shadow-sm transition-transform"
       >
         {justAdded ? "Added ✓" : "Add to Cart"}
       </button>

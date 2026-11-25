@@ -154,7 +154,7 @@ export default async function HomePage() {
           <div className="mt-12 text-center">
             <Link
               href="/sweets"
-              className="inline-flex items-center gap-2 border-2 border-[#871a45] text-[#871a45] hover:bg-[#871a45] hover:text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all min-h-[48px]"
+              className="inline-flex items-center gap-2 border-2 border-[#871a45] text-[#871a45] hover:bg-[#871a45] hover:text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-colors min-h-[48px]"
             >
               <span>View All Sweets &amp; Treats</span>
               <ArrowRightIcon className="w-4 h-4" />
@@ -192,7 +192,7 @@ export default async function HomePage() {
             {/* Card 1: Handcrafted Mithai */}
             <Link
               href="/sweets"
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-colors duration-300 flex flex-col"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
@@ -226,7 +226,7 @@ export default async function HomePage() {
             {/* Card 2: Festival Hampers */}
             <Link
               href="/festival-boxes"
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-colors duration-300 flex flex-col"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
@@ -260,7 +260,7 @@ export default async function HomePage() {
             {/* Card 3: Fresh Savouries */}
             <Link
               href="/snacks"
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-colors duration-300 flex flex-col"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
@@ -296,7 +296,7 @@ export default async function HomePage() {
               href="https://maps.google.com/?q=Kanaka+Sweets+Governorpet+Vijayawada"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-colors duration-300 flex flex-col"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
@@ -372,7 +372,7 @@ export default async function HomePage() {
                 <div className="flex flex-wrap gap-3.5 pt-2">
                   <Link
                     href="/festival-boxes"
-                    className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-7 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-300 active:scale-95 transition-all shadow-lg min-h-[48px]"
+                    className="inline-flex items-center gap-2 bg-[#F8D030] text-[#002c3f] px-7 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-300 active:scale-95 transition-transform shadow-lg min-h-[48px]"
                   >
                     <GiftIcon className="w-4 h-4 text-[#002c3f]" />
                     <span>Order a Festival Box</span>
@@ -382,7 +382,7 @@ export default async function HomePage() {
                     href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20enquire%20about%20Bulk%20Festival%20Boxes"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-all min-h-[48px]"
+                    className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-transform min-h-[48px]"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white" />
                     <span>WhatsApp Bulk Order</span>

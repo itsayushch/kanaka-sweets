@@ -103,14 +103,14 @@ export function Navbar() {
                 <div className="group/sweets static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/sweets"
-                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-all"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-colors"
                   >
                     <span>Sweets</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/sweets:text-[#871a45] group-hover/sweets:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
-                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/sweets:visible group-hover/sweets:opacity-100 transition-all duration-200 z-50 text-left">
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/sweets:visible group-hover/sweets:opacity-100 transition-[opacity,visibility] duration-200 z-50 text-left">
                     <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
                       <div className="grid grid-cols-5 gap-8">
                         {/* Col 1: Pure Ghee Mithai with Visual Micro-Rows */}
@@ -128,7 +128,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/ghee-mysore-pak"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -158,7 +158,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/pootharekulu"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -188,7 +188,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/ariselu"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -215,7 +215,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/boondi-ladoo"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -242,7 +242,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/bobbatlu"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -285,7 +285,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets/kaju-katli"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
@@ -315,7 +315,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Kaju Pista Roll
@@ -326,7 +326,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Anjeer Dry Fruit Barfi
@@ -337,7 +337,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Badam Halwa &amp; Katli
@@ -348,7 +348,7 @@ export function Navbar() {
                               <li>
                                 <Link
                                   href="/sweets"
-                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                  className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                                 >
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Roasted Cashew Bites
@@ -513,7 +513,7 @@ export function Navbar() {
                           </div>
                           <Link
                             href="/festival-boxes/royal-festive-hamper"
-                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all active:scale-98"
+                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-transform active:scale-98"
                           >
                             <span>Order This Hamper</span>
                             <span>→</span>
@@ -553,14 +553,14 @@ export function Navbar() {
                 <div className="group/cakes static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/cakes"
-                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-all"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-colors"
                   >
                     <span>Cakes</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/cakes:text-[#871a45] group-hover/cakes:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
-                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/cakes:visible group-hover/cakes:opacity-100 transition-all duration-200 z-50 text-left">
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/cakes:visible group-hover/cakes:opacity-100 transition-[opacity,visibility] duration-200 z-50 text-left">
                     <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
                       <div className="grid grid-cols-4 gap-8">
                         <div>
@@ -576,7 +576,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/cakes/plum-cake"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -592,7 +592,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/cakes/black-forest-cake"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -605,7 +605,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/cakes/butterscotch-crunch-cake"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -618,7 +618,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/cakes/chocolate-truffle-cake"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -689,7 +689,7 @@ export function Navbar() {
                           </div>
                           <Link
                             href="/cakes"
-                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all active:scale-98"
+                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-transform active:scale-98"
                           >
                             <span>View All Cakes</span>
                             <span>→</span>
@@ -711,14 +711,14 @@ export function Navbar() {
                 <div className="group/snacks static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/snacks"
-                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-all"
+                    className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-colors"
                   >
                     <span>Savouries</span>
                     <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/snacks:text-[#871a45] group-hover/snacks:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
-                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/snacks:visible group-hover/snacks:opacity-100 transition-all duration-200 z-50 text-left">
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/snacks:visible group-hover/snacks:opacity-100 transition-[opacity,visibility] duration-200 z-50 text-left">
                     <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
                       <div className="grid grid-cols-4 gap-8">
                         <div>
@@ -734,7 +734,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/snacks/mixture"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -750,7 +750,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/snacks/ribbon-pakoda"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -783,7 +783,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/snacks/bellam-gavvalu"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -799,7 +799,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/snacks/chekkalu"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -866,7 +866,7 @@ export function Navbar() {
                           </div>
                           <Link
                             href="/snacks"
-                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all active:scale-98"
+                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-transform active:scale-98"
                           >
                             <span>Shop Savouries</span>
                             <span>→</span>
@@ -881,7 +881,7 @@ export function Navbar() {
                 <div className="group/boxes static h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/festival-boxes"
-                    className="py-1 flex items-center gap-1.5 border-b-2 border-transparent group-hover/boxes:border-[#871a45] text-[#871a45] transition-all"
+                    className="py-1 flex items-center gap-1.5 border-b-2 border-transparent group-hover/boxes:border-[#871a45] text-[#871a45] transition-colors"
                   >
                     <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
                     <span>Festival Boxes</span>
@@ -891,7 +891,7 @@ export function Navbar() {
                   </Link>
 
                   {/* Mega Menu Dropdown */}
-                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/boxes:visible group-hover/boxes:opacity-100 transition-all duration-200 z-50 text-left">
+                  <div className="absolute top-full left-0 right-0 w-full bg-white border-b border-stone-200/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.18)] invisible opacity-0 group-hover/boxes:visible group-hover/boxes:opacity-100 transition-[opacity,visibility] duration-200 z-50 text-left">
                     <div className="w-full px-6 lg:px-10 xl:px-14 py-8">
                       <div className="grid grid-cols-4 gap-8">
                         <div>
@@ -907,7 +907,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/festival-boxes/royal-festive-hamper"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -923,7 +923,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/festival-boxes/sweet-savoury-box"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -936,7 +936,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/festival-boxes/sankranti-harvest-box"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -949,7 +949,7 @@ export function Navbar() {
                             <li>
                               <Link
                                 href="/festival-boxes/dry-fruit-collection"
-                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
+                                className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-colors"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
@@ -1017,7 +1017,7 @@ export function Navbar() {
                           </div>
                           <Link
                             href="/festival-boxes"
-                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all active:scale-98"
+                            className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-transform active:scale-98"
                           >
                             <span>Explore Hampers</span>
                             <span>→</span>
@@ -1032,7 +1032,7 @@ export function Navbar() {
                 <div className="h-full flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/sweets"
-                    className="py-1 flex items-center border-b-2 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-all whitespace-nowrap"
+                    className="py-1 flex items-center border-b-2 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-colors whitespace-nowrap"
                   >
                     <span>Bulk &amp; Weddings</span>
                   </Link>
@@ -1043,7 +1043,7 @@ export function Navbar() {
             {/* Right: Search Bar + Profile + Wishlist + Cart (search/profile/wishlist are dummies for now) */}
             <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
               {/* Search Bar on the RHS (Myntra Style, Clean & Wide) */}
-              <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
+              <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-colors px-3.5 gap-2.5 group">
                 <SearchIcon className="w-4 h-4 text-stone-600 group-focus-within:text-[#871a45] transition-colors shrink-0" />
                 <input
                   type="text"

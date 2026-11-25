@@ -11,7 +11,7 @@ import { NextResponse } from "next/server";
 import { limitByIp } from "@/lib/rate-limit";
 import { z } from "zod";
 import { revalidateTag } from "next/cache";
-import { CheckoutError, createPendingOrder } from "@/lib/orders";
+import { CheckoutError, createPendingOrder, releaseExpiredReservations } from "@/lib/orders";
 import { checkoutSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
@@ -40,6 +40,11 @@ export async function POST(request: Request) {
 
   // 3. Create the order: server-side prices + stock reservation.
   try {
+    // Free stock held by abandoned (unpaid, expired) orders first.
+    if ((await releaseExpiredReservations()) > 0) {
+      revalidateTag("catalogue", { expire: 0 });
+    }
+
     const order = await createPendingOrder(parsed.data);
 
     // Stock changed, so refresh the cached product pages straight away.

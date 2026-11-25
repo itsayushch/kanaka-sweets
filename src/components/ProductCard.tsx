@@ -21,7 +21,7 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
 
   return (
     <article
-      className="group relative bg-white rounded-2xl border border-stone-200/70 p-3.5 shadow-sm hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col h-full"
+      className="group relative bg-white rounded-2xl border border-stone-200/70 p-3.5 shadow-sm hover:shadow-xl hover:border-stone-300 transition-colors duration-300 flex flex-col h-full"
       style={{ fontFamily: "var(--font-jost)" }}
     >
       {/* ── 1:1 Product Image Container ── */}

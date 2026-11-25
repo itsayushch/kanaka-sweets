@@ -94,7 +94,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
                   setSelectedVariantId(v.id);
                   setAddedMessage(null);
                 }}
-                className={`relative p-3 rounded-xl border text-left transition-all min-h-[64px] flex flex-col justify-between ${
+                className={`relative p-3 rounded-xl border text-left transition-colors min-h-[64px] flex flex-col justify-between ${
                   isSelected
                     ? "border-[#871a45] bg-[#FAF6EF] ring-2 ring-[#871a45]/20 shadow-sm"
                     : "border-stone-200 bg-white hover:border-[#871a45]/40"
@@ -168,7 +168,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
           type="button"
           onClick={handleAddToCart}
           disabled={isCurrentOutOfStock}
-          className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 min-h-[52px] transition-all ${
+          className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 min-h-[52px] transition-transform ${
             isCurrentOutOfStock
               ? "bg-stone-100 text-stone-600 cursor-not-allowed"
               : "bg-[#871a45] hover:bg-[#691436] text-white active:scale-[0.99] shadow-sm"

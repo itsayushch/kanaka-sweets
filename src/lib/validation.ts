@@ -9,7 +9,12 @@
  * it is thrown away before any code can use it.
  */
 import { z } from "zod";
-import { MAX_QUANTITY, PICKUP_SLOTS, isSlotPast } from "@/lib/shop-constants";
+import {
+  DELIVERY_PIN_PREFIX,
+  MAX_QUANTITY,
+  PICKUP_SLOTS,
+  isSlotPast,
+} from "@/lib/shop-constants";
 
 /** One cart line: only IDs and a quantity, never a price. */
 export const cartItemSchema = z.object({
@@ -78,6 +83,12 @@ export const checkoutSchema = z
           code: "custom",
           path: ["deliveryPostalCode"],
           message: "Enter a 6-digit PIN code",
+        });
+      } else if (!data.deliveryPostalCode.startsWith(DELIVERY_PIN_PREFIX)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["deliveryPostalCode"],
+          message: "We deliver within Vijayawada only (PIN codes starting 520). Choose shop pickup instead.",
         });
       }
     } else {

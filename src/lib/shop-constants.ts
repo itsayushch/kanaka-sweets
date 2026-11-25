@@ -7,6 +7,9 @@
 /** Max quantity of one item per order (Rule F6: quantity 1-20). */
 export const MAX_QUANTITY = 20;
 
+/** Home delivery is only inside Vijayawada: its PIN codes start with 520. */
+export const DELIVERY_PIN_PREFIX = "520";
+
 /** Pickup time slots offered at the shop (extra sales idea, Rule C5). */
 export const PICKUP_SLOTS = [
   "9:00 AM - 11:00 AM",
