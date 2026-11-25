@@ -15,8 +15,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const isOutOfStock = product.variants.every((v) => v.stock <= 0);
   const defaultVariant = sortedVariants[0];
 
-  // Realistic MRP display (15% strikethrough for luxury confectionery feel)
-  const originalPrice = Math.round(minPrice * 1.15);
 
   return (
     <article
@@ -103,19 +101,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </p>
         </div>
 
-        {/* Price Row (BSS Architecture: Selling + Strikethrough + Discount Pill) */}
+        {/* Price row: the real "from" price, no fake discount */}
         <div className="mt-4 pt-2 border-t border-stone-100">
-          <div className="flex items-baseline justify-between gap-1 mb-3">
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-lg sm:text-xl font-bold text-[#871a45]">
-                ₹{minPrice}
-              </span>
-              <span className="text-xs text-stone-400 line-through font-normal">
-                ₹{originalPrice}
-              </span>
-            </div>
-            <span className="bg-[#fce8e8] text-[#c93b3b] text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full">
-              12% Off
+          <div className="flex items-baseline gap-1.5 mb-3">
+            <span className="text-xs text-stone-500">From</span>
+            <span className="text-lg sm:text-xl font-bold text-[#871a45]">
+              ₹{minPrice}
             </span>
           </div>
 

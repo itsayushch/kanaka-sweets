@@ -11,6 +11,9 @@
  *
  * The admin LOGIN limit is tested in a real browser (see the Phase 5 summary).
  */
+// (makes this file its own module so its names do not clash with other scripts)
+export {};
+
 const BASE_URL = process.env.BASE_URL ?? "http://localhost:3000";
 let failures = 0;
 function check(name: string, ok: boolean, detail = "") {

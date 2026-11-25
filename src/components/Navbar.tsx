@@ -29,7 +29,7 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030] shrink-0" />
               <span className="font-semibold tracking-wide">
-                Free Delivery in Vijayawada on orders above ₹999 &nbsp;•&nbsp; 100% Pure Desi Cow Ghee
+                Home delivery across Vijayawada &nbsp;•&nbsp; 100% Pure Desi Cow Ghee
               </span>
             </div>
 
@@ -192,7 +192,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1605197584547-c93452417769?w=80&q=80"
+                                        src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=80&q=80"
                                         alt="Ariselu"
                                         fill
                                         sizes="32px"

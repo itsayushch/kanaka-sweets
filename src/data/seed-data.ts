@@ -159,9 +159,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     slug: "ariselu",
     categorySlug: "sweets",
     description: "The crown jewel of Andhra Sankranti. Freshly ground wet rice flour and clarified organic jaggery simmered into a tender dough, encrusted with white sesame seeds and deep-fried in pure desi ghee.",
-    image: "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=800&q=80",
     images: [
-      "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+      "https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=800&q=80",
     ],
     isFeatured: true,
     isBestForGifting: false,
@@ -272,9 +272,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     slug: "butterscotch-crunch-cake",
     categorySlug: "cakes",
     description: "Golden vanilla sponge infused with brown sugar caramel sauce, layered with house-made crunchy cashew praline and light butterscotch chantilly cream.",
-    image: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80",
     images: [
-      "https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=800&q=80",
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80",
     ],
     isFeatured: false,
     isBestForGifting: false,
@@ -329,9 +329,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     slug: "chekkalu",
     categorySlug: "snacks",
     description: "Traditional handmade Andhra rice discs kneaded with soaked chana dal, green chilies, cumin seeds, and fresh curry leaves, fried golden crisp in cold-pressed oil.",
-    image: "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&q=80",
     images: [
-      "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+      "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=800&q=80",
     ],
     isFeatured: false,
     isBestForGifting: false,
@@ -405,9 +405,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     slug: "sankranti-harvest-box",
     categorySlug: "festival-boxes",
     description: "Handpicked traditional harvest sweets packed fresh on the day of dispatch: pure Ghee Ariselu, Dry Fruit Pootharekulu, soft Ghee Bobbatlu, and crunchy Bellam Gavvalu. The authentic taste of Andhra tradition.",
-    image: "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80",
     images: [
-      "https://images.unsplash.com/photo-1605197584547-c93452417769?w=800&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80",
     ],
     isFeatured: true,
     isBestForGifting: true, // C5 requirement
