@@ -12,6 +12,7 @@
     "test:admin-crud": "tsx --env-file=.env scripts/test-admin-crud.ts",
     "test:rate-limits": "tsx --env-file=.env scripts/test-rate-limits.ts",
     "check:rls": "tsx --env-file=.env scripts/check-rls.ts",
+    "scan:secrets": "tsx scripts/scan-secrets.ts",
     "test:payments": "tsx --env-file=.env scripts/test-payment-verify.ts"
   },
   "dependencies": {
