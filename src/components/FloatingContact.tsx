@@ -8,7 +8,7 @@ export function FloatingContact() {
         href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl shadow-2xl items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
+        className="hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#0f7a3d] hover:bg-[#0a6e35] text-white rounded-2xl shadow-2xl items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
         aria-label="Chat with Kanaka Sweets on WhatsApp"
       >
         <WhatsAppIcon className="w-7 h-7 text-white" />
@@ -35,7 +35,7 @@ export function FloatingContact() {
           href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 px-4 font-bold text-sm min-h-[52px] active:bg-[#20ba59] transition-colors"
+          className="flex items-center justify-center gap-2 bg-[#0f7a3d] text-white py-3 px-4 font-bold text-sm min-h-[52px] active:bg-[#0a6e35] transition-colors"
           aria-label="Chat with Kanaka Sweets on WhatsApp"
           style={{ fontFamily: "var(--font-jost)" }}
         >

@@ -98,7 +98,7 @@ export function CategoryStories() {
                 >
                   {cat.label}
                 </span>
-                <span className="text-[10px] text-stone-400 font-medium hidden sm:inline whitespace-nowrap">
+                <span className="text-[10px] text-stone-600 font-medium hidden sm:inline whitespace-nowrap">
                   {cat.sublabel}
                 </span>
               </div>

@@ -19,7 +19,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Col 1: Brand */}
           <div className="space-y-4">
-            <Link href="/" aria-label="Kanaka Sweets — Home" className="flex items-center gap-3">
+            <Link href="/" aria-label="Kanaka Sweets — Home" className="flex items-center gap-3 min-h-[44px]">
               <div className="w-10 h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030]">
                 <KanakaEmblemIcon className="w-5 h-5 text-[#F8D030]" />
               </div>
@@ -67,7 +67,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="hover:text-white transition-colors inline-block py-2"
+                    className="hover:text-white transition-colors inline-block py-3"
                   >
                     {label}
                   </Link>
@@ -99,7 +99,7 @@ export function Footer() {
                 <ClockIcon className="w-3.5 h-3.5 text-[#F8D030] shrink-0" />
                 <span>Open Daily: 7:00 AM – 10:30 PM</span>
               </div>
-              <p className="text-xs text-white/40">
+              <p className="text-xs text-white/70">
                 FSSAI Certified · Bulk &amp; Wedding Orders Welcome
               </p>
             </div>
@@ -134,7 +134,7 @@ export function Footer() {
                   <PhoneIcon className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <div className="text-xs text-white/50 font-normal">
+                  <div className="text-xs text-white/70 font-normal">
                     Call Shop Directly
                   </div>
                   <div className="text-white font-bold">+91 98480 22338</div>
@@ -144,13 +144,13 @@ export function Footer() {
                 href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] px-4 py-3 rounded-xl transition-colors text-sm font-bold min-h-[52px]"
+                className="flex items-center gap-3 bg-[#0f7a3d] hover:bg-[#0a6e35] px-4 py-3 rounded-xl transition-colors text-sm font-bold min-h-[52px]"
               >
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0">
                   <WhatsAppIcon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-xs text-green-100 font-normal">
+                  <div className="text-xs text-white font-normal">
                     WhatsApp Ordering
                   </div>
                   <div>Chat with Our Chef</div>
@@ -161,9 +161,9 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
           <p>© 2026 Kanaka Sweets &amp; Bakery, Vijayawada. All rights reserved.</p>
-          <p className="text-white/30">
+          <p className="text-white/70">
             Handcrafted with Pure Desi Ghee · FSSAI Certified · Authentic Andhra Mithai
           </p>
         </div>

@@ -33,7 +33,7 @@ export function QuickAddButton({ product }: { product: FormattedProduct }) {
         type="button"
         disabled
         aria-label={`${product.name} is sold out`}
-        className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider min-h-[44px] bg-stone-100 text-stone-500 cursor-not-allowed"
+        className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider min-h-[44px] bg-stone-100 text-stone-600 cursor-not-allowed"
       >
         Sold Out
       </button>
@@ -62,7 +62,11 @@ export function QuickAddButton({ product }: { product: FormattedProduct }) {
         {justAdded ? (
           <>
             {variant.name} added.{" "}
-            <Link href="/cart" className="font-bold text-[#871a45] underline">
+            <Link href="/checkout" className="font-bold text-[#871a45] underline inline-flex items-center min-h-[44px]">
+              Checkout
+            </Link>
+            {" · "}
+            <Link href="/cart" className="font-bold text-[#871a45] underline inline-flex items-center min-h-[44px]">
               View cart
             </Link>
           </>

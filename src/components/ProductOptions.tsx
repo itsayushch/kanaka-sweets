@@ -67,10 +67,10 @@ export function ProductOptions({ product }: ProductOptionsProps) {
           >
             ₹{selectedVariant?.price ?? 0}
           </span>
-          <span className="text-xs text-stone-400">incl. all taxes</span>
+          <span className="text-xs text-stone-600">incl. all taxes</span>
         </div>
         {selectedVariant?.weight && (
-          <div className="text-xs text-stone-500 mt-1">
+          <div className="text-xs text-stone-600 mt-1">
             Net weight:{" "}
             <strong className="text-stone-700">{selectedVariant.weight}</strong>
           </div>
@@ -153,7 +153,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
               +
             </button>
           </div>
-          <span className="text-sm text-stone-500">
+          <span className="text-sm text-stone-600">
             Total:{" "}
             <strong className="text-[#871a45] text-base">
               ₹{(selectedVariant?.price ?? 0) * quantity}
@@ -170,7 +170,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
           disabled={isCurrentOutOfStock}
           className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 min-h-[52px] transition-all ${
             isCurrentOutOfStock
-              ? "bg-stone-100 text-stone-400 cursor-not-allowed"
+              ? "bg-stone-100 text-stone-600 cursor-not-allowed"
               : "bg-[#871a45] hover:bg-[#691436] text-white active:scale-[0.99] shadow-sm"
           }`}
         >
@@ -186,7 +186,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
           href={`https://wa.me/919848022338?text=${whatsappMessage}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white min-h-[48px] transition-colors shadow-sm"
+          className="w-full py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 bg-[#0f7a3d] hover:bg-[#0a6e35] text-white min-h-[48px] transition-colors shadow-sm"
         >
           <WhatsAppIcon className="w-4 h-4" />
           <span>Order via WhatsApp</span>
@@ -204,12 +204,20 @@ export function ProductOptions({ product }: ProductOptionsProps) {
             <CheckIcon className="w-4 h-4 text-emerald-600" />
             <span>{addedMessage}</span>
           </div>
-          <Link
-            href="/cart"
-            className="text-xs bg-emerald-700 text-white px-2.5 py-1 rounded font-bold hover:bg-emerald-800 transition-colors"
-          >
-            View Cart
-          </Link>
+          <div className="flex items-center gap-2 shrink-0">
+            <Link
+              href="/cart"
+              className="text-xs border border-emerald-700 text-emerald-800 px-3 min-h-[44px] inline-flex items-center rounded font-bold hover:bg-emerald-100 transition-colors"
+            >
+              View Cart
+            </Link>
+            <Link
+              href="/checkout"
+              className="text-xs bg-emerald-700 text-white px-3 min-h-[44px] inline-flex items-center rounded font-bold hover:bg-emerald-800 transition-colors"
+            >
+              Checkout
+            </Link>
+          </div>
         </div>
       )}
 

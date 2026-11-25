@@ -86,7 +86,7 @@ export function Navbar() {
                     >
                       Sweets &amp; Bakery
                     </span>
-                    <span className="text-[9px] text-stone-400 font-medium hidden sm:inline">
+                    <span className="text-[9px] text-stone-600 font-medium hidden sm:inline">
                       • Estd. 2011
                     </span>
                   </div>
@@ -106,7 +106,7 @@ export function Navbar() {
                     className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/sweets:border-[#871a45] group-hover/sweets:text-[#871a45] transition-all"
                   >
                     <span>Sweets</span>
-                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/sweets:text-[#871a45] group-hover/sweets:rotate-180 transition-transform duration-200" />
+                    <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/sweets:text-[#871a45] group-hover/sweets:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
@@ -144,7 +144,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Pure Ghee Mysore Pak
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         Melt-in-mouth golden sweet
                                       </span>
                                     </div>
@@ -173,7 +173,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Atreyapuram Pootharekulu
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         Authentic paper sweet
                                       </span>
                                     </div>
@@ -202,7 +202,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Ghee Ariselu
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         Organic jaggery &amp; sesame
                                       </span>
                                     </div>
@@ -228,7 +228,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Tirupati Boondi Ladoo
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         Rich cow ghee &amp; cashews
                                       </span>
                                     </div>
@@ -254,7 +254,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Traditional Bobbatlu
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         Slow-cooked puran poli
                                       </span>
                                     </div>
@@ -296,7 +296,7 @@ export function Navbar() {
                                       <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                         Diamond Kaju Katli
                                       </span>
-                                      <span className="text-[10px] text-stone-400 font-normal">
+                                      <span className="text-[10px] text-stone-600 font-normal">
                                         100% Goan cashew &amp; silver
                                       </span>
                                     </div>
@@ -314,7 +314,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Kaju Pista Roll
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Pistachio Core</span>
+                                  <span className="text-[10px] text-stone-600">Pistachio Core</span>
                                 </Link>
                               </li>
                               <li>
@@ -325,7 +325,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Anjeer Dry Fruit Barfi
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Sugar-free Fig</span>
+                                  <span className="text-[10px] text-stone-600">Sugar-free Fig</span>
                                 </Link>
                               </li>
                               <li>
@@ -336,7 +336,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Badam Halwa &amp; Katli
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Mamra Almonds</span>
+                                  <span className="text-[10px] text-stone-600">Mamra Almonds</span>
                                 </Link>
                               </li>
                               <li>
@@ -347,7 +347,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors">
                                     Roasted Cashew Bites
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Caramelized</span>
+                                  <span className="text-[10px] text-stone-600">Caramelized</span>
                                 </Link>
                               </li>
                             </ul>
@@ -380,37 +380,37 @@ export function Navbar() {
                               <li>
                                 <Link href="/sweets/pootharekulu" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Organic Bellam Pootharekulu</span>
-                                  <span className="text-[10px] text-stone-400">Godavari</span>
+                                  <span className="text-[10px] text-stone-600">Godavari</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href="/sweets" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Kakinada Gottam Khaja</span>
-                                  <span className="text-[10px] text-stone-400">Juicy</span>
+                                  <span className="text-[10px] text-stone-600">Juicy</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href="/sweets" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Tapeswaram Madatha Khaja</span>
-                                  <span className="text-[10px] text-stone-400">Flaky</span>
+                                  <span className="text-[10px] text-stone-600">Flaky</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href="/sweets" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Bandar Thokkudu Laddu</span>
-                                  <span className="text-[10px] text-stone-400">Heritage</span>
+                                  <span className="text-[10px] text-stone-600">Heritage</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href="/sweets" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Bellam Sunnundalu (Urad Dal)</span>
-                                  <span className="text-[10px] text-stone-400">Nourishing</span>
+                                  <span className="text-[10px] text-stone-600">Nourishing</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href="/sweets" className="hover:text-[#871a45] hover:font-semibold transition-colors flex items-center justify-between">
                                   <span>Golden Bellam Jalebi</span>
-                                  <span className="text-[10px] text-stone-400">Warm</span>
+                                  <span className="text-[10px] text-stone-600">Warm</span>
                                 </Link>
                               </li>
                             </ul>
@@ -549,7 +549,7 @@ export function Navbar() {
                     className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/cakes:border-[#871a45] group-hover/cakes:text-[#871a45] transition-all"
                   >
                     <span>Cakes</span>
-                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/cakes:text-[#871a45] group-hover/cakes:rotate-180 transition-transform duration-200" />
+                    <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/cakes:text-[#871a45] group-hover/cakes:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
@@ -575,7 +575,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Rich Holiday Plum Cake
                                   </span>
-                                  <span className="text-[10px] text-stone-400">15-Year Winter Recipe</span>
+                                  <span className="text-[10px] text-stone-600">15-Year Winter Recipe</span>
                                 </div>
                                 <span className="text-[9px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                                   Gifting
@@ -591,7 +591,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Black Forest Delight
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Whipped cream &amp; cherries</span>
+                                  <span className="text-[10px] text-stone-600">Whipped cream &amp; cherries</span>
                                 </div>
                               </Link>
                             </li>
@@ -604,7 +604,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Butterscotch Crunch
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Praline caramel crunch</span>
+                                  <span className="text-[10px] text-stone-600">Praline caramel crunch</span>
                                 </div>
                               </Link>
                             </li>
@@ -617,7 +617,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Dutch Chocolate Truffle Cake
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Rich chocolate ganache</span>
+                                  <span className="text-[10px] text-stone-600">Rich chocolate ganache</span>
                                 </div>
                               </Link>
                             </li>
@@ -706,7 +706,7 @@ export function Navbar() {
                     className="py-1 flex items-center gap-1 border-b-2 border-transparent group-hover/snacks:border-[#871a45] group-hover/snacks:text-[#871a45] transition-all"
                   >
                     <span>Savouries</span>
-                    <ChevronDownIcon className="w-3 h-3 text-stone-400 group-hover/snacks:text-[#871a45] group-hover/snacks:rotate-180 transition-transform duration-200" />
+                    <ChevronDownIcon className="w-3 h-3 text-stone-600 group-hover/snacks:text-[#871a45] group-hover/snacks:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Mega Menu Dropdown */}
@@ -732,7 +732,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Special Vijayawada Mixture
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Fried cashews, curry leaves &amp; sev</span>
+                                  <span className="text-[10px] text-stone-600">Fried cashews, curry leaves &amp; sev</span>
                                 </div>
                                 <span className="text-[9px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                                   Signature
@@ -748,7 +748,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Crispy Ribbon Pakoda
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Besan &amp; red chili ribbon crisp</span>
+                                  <span className="text-[10px] text-stone-600">Besan &amp; red chili ribbon crisp</span>
                                 </div>
                               </Link>
                             </li>
@@ -781,7 +781,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Crunchy Bellam Gavvalu
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Sweet jaggery shell bites</span>
+                                  <span className="text-[10px] text-stone-600">Sweet jaggery shell bites</span>
                                 </div>
                                 <span className="text-[9px] font-bold text-[#2D5E3F] bg-emerald-50 px-1.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                                   Sweet
@@ -797,7 +797,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Authentic Andhra Chekkalu
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Crisp rice discs with chana dal</span>
+                                  <span className="text-[10px] text-stone-600">Crisp rice discs with chana dal</span>
                                 </div>
                               </Link>
                             </li>
@@ -904,7 +904,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Royal Vijayawada Hamper
                                   </span>
-                                  <span className="text-[10px] text-stone-400">1kg assortment in velvet tin</span>
+                                  <span className="text-[10px] text-stone-600">1kg assortment in velvet tin</span>
                                 </div>
                                 <span className="text-[9px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                                   Bestseller
@@ -920,7 +920,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Celebration Sweet &amp; Savoury Box
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Sweets and savouries in one box</span>
+                                  <span className="text-[10px] text-stone-600">Sweets and savouries in one box</span>
                                 </div>
                               </Link>
                             </li>
@@ -933,7 +933,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Subhakruth Sankranti Harvest Box
                                   </span>
-                                  <span className="text-[10px] text-stone-400">A festive Sankranti assortment</span>
+                                  <span className="text-[10px] text-stone-600">A festive Sankranti assortment</span>
                                 </div>
                               </Link>
                             </li>
@@ -946,7 +946,7 @@ export function Navbar() {
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
                                     Elite Dry Fruit Mithai Collection
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Dry fruit sweets for gifting</span>
+                                  <span className="text-[10px] text-stone-600">Dry fruit sweets for gifting</span>
                                 </div>
                               </Link>
                             </li>
@@ -1034,14 +1034,14 @@ export function Navbar() {
             <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
               {/* Search Bar on the RHS (Myntra Style, Clean & Wide) */}
               <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-all px-3.5 gap-2.5 group">
-                <SearchIcon className="w-4 h-4 text-stone-400 group-focus-within:text-[#871a45] transition-colors shrink-0" />
+                <SearchIcon className="w-4 h-4 text-stone-600 group-focus-within:text-[#871a45] transition-colors shrink-0" />
                 <input
                   type="text"
                   readOnly
                   placeholder="Search for sweets, gift boxes, cakes..."
                   className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
                 />
-                <span className="hidden xl:inline-flex text-[10px] text-stone-400 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
+                <span className="hidden xl:inline-flex text-[10px] text-stone-600 font-mono bg-white border border-stone-200 rounded px-1.5 py-0.5 shadow-2xs select-none shrink-0">
                   ⌘K
                 </span>
               </div>
@@ -1049,7 +1049,7 @@ export function Navbar() {
               {/* Profile Icon with Short Title Below */}
               <Link
                 href="/admin"
-                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
                 aria-label="Profile and Admin Login"
               >
                 <div className="w-6 h-6 flex items-center justify-center">
@@ -1066,7 +1066,7 @@ export function Navbar() {
               {/* Wishlist Icon with Short Title Below (Myntra Triad) */}
               <Link
                 href="/sweets"
-                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
                 aria-label="Wishlist"
               >
                 <div className="w-6 h-6 flex items-center justify-center">
@@ -1083,7 +1083,7 @@ export function Navbar() {
               {/* Cart Icon with Counter Badge & Short Title Below */}
               <Link
                 href="/cart"
-                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[38px]"
+                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
                 aria-label="Shopping Cart"
               >
                 <div className="relative w-6 h-6 flex items-center justify-center">

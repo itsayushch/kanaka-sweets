@@ -42,3 +42,23 @@ export function isSlotPast(slot: string, pickupDate: string): boolean {
   const now = nowInIndia();
   return pickupDate === now.date && slotStartMinutes(slot) <= now.minutes;
 }
+
+/** Add days to a YYYY-MM-DD date (calendar arithmetic, no time zones involved). */
+function addDays(date: string, days: number): string {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * The earliest pickup the customer can book: today, in the first slot that has
+ * not started yet; or tomorrow's first slot if today's are all over. The checkout
+ * form starts with this selected so a customer has fewer things to tap (Rule B2).
+ * They can change both.
+ */
+export function defaultPickup(): { date: string; slot: string } {
+  const today = nowInIndia().date;
+  const slot = PICKUP_SLOTS.find((s) => !isSlotPast(s, today));
+  if (slot) return { date: today, slot };
+  return { date: addDays(today, 1), slot: PICKUP_SLOTS[0] };
+}

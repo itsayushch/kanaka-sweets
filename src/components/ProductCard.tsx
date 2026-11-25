@@ -81,7 +81,7 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
       <div className="mt-3.5 flex flex-col flex-grow justify-between">
         <div>
           {/* Subtitle / Spec tag */}
-          <div className="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">
+          <div className="text-[10px] uppercase tracking-wider text-stone-600 font-semibold mb-1">
             {product.categoryName} {defaultVariant?.weight ? `• ${defaultVariant.weight}` : ""}
           </div>
 
@@ -92,14 +92,14 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
           >
             <Link
               href={`/${product.categorySlug}/${product.slug}`}
-              className="focus:outline-none focus-visible:underline"
+              className="block py-[11px] -my-[11px] focus:outline-none focus-visible:underline"
             >
               {product.name}
             </Link>
           </Heading>
 
           {/* Short description */}
-          <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-stone-600 mt-1 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
@@ -107,7 +107,7 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
         {/* Price row: the real "from" price, no fake discount */}
         <div className="mt-4 pt-2 border-t border-stone-100">
           <div className="flex items-baseline gap-1.5 mb-3">
-            <span className="text-xs text-stone-500">From</span>
+            <span className="text-xs text-stone-600">From</span>
             <span className="text-lg sm:text-xl font-bold text-[#871a45]">
               ₹{minPrice}
             </span>

@@ -75,7 +75,7 @@ export function ImageField({
             }}
           />
         </label>
-        <span className="text-xs text-stone-500">JPEG, PNG or WebP, up to 2 MB</span>
+        <span className="text-xs text-stone-600">JPEG, PNG or WebP, up to 2 MB</span>
       </div>
       {uploadError && <p role="alert" className="text-sm font-semibold text-rose-700">{uploadError}</p>}
       {error && <p role="alert" className="text-sm font-semibold text-rose-700">{error}</p>}

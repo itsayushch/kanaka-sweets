@@ -144,15 +144,15 @@ async function ProductDetailContent({ params }: ProductPageProps) {
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="text-xs text-stone-400 flex items-center gap-1.5 flex-wrap"
+          className="text-xs text-stone-600 flex items-center gap-1.5 flex-wrap"
         >
-          <Link href="/" className="hover:text-[#871a45] transition-colors">
+          <Link href="/" className="hover:text-[#871a45] transition-colors inline-flex items-center min-h-[44px]">
             Home
           </Link>
           <span>/</span>
           <Link
             href={`/${product.categorySlug}`}
-            className="hover:text-[#871a45] transition-colors"
+            className="hover:text-[#871a45] transition-colors inline-flex items-center min-h-[44px]"
           >
             {product.categoryName}
           </Link>
@@ -244,7 +244,7 @@ async function ProductDetailContent({ params }: ProductPageProps) {
               </h2>
               <Link
                 href={`/${product.categorySlug}`}
-                className="text-sm font-bold text-[#871a45] hover:text-[#691436] transition-colors"
+                className="text-sm font-bold text-[#871a45] hover:text-[#691436] transition-colors inline-flex items-center min-h-[44px]"
               >
                 View all →
               </Link>

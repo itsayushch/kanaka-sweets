@@ -24,7 +24,7 @@ async function ProductList() {
 
       <div className="overflow-x-auto rounded-2xl border border-stone-200 bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-stone-50 text-left text-xs uppercase tracking-wider text-stone-500">
+          <thead className="bg-stone-50 text-left text-xs uppercase tracking-wider text-stone-600">
             <tr>
               <th className="p-3">Product</th>
               <th className="p-3">Category</th>
@@ -45,14 +45,14 @@ async function ProductList() {
                     </div>
                   ))}
                 </td>
-                <td className="p-3">{p.isActive ? "Shown" : <span className="text-stone-500">Hidden</span>}</td>
+                <td className="p-3">{p.isActive ? "Shown" : <span className="text-stone-600">Hidden</span>}</td>
                 <td className="p-3">
                   <Link href={`/admin/products/${p.id}`} className="font-bold text-[#871a45] underline min-h-[44px] inline-flex items-center">Edit</Link>
                 </td>
               </tr>
             ))}
             {products.length === 0 && (
-              <tr><td colSpan={5} className="p-6 text-center text-stone-500">No products yet. Add your first one.</td></tr>
+              <tr><td colSpan={5} className="p-6 text-center text-stone-600">No products yet. Add your first one.</td></tr>
             )}
           </tbody>
         </table>

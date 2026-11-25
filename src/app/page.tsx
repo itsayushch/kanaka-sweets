@@ -104,21 +104,21 @@ export default async function HomePage() {
       <section className="bg-white py-10 border-b border-stone-100">
         <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 text-center">
           <h2
-            className="text-xs font-bold uppercase tracking-[0.25em] text-stone-400 mb-6"
+            className="text-xs font-bold uppercase tracking-[0.25em] text-stone-600 mb-6"
             style={{ fontFamily: "var(--font-jost)" }}
           >
             Featured In &amp; Recommended By
           </h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-stone-400 font-serif text-lg sm:text-xl font-bold tracking-wider">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-stone-600 font-serif text-lg sm:text-xl font-bold tracking-wider">
             <span className="hover:text-[#002c3f] transition-colors">VOGUE INDIA</span>
-            <span className="text-stone-300">•</span>
+            <span className="text-stone-500">•</span>
             <span className="hover:text-[#002c3f] transition-colors">THE HINDU</span>
-            <span className="text-stone-300">•</span>
+            <span className="text-stone-500">•</span>
             <span className="hover:text-[#002c3f] transition-colors">TIMES OF INDIA</span>
-            <span className="text-stone-300">•</span>
+            <span className="text-stone-500">•</span>
             <span className="hover:text-[#002c3f] transition-colors">DECCAN CHRONICLE</span>
-            <span className="text-stone-300">•</span>
+            <span className="text-stone-500">•</span>
             <span className="hover:text-[#002c3f] transition-colors">CONDÉ NAST</span>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default async function HomePage() {
               Our Gifting Favourites
             </h2>
             <p
-              className="text-stone-500 text-sm sm:text-base mt-2"
+              className="text-stone-600 text-sm sm:text-base mt-2"
               style={{ fontFamily: "var(--font-jost)" }}
             >
               Vijayawada&apos;s most loved pure ghee sweets, festive boxes, and celebration delights.
@@ -422,7 +422,7 @@ export default async function HomePage() {
             >
               Loved by 1,200+ Sweet Lovers
             </h2>
-            <p className="text-stone-500 text-sm mt-2">
+            <p className="text-stone-600 text-sm mt-2">
               Real reviews from families, wedding planners, and foodies across Andhra Pradesh.
             </p>
           </div>
@@ -454,7 +454,7 @@ export default async function HomePage() {
                   <div className="font-bold text-sm text-[#002c3f]">
                     {review.name}
                   </div>
-                  <div className="text-xs text-stone-500">{review.location}</div>
+                  <div className="text-xs text-stone-600">{review.location}</div>
                   <div className="text-[11px] text-[#871a45] font-semibold mt-0.5">
                     Ordered: {review.sweet}
                   </div>

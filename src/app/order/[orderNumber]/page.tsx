@@ -88,7 +88,7 @@ async function OrderDetails({ params, searchParams }: PageProps) {
             <p className="text-sm text-stone-600">
               Order number <strong className="text-[#871a45]">{order.orderNumber}</strong>
             </p>
-            <p className="text-xs text-stone-500">
+            <p className="text-xs text-stone-600">
               Your items are held for {RESERVATION_MINUTES} minutes while you pay.
             </p>
           </div>
@@ -153,7 +153,7 @@ async function OrderDetails({ params, searchParams }: PageProps) {
           href={`https://wa.me/919848022338?text=${encodeURIComponent(`Hello Kanaka Sweets! About my order ${order.orderNumber}.`)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold text-sm px-5 py-3 rounded-xl min-h-[44px]"
+          className="inline-flex items-center gap-2 bg-[#0f7a3d] text-white font-bold text-sm px-5 py-3 rounded-xl min-h-[44px]"
         >
           <WhatsAppIcon className="w-4 h-4" /> WhatsApp us
         </a>

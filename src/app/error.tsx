@@ -51,7 +51,7 @@ export default function ErrorPage({
             href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold text-sm rounded-xl px-5 min-h-[48px]"
+            className="inline-flex items-center gap-2 bg-[#0f7a3d] text-white font-bold text-sm rounded-xl px-5 min-h-[48px]"
           >
             <WhatsAppIcon className="w-4 h-4" /> WhatsApp
           </a>

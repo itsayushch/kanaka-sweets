@@ -58,7 +58,7 @@ export default function ContactPage() {
               href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
               target="_blank"
               rel="noopener noreferrer"
-              className={`${button} bg-[#25D366] text-white`}
+              className={`${button} bg-[#0f7a3d] text-white`}
             >
               <WhatsAppIcon className="w-4 h-4" /> Chat on WhatsApp
             </a>

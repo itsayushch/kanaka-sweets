@@ -106,7 +106,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
             <div className="md:col-span-8 space-y-4">
               {/* Breadcrumb */}
               <nav aria-label="Breadcrumb" className="text-xs text-white/60 flex items-center gap-2">
-                <Link href="/" className="hover:text-[#F8D030] transition-colors">
+                <Link href="/" className="hover:text-[#F8D030] transition-colors inline-flex items-center min-h-[44px]">
                   Home
                 </Link>
                 <span>/</span>
@@ -114,7 +114,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
               </nav>
 
               <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-semibold text-[#F8D030]">
-                <span>✦</span>
+                <span aria-hidden="true">✦</span>
                 <span className="tracking-widest uppercase">
                   KANAKA SWEETS • VIJAYAWADA
                 </span>
@@ -172,7 +172,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
               <Link
                 key={c.id}
                 href={`/${c.slug}`}
-                className={`flex-shrink-0 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[38px] inline-flex items-center ${
+                className={`flex-shrink-0 px-5 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[38px] inline-flex items-center ${
                   c.slug === categorySlug
                     ? "bg-[#871a45] text-white shadow-sm"
                     : "bg-white text-stone-700 border border-stone-200 hover:border-[#871a45] hover:text-[#871a45]"
@@ -202,7 +202,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
               >
                 Fresh batch coming soon
               </h2>
-              <p className="text-sm text-stone-500 max-w-sm mx-auto">
+              <p className="text-sm text-stone-600 max-w-sm mx-auto">
                 Our confectioners are preparing a fresh batch. Check back shortly or browse other categories.
               </p>
               <Link

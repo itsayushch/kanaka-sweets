@@ -27,7 +27,7 @@ async function OrderList() {
       <h1 className="text-2xl font-bold text-[#002c3f]">Orders</h1>
 
       {orders.length === 0 && (
-        <p className="rounded-2xl border border-stone-200 bg-white p-8 text-center text-stone-500">No orders yet.</p>
+        <p className="rounded-2xl border border-stone-200 bg-white p-8 text-center text-stone-600">No orders yet.</p>
       )}
 
       <div className="space-y-4">
@@ -36,7 +36,7 @@ async function OrderList() {
             <div className="flex items-start justify-between gap-3 flex-wrap">
               <div>
                 <div className="font-bold text-[#871a45]">{o.orderNumber}</div>
-                <div className="text-xs text-stone-500">
+                <div className="text-xs text-stone-600">
                   {o.createdAt.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
                 </div>
               </div>
@@ -79,7 +79,7 @@ async function OrderList() {
               ))}
             </ul>
 
-            {o.razorpayPaymentId && <div className="text-xs text-stone-500 break-all">Payment id: {o.razorpayPaymentId}</div>}
+            {o.razorpayPaymentId && <div className="text-xs text-stone-600 break-all">Payment id: {o.razorpayPaymentId}</div>}
             {o.notes && <div className="rounded-lg bg-rose-50 border border-rose-200 p-2 text-sm font-semibold text-rose-800">{o.notes}</div>}
           </article>
         ))}

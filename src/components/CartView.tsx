@@ -148,7 +148,7 @@ export function CartView() {
                   >
                     {info.productName}
                   </Link>
-                  <p className="text-xs text-stone-500">
+                  <p className="text-xs text-stone-600">
                     {info.variantName} · {rupees(info.unitPrice)} each
                   </p>
                 </div>
@@ -197,7 +197,7 @@ export function CartView() {
                 <button
                   type="button"
                   onClick={() => removeItem(item.variantId)}
-                  className="text-xs font-semibold text-stone-500 hover:text-rose-700 underline min-h-[44px] pr-2"
+                  className="text-xs font-semibold text-stone-600 hover:text-rose-700 underline min-h-[44px] pr-2"
                 >
                   Remove
                 </button>
@@ -216,7 +216,7 @@ export function CartView() {
             {rupees(subtotal)}
           </span>
         </div>
-        <p className="text-xs text-stone-500 leading-relaxed">
+        <p className="text-xs text-stone-600 leading-relaxed">
           The final amount is confirmed at checkout using our current prices.
         </p>
         {hasProblem ? (

@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/cart-store";
 import { useCartLines } from "@/lib/use-cart-lines";
-import { PICKUP_SLOTS, isSlotPast } from "@/lib/shop-constants";
+import { PICKUP_SLOTS, defaultPickup, isSlotPast } from "@/lib/shop-constants";
 import { ArrowRightIcon, ShoppingBagIcon } from "@/components/icons";
 
 type FieldName =
@@ -66,7 +66,7 @@ function Field(props: {
         {label}
       </label>
       {children}
-      {hint && !error && <p className="text-xs text-stone-500">{hint}</p>}
+      {hint && !error && <p className="text-xs text-stone-600">{hint}</p>}
       {error && (
         <p id={`${id}-error`} role="alert" className="text-sm font-semibold text-rose-700">
           {error}
@@ -82,17 +82,18 @@ export function CheckoutForm() {
   const items = useCartStore((s) => s.items);
   const { status, lines, subtotal, retry } = useCartLines();
 
-  const [values, setValues] = useState<FormValues>({
+  const [values, setValues] = useState<FormValues>(() => ({
     customerName: "",
     customerPhone: "",
     customerEmail: "",
     fulfillmentType: "PICKUP",
     deliveryAddress: "",
     deliveryPostalCode: "",
-    pickupDate: "",
-    pickupTimeSlot: "",
+    // Start with the earliest available pickup already chosen (fewer taps, Rule B2).
+    pickupDate: defaultPickup().date,
+    pickupTimeSlot: defaultPickup().slot,
     notes: "",
-  });
+  }));
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -279,7 +280,7 @@ export function CheckoutForm() {
                 />
                 <span>
                   <span className="block font-semibold text-[#002c3f]">{title}</span>
-                  <span className="block text-xs text-stone-500">{sub}</span>
+                  <span className="block text-xs text-stone-600">{sub}</span>
                 </span>
               </label>
             ))}
@@ -370,7 +371,7 @@ export function CheckoutForm() {
           <span className="font-semibold text-[#002c3f]">Total</span>
           <span className="text-xl font-bold text-[#871a45]">{rupees(subtotal)}</span>
         </div>
-        <p className="text-xs text-stone-500">
+        <p className="text-xs text-stone-600">
           The final amount is calculated again on our server from current prices.
         </p>
         {cartHasProblem && (
