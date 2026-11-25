@@ -51,11 +51,11 @@ export default function ContactPage() {
           </section>
 
           <div className="flex flex-col gap-3">
-            <a href="tel:+919848022338" className={`${button} bg-[#002c3f] text-white`}>
-              <PhoneIcon className="w-4 h-4" /> Call +91 98480 22338
+            <a href="tel:+919000000000" className={`${button} bg-[#002c3f] text-white`}>
+              <PhoneIcon className="w-4 h-4" /> Call +91 90000 00000
             </a>
             <a
-              href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
+              href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
               target="_blank"
               rel="noopener noreferrer"
               className={`${button} bg-[#0f7a3d] text-white`}

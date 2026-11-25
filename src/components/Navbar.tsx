@@ -48,12 +48,12 @@ export function Navbar() {
                 <span>7:00 AM – 10:30 PM</span>
               </div>
               <a
-                href="tel:+919848022338"
+                href="tel:+919000000000"
                 className="flex items-center gap-1.5 text-[#F8D030] hover:text-white transition-colors font-bold touch-manipulation"
-                aria-label="Call Kanaka Sweets at +91 98480 22338"
+                aria-label="Call Kanaka Sweets at +91 90000 00000"
               >
                 <PhoneIcon className="w-3.5 h-3.5" />
-                <span>+91 98480 22338</span>
+                <span>+91 90000 00000</span>
               </a>
             </div>
           </div>
@@ -539,11 +539,11 @@ export function Navbar() {
                         </div>
                       </div>
                       <a
-                        href="tel:+919848022338"
+                        href="tel:+919000000000"
                         className="font-bold text-[#871a45] hover:text-[#691436] flex items-center gap-1.5 text-xs transition-colors"
                       >
                         <PhoneIcon className="w-3.5 h-3.5" />
-                        <span>Wedding &amp; Bulk Orders: +91 98480 22338</span>
+                        <span>Wedding &amp; Bulk Orders: +91 90000 00000</span>
                       </a>
                     </div>
                   </div>

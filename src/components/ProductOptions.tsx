@@ -183,7 +183,7 @@ export function ProductOptions({ product }: ProductOptionsProps) {
         </button>
 
         <a
-          href={`https://wa.me/919848022338?text=${whatsappMessage}`}
+          href={`https://wa.me/919000000000?text=${whatsappMessage}`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 bg-[#0f7a3d] hover:bg-[#0a6e35] text-white min-h-[48px] transition-colors shadow-sm"

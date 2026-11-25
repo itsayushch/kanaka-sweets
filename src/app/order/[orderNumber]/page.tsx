@@ -144,13 +144,13 @@ async function OrderDetails({ params, searchParams }: PageProps) {
 
       <div className="flex flex-wrap justify-center gap-3">
         <a
-          href="tel:+919848022338"
+          href="tel:+919000000000"
           className="inline-flex items-center gap-2 border border-[#871a45] text-[#871a45] font-bold text-sm px-5 py-3 rounded-xl min-h-[44px]"
         >
           <PhoneIcon className="w-4 h-4" /> Call the shop
         </a>
         <a
-          href={`https://wa.me/919848022338?text=${encodeURIComponent(`Hello Kanaka Sweets! About my order ${order.orderNumber}.`)}`}
+          href={`https://wa.me/919000000000?text=${encodeURIComponent(`Hello Kanaka Sweets! About my order ${order.orderNumber}.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-[#0f7a3d] text-white font-bold text-sm px-5 py-3 rounded-xl min-h-[44px]"

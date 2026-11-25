@@ -5,7 +5,7 @@ export function FloatingContact() {
     <>
       {/* Desktop: one-tap WhatsApp on every page (Rule B3). Phones use the bar below. */}
       <a
-        href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
+        href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
         target="_blank"
         rel="noopener noreferrer"
         className="hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#0f7a3d] hover:bg-[#0a6e35] text-white rounded-2xl shadow-2xl items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
@@ -21,7 +21,7 @@ export function FloatingContact() {
       <div className="grid grid-cols-2 gap-0 max-w-lg mx-auto">
         {/* 1-tap Call (Rule B3) */}
         <a
-          href="tel:+919848022338"
+          href="tel:+919000000000"
           className="flex items-center justify-center gap-2 bg-[#002c3f] text-white py-3 px-4 font-semibold text-sm min-h-[52px] active:bg-[#023e5a] transition-colors"
           aria-label="Call Kanaka Sweets directly"
           style={{ fontFamily: "var(--font-jost)" }}
@@ -32,7 +32,7 @@ export function FloatingContact() {
 
         {/* 1-tap WhatsApp (Rule B3) */}
         <a
-          href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
+          href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets,%20I%20am%20browsing%20your%20store%20and%20want%20to%20order"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 bg-[#0f7a3d] text-white py-3 px-4 font-bold text-sm min-h-[52px] active:bg-[#0a6e35] transition-colors"

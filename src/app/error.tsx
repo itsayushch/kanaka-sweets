@@ -42,13 +42,13 @@ export default function ErrorPage({
             Try again
           </button>
           <a
-            href="tel:+919848022338"
+            href="tel:+919000000000"
             className="inline-flex items-center gap-2 border-2 border-[#871a45] text-[#871a45] font-bold text-sm rounded-xl px-5 min-h-[48px]"
           >
             <PhoneIcon className="w-4 h-4" /> Call us
           </a>
           <a
-            href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
+            href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets%2C%20I%20would%20like%20to%20place%20an%20order."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#0f7a3d] text-white font-bold text-sm rounded-xl px-5 min-h-[48px]"

@@ -127,7 +127,7 @@ export function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="tel:+919848022338"
+                href="tel:+919000000000"
                 className="flex items-center gap-3 bg-white/10 hover:bg-white/15 px-4 py-3 rounded-xl transition-colors text-sm font-semibold min-h-[52px]"
               >
                 <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
@@ -137,11 +137,11 @@ export function Footer() {
                   <div className="text-xs text-white/70 font-normal">
                     Call Shop Directly
                   </div>
-                  <div className="text-white font-bold">+91 98480 22338</div>
+                  <div className="text-white font-bold">+91 90000 00000</div>
                 </div>
               </a>
               <a
-                href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
+                href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#0f7a3d] hover:bg-[#0a6e35] px-4 py-3 rounded-xl transition-colors text-sm font-bold min-h-[52px]"

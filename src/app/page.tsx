@@ -379,7 +379,7 @@ export default async function HomePage() {
                   </Link>
 
                   <a
-                    href="https://wa.me/919848022338?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20enquire%20about%20Bulk%20Festival%20Boxes"
+                    href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20enquire%20about%20Bulk%20Festival%20Boxes"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-white/10 active:scale-95 transition-transform min-h-[48px]"
