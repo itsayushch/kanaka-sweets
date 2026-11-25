@@ -438,23 +438,23 @@ export function Navbar() {
                           </div>
                           <ul className="space-y-2 text-xs text-stone-600 font-normal">
                             <li>
-                              <Link href="/festival-boxes/royal-vijayawada-hamper" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                              <Link href="/festival-boxes/royal-festive-hamper" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
                                 Royal Vijayawada Hamper (1kg)
                               </Link>
                             </li>
                             <li>
-                              <Link href="/festival-boxes/diwali-delight-box" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
-                                Diwali Delight Sweet Box
+                              <Link href="/festival-boxes/sweet-savoury-box" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                Celebration Sweet &amp; Savoury Box
                               </Link>
                             </li>
                             <li>
-                              <Link href="/festival-boxes/sankranti-celebration-box" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
-                                Sankranti Celebration Box
+                              <Link href="/festival-boxes/sankranti-harvest-box" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                Subhakruth Sankranti Harvest Box
                               </Link>
                             </li>
                             <li>
-                              <Link href="/festival-boxes/classic-assorted-box" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
-                                Classic Assorted Sweets Box
+                              <Link href="/festival-boxes/dry-fruit-collection" className="hover:text-[#871a45] hover:font-semibold transition-colors block">
+                                Elite Dry Fruit Mithai Collection
                               </Link>
                             </li>
                             <li>
@@ -503,13 +503,9 @@ export function Navbar() {
                             <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
                               Handcrafted with Kaju Katli, Pootharekulu, Mysore Pak &amp; Dry Fruits in a regal box.
                             </p>
-                            <div className="mt-3 flex items-baseline gap-2">
-                              <span className="text-sm font-bold text-[#002c3f]">₹1,450</span>
-                              <span className="text-[11px] text-stone-400">· 1kg Luxury Box</span>
-                            </div>
                           </div>
                           <Link
-                            href="/festival-boxes/royal-vijayawada-hamper"
+                            href="/festival-boxes/royal-festive-hamper"
                             className="mt-4 w-full inline-flex items-center justify-center gap-1.5 bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xs transition-all active:scale-98"
                           >
                             <span>Order This Hamper</span>
@@ -588,7 +584,7 @@ export function Navbar() {
                             </li>
                             <li>
                               <Link
-                                href="/cakes/black-forest"
+                                href="/cakes/black-forest-cake"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
@@ -601,7 +597,7 @@ export function Navbar() {
                             </li>
                             <li>
                               <Link
-                                href="/cakes/butterscotch-cake"
+                                href="/cakes/butterscotch-crunch-cake"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
@@ -614,14 +610,14 @@ export function Navbar() {
                             </li>
                             <li>
                               <Link
-                                href="/cakes/pineapple-pastry"
+                                href="/cakes/chocolate-truffle-cake"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
-                                    Fresh Pineapple Pastry
+                                    Dutch Chocolate Truffle Cake
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Tender sponge &amp; fruit</span>
+                                  <span className="text-[10px] text-stone-400">Rich chocolate ganache</span>
                                 </div>
                               </Link>
                             </li>
@@ -729,7 +725,7 @@ export function Navbar() {
                           <ul className="space-y-1.5">
                             <li>
                               <Link
-                                href="/snacks/vijayawada-mixture"
+                                href="/snacks/mixture"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
@@ -901,7 +897,7 @@ export function Navbar() {
                           <ul className="space-y-1.5">
                             <li>
                               <Link
-                                href="/festival-boxes/royal-vijayawada-hamper"
+                                href="/festival-boxes/royal-festive-hamper"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
@@ -917,40 +913,40 @@ export function Navbar() {
                             </li>
                             <li>
                               <Link
-                                href="/festival-boxes/diwali-delight-box"
+                                href="/festival-boxes/sweet-savoury-box"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
-                                    Diwali Delight Sweet Box
+                                    Celebration Sweet &amp; Savoury Box
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Kaju Katli, Mysore Pak &amp; Diyas</span>
+                                  <span className="text-[10px] text-stone-400">Sweets and savouries in one box</span>
                                 </div>
                               </Link>
                             </li>
                             <li>
                               <Link
-                                href="/festival-boxes/sankranti-celebration-box"
+                                href="/festival-boxes/sankranti-harvest-box"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
-                                    Sankranti Celebration Box
+                                    Subhakruth Sankranti Harvest Box
                                   </span>
-                                  <span className="text-[10px] text-stone-400">Ariselu, Pootharekulu &amp; Bobbatlu</span>
+                                  <span className="text-[10px] text-stone-400">A festive Sankranti assortment</span>
                                 </div>
                               </Link>
                             </li>
                             <li>
                               <Link
-                                href="/festival-boxes/classic-assorted-box"
+                                href="/festival-boxes/dry-fruit-collection"
                                 className="group/item flex items-center justify-between p-2 -mx-2 rounded-xl hover:bg-[#FAF6EF] transition-all"
                               >
                                 <div>
                                   <span className="text-xs font-semibold text-[#002c3f] group-hover/item:text-[#871a45] transition-colors block">
-                                    Classic Assorted Box
+                                    Elite Dry Fruit Mithai Collection
                                   </span>
-                                  <span className="text-[10px] text-stone-400">500g family favourite sweets</span>
+                                  <span className="text-[10px] text-stone-400">Dry fruit sweets for gifting</span>
                                 </div>
                               </Link>
                             </li>
