@@ -34,7 +34,7 @@ export const CATEGORY_STORIES = [
     href: "/cakes",
     label: "Fresh Cakes",
     sublabel: "Bakery Daily",
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&q=80",
+    image: "/images/products/category-cakes.jpg",
     badge: "Fresh",
   },
   {

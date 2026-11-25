@@ -663,7 +663,7 @@ export function Navbar() {
                           <div>
                             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-3.5 shadow-sm border border-stone-200/60">
                               <Image
-                                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80"
+                                src="/images/products/category-cakes.jpg"
                                 alt="Fresh Celebration Cakes"
                                 width={480}
                                 height={300}

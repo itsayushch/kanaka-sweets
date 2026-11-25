@@ -4,7 +4,6 @@
  * These photos come from Wikimedia Commons and are licensed CC BY-SA, which
  * requires crediting the photographer and the licence. They are shown on the
  * /credits page. When you replace a photo with your own, remove its row here.
- * (The cake photos come from Unsplash, which asks for no attribution.)
  */
 export interface PhotoCredit {
   file: string;
@@ -29,11 +28,11 @@ export const PHOTO_CREDITS: PhotoCredit[] = [
   {
     "file": "kaju-pista-roll.jpg",
     "usedFor": "Kaju Pista Roll",
-    "title": "Kaju katli dessert - top view.jpg",
-    "author": "Unknomics",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Kaju_katli_dessert_-_top_view.jpg"
+    "title": "Anjal king kaju pista.jpg",
+    "author": "Thamizhpparithi Maari",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Anjal_king_kaju_pista.jpg"
   },
   {
     "file": "ghee-mysore-pak.jpg",
@@ -101,11 +100,11 @@ export const PHOTO_CREDITS: PhotoCredit[] = [
   {
     "file": "chekkalu.jpg",
     "usedFor": "Crispy Pappu Chekkalu",
-    "title": "A banana leaf with Tamil bites - Murukku.jpg",
-    "author": "எஸ்ஸார்",
+    "title": "Nippattu (Rice crackers) 3.jpg",
+    "author": "BHARATHESHA  ALASANDEMAJALU",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "page": "https://commons.wikimedia.org/wiki/File:A_banana_leaf_with_Tamil_bites_-_Murukku.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Nippattu_(Rice_crackers)_3.jpg"
   },
   {
     "file": "ribbon-pakoda.jpg",
@@ -119,11 +118,11 @@ export const PHOTO_CREDITS: PhotoCredit[] = [
   {
     "file": "bellam-gavvalu.jpg",
     "usedFor": "Organic Bellam Gavvalu",
-    "title": "Achchu murukku.jpg",
-    "author": "Thamizhpparithi Maari",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Achchu_murukku.jpg"
+    "title": "Sweet gavvalu 27.11.13. (1).JPG",
+    "author": "Bhaskaranaidu",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sweet_gavvalu_27.11.13._(1).JPG"
   },
   {
     "file": "royal-festive-hamper.jpg",
@@ -137,11 +136,11 @@ export const PHOTO_CREDITS: PhotoCredit[] = [
   {
     "file": "sankranti-harvest-box.jpg",
     "usedFor": "Subhakruth Sankranti Harvest Box",
-    "title": "Assamese Pitha and other sweets.jpg",
-    "author": "JyotiPN",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Assamese_Pitha_and_other_sweets.jpg"
+    "title": "A box full of burfis, Mithai Indian Sweets London November 2009.jpg",
+    "author": "secretlondon123",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:A_box_full_of_burfis,_Mithai_Indian_Sweets_London_November_2009.jpg"
   },
   {
     "file": "sweet-savoury-box.jpg",
@@ -178,5 +177,50 @@ export const PHOTO_CREDITS: PhotoCredit[] = [
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "page": "https://commons.wikimedia.org/wiki/File:Chakli_bhajanichi.jpg"
+  },
+  {
+    "file": "black-forest-cake.jpg",
+    "usedFor": "Black Forest Fresh Cream Cake",
+    "title": "Black Forest cake 5.jpg",
+    "author": "Roozitaa",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_Forest_cake_5.jpg"
+  },
+  {
+    "file": "butterscotch-crunch-cake.jpg",
+    "usedFor": "Butterscotch Praline Crunch Cake",
+    "title": "Ice cream cake butterscotch.jpg",
+    "author": "Rupa sree E",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Ice_cream_cake_butterscotch.jpg"
+  },
+  {
+    "file": "chocolate-truffle-cake.jpg",
+    "usedFor": "Dutch Chocolate Truffle Cake",
+    "title": "Rich Chocolate Truffle Cake by Ramesh Bakery in Bhopal Madhya Pradesh.jpg",
+    "author": "Panku00143",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rich_Chocolate_Truffle_Cake_by_Ramesh_Bakery_in_Bhopal_Madhya_Pradesh.jpg"
+  },
+  {
+    "file": "plum-cake.jpg",
+    "usedFor": "Traditional Eggless Rich Plum Cake",
+    "title": "Traditional English Fruitcake (cropped).jpg",
+    "author": "TheMightyGrog",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Traditional_English_Fruitcake_(cropped).jpg"
+  },
+  {
+    "file": "category-cakes.jpg",
+    "usedFor": "Cakes category",
+    "title": "Black Forest gateau.jpg",
+    "author": "Mikelo",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_Forest_gateau.jpg"
   }
 ];
