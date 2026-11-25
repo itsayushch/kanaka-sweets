@@ -190,3 +190,21 @@ export async function getSiteSettings(): Promise<SeedSiteSettings> {
     festivalHighlightDiscount: s.festivalHighlightDiscount ?? "",
   };
 }
+
+/**
+ * Search active products by name, description or category name.
+ * Not cached: every search term is different, so it reads the database live.
+ */
+export async function searchProducts(term: string): Promise<FormattedProduct[]> {
+  const contains = { contains: term, mode: "insensitive" as const };
+  const products = await prisma.product.findMany({
+    where: {
+      isActive: true,
+      OR: [{ name: contains }, { description: contains }, { category: { name: contains } }],
+    },
+    include: productInclude,
+    orderBy: { name: "asc" },
+    take: 24,
+  });
+  return products.map(toFormattedProduct);
+}

@@ -11,7 +11,6 @@ import {
   GiftIcon,
   ClockIcon,
   UserIcon,
-  HeartIcon,
   StarIcon,
   LeafIcon,
   ShieldCheckIcon,
@@ -1028,8 +1027,8 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* ── TAB 5: BULK & WEDDINGS ── */}
-                <div className="h-full flex items-center px-2 xl:px-2.5">
+                {/* ── TAB 5: BULK & WEDDINGS (no room for it below 1280px) ── */}
+                <div className="h-full hidden xl:flex items-center px-2 xl:px-2.5">
                   <Link
                     href="/sweets"
                     className="py-1 flex items-center border-b-2 border-transparent hover:border-[#871a45] hover:text-[#871a45] transition-colors whitespace-nowrap"
@@ -1040,18 +1039,40 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Right: Search Bar + Profile + Wishlist + Cart (search/profile/wishlist are dummies for now) */}
-            <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 shrink-0">
-              {/* Search Bar on the RHS (Myntra Style, Clean & Wide) */}
-              <div className="hidden md:flex items-center w-64 lg:w-80 xl:w-96 h-10 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-colors px-3.5 gap-2.5 group">
+            {/* Right: Search, Profile (admin login) and Cart */}
+            <div className="flex flex-1 min-w-0 items-center justify-end gap-3 sm:gap-5">
+              {/* Search box: a plain GET form, works without JavaScript. It takes only the
+                  space that is left, so the cart always stays on screen. Between 1024 and
+                  1279px the menu needs that space, so the search icon is shown instead. */}
+              <form
+                action="/search"
+                role="search"
+                className="hidden md:flex lg:hidden xl:flex flex-1 min-w-0 max-w-96 items-center h-11 bg-stone-100/70 hover:bg-stone-100 rounded-full border border-stone-200/90 focus-within:border-[#871a45] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#871a45]/10 transition-colors px-3.5 gap-2.5 group"
+              >
                 <SearchIcon className="w-4 h-4 text-stone-600 group-focus-within:text-[#871a45] transition-colors shrink-0" />
                 <input
-                  type="text"
-                  readOnly
-                  placeholder="Search for sweets, gift boxes, cakes..."
-                  className="w-full bg-transparent text-xs text-[#002c3f] placeholder-stone-400 focus:outline-none cursor-pointer"
+                  type="search"
+                  name="q"
+                  maxLength={60}
+                  aria-label="Search sweets, cakes and gift boxes"
+                  placeholder="Search sweets"
+                  className="w-full min-w-0 bg-transparent text-base text-[#002c3f] placeholder-stone-500 focus:outline-none"
                 />
-              </div>
+              </form>
+
+              {/* Search icon (phones and small laptops): opens the search page */}
+              <Link
+                href="/search"
+                className="flex md:hidden lg:flex xl:hidden flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
+                aria-label="Search products"
+              >
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <SearchIcon className="w-5 h-5" />
+                </div>
+                <span className="text-[10px] font-semibold leading-none mt-1" style={{ fontFamily: "var(--font-jost)" }}>
+                  Search
+                </span>
+              </Link>
 
               {/* Profile Icon with Short Title Below */}
               <Link
@@ -1067,23 +1088,6 @@ export function Navbar() {
                   style={{ fontFamily: "var(--font-jost)" }}
                 >
                   Profile
-                </span>
-              </Link>
-
-              {/* Wishlist Icon with Short Title Below (Myntra Triad) */}
-              <Link
-                href="/sweets"
-                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
-                aria-label="Wishlist"
-              >
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <HeartIcon className="w-5 h-5 text-[#002c3f] group-hover:text-[#871a45] transition-colors" />
-                </div>
-                <span
-                  className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover:text-[#871a45] transition-colors"
-                  style={{ fontFamily: "var(--font-jost)" }}
-                >
-                  Wishlist
                 </span>
               </Link>
 
