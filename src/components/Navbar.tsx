@@ -16,7 +16,6 @@ import {
   LeafIcon,
   ShieldCheckIcon,
   TruckIcon,
-  ArrowRightIcon,
 } from "@/components/icons";
 
 export function Navbar() {

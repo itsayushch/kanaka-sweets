@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  getAllCategories,
   getFeaturedProducts,
   getSiteSettings,
   getProductsByCategory,
@@ -10,9 +9,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { CategoryStories } from "@/components/CategoryStories";
 import { HeroCarousel, type HeroBanner } from "@/components/HeroCarousel";
 import {
-  LeafIcon,
-  ShieldCheckIcon,
-  HeartHandIcon,
   StarIcon,
   GiftIcon,
   WhatsAppIcon,
@@ -80,9 +76,8 @@ const REVIEWS = [
 
 export default async function HomePage() {
   "use cache";
-  const [categories, featuredProducts, siteSettings, festivalProducts] =
+  const [featuredProducts, siteSettings, festivalProducts] =
     await Promise.all([
-      getAllCategories(),
       getFeaturedProducts(),
       getSiteSettings(),
       getProductsByCategory("festival-boxes"),

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -75,32 +74,9 @@ export async function generateMetadata({
   };
 }
 
-function CategorySkeleton() {
-  return (
-    <div className="bg-white min-h-[60vh] animate-pulse">
-      <div className="bg-[#023757] py-12 sm:py-16">
-        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 space-y-4">
-          <div className="h-4 w-32 bg-white/20 rounded" />
-          <div className="h-10 w-72 bg-white/20 rounded" />
-          <div className="h-4 w-96 max-w-full bg-white/20 rounded" />
-        </div>
-      </div>
-      <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-12">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div key={i} className="h-80 bg-stone-100 rounded-2xl border border-stone-200" />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function CategoryPage({ params }: CategoryPageProps) {
   return (
-    <Suspense fallback={<CategorySkeleton />}>
-      <CategoryContent params={params} />
-    </Suspense>
+    <CategoryContent params={params} />
   );
 }
 
