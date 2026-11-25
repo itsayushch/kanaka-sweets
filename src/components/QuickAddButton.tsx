@@ -44,7 +44,7 @@ export function QuickAddButton({ product }: { product: FormattedProduct }) {
     addItem({ productId: product.id, variantId: variant.id, quantity: 1 });
     setJustAdded(true);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setJustAdded(false), 2500);
+    timer.current = setTimeout(() => setJustAdded(false), 8000);
   };
 
   return (

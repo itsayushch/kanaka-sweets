@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "Order authentic Andhra sweets, fresh cakes & festive gift boxes online. Handcrafted daily with pure desi ghee in Governorpet, Vijayawada.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+        url: "/images/products/royal-festive-hamper.jpg",
         width: 1200,
         height: 630,
         alt: "Kanaka Sweets & Bakery Vijayawada - Pure Desi Ghee Sweets & Mithai",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     description:
       "Handcrafted pure desi ghee sweets, cakes & festival boxes from Vijayawada.",
     images: [
-      "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+      "/images/products/royal-festive-hamper.jpg",
     ],
   },
   robots: {

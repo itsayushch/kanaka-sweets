@@ -57,7 +57,7 @@ export async function generateMetadata({
         {
           url:
             category.image ||
-            "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+            "/images/products/royal-festive-hamper.jpg",
           width: 1200,
           height: 630,
           alt: `${category.name} at Kanaka Sweets & Bakery Vijayawada`,
@@ -70,7 +70,7 @@ export async function generateMetadata({
       description,
       images: [
         category.image ||
-          "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=1200&q=80",
+          "/images/products/royal-festive-hamper.jpg",
       ],
     },
   };

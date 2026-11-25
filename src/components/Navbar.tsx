@@ -133,7 +133,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=80&q=80"
+                                        src="/images/products/ghee-mysore-pak.jpg"
                                         alt="Mysore Pak"
                                         fill
                                         sizes="32px"
@@ -162,7 +162,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=80&q=80"
+                                        src="/images/products/pootharekulu.jpg"
                                         alt="Pootharekulu"
                                         fill
                                         sizes="32px"
@@ -191,7 +191,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=80&q=80"
+                                        src="/images/products/ariselu.jpg"
                                         alt="Ariselu"
                                         fill
                                         sizes="32px"
@@ -217,7 +217,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=80&q=80"
+                                        src="/images/products/boondi-ladoo.jpg"
                                         alt="Boondi Ladoo"
                                         fill
                                         sizes="32px"
@@ -243,7 +243,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?w=80&q=80"
+                                        src="/images/products/bobbatlu.jpg"
                                         alt="Bobbatlu"
                                         fill
                                         sizes="32px"
@@ -285,7 +285,7 @@ export function Navbar() {
                                   <div className="flex items-center gap-2.5">
                                     <div className="w-8 h-8 rounded-lg overflow-hidden relative shrink-0 border border-stone-200/80 bg-stone-100">
                                       <Image
-                                        src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=80&q=80"
+                                        src="/images/products/kaju-katli.jpg"
                                         alt="Kaju Katli"
                                         fill
                                         sizes="32px"
@@ -480,7 +480,7 @@ export function Navbar() {
                           <div>
                             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-3.5 shadow-sm border border-stone-200/60">
                               <Image
-                                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80"
+                                src="/images/products/royal-festive-hamper.jpg"
                                 alt="Royal Festive Hamper"
                                 fill
                                 sizes="240px"
@@ -832,7 +832,7 @@ export function Navbar() {
                           <div>
                             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-3.5 shadow-sm border border-stone-200/60">
                               <Image
-                                src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=400&q=80"
+                                src="/images/products/category-snacks.jpg"
                                 alt="Vijayawada Savouries"
                                 fill
                                 sizes="240px"
@@ -985,7 +985,7 @@ export function Navbar() {
                           <div>
                             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-3.5 shadow-sm border border-stone-200/60">
                               <Image
-                                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80"
+                                src="/images/products/royal-festive-hamper.jpg"
                                 alt="Royal Festive Hampers"
                                 fill
                                 sizes="240px"

@@ -196,7 +196,7 @@ export default async function HomePage() {
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&q=80"
+                  src="/images/products/category-sweets.jpg"
                   alt="Pure Desi Ghee Sweets"
                   fill
                   sizes="(max-width: 640px) 100vw, 25vw"
@@ -229,7 +229,7 @@ export default async function HomePage() {
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80"
+                  src="/images/products/royal-festive-hamper.jpg"
                   alt="Luxury Gift Boxes"
                   fill
                   sizes="(max-width: 640px) 100vw, 25vw"
@@ -262,7 +262,7 @@ export default async function HomePage() {
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80"
+                  src="/images/products/category-snacks.jpg"
                   alt="Vijayawada Savouries"
                   fill
                   sizes="(max-width: 640px) 100vw, 25vw"
@@ -297,8 +297,8 @@ export default async function HomePage() {
             >
               <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80"
-                  alt="Kanaka Sweets Governorpet Shop"
+                  src="/images/products/ghee-mysore-pak.jpg"
+                  alt="Fresh Mysore Pak, a Kanaka Sweets favourite"
                   fill
                   sizes="(max-width: 640px) 100vw, 25vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"

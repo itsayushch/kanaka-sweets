@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/cart-store";
 import { useCartLines } from "@/lib/use-cart-lines";
+import { useHydrated } from "@/lib/use-hydrated";
 import { PICKUP_SLOTS, defaultPickup, isSlotPast } from "@/lib/shop-constants";
 import { ArrowRightIcon, ShoppingBagIcon } from "@/components/icons";
 
@@ -82,21 +83,27 @@ export function CheckoutForm() {
   const items = useCartStore((s) => s.items);
   const { status, lines, subtotal, retry } = useCartLines();
 
-  const [values, setValues] = useState<FormValues>(() => ({
+  const [values, setValues] = useState<FormValues>({
     customerName: "",
     customerPhone: "",
     customerEmail: "",
     fulfillmentType: "PICKUP",
     deliveryAddress: "",
     deliveryPostalCode: "",
-    // Start with the earliest available pickup already chosen (fewer taps, Rule B2).
-    pickupDate: defaultPickup().date,
-    pickupTimeSlot: defaultPickup().slot,
+    pickupDate: "",
+    pickupTimeSlot: "",
     notes: "",
-  }));
+  });
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  // Until the customer chooses, the earliest available pickup is pre-selected (fewer taps,
+  // Rule B2). It is worked out only in the browser, because it depends on the current time.
+  const hydrated = useHydrated();
+  const fallback = hydrated ? defaultPickup() : null;
+  const pickupDate = values.pickupDate || fallback?.date || "";
+  const pickupTimeSlot = values.pickupTimeSlot || fallback?.slot || "";
 
   const set = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues((v) => ({ ...v, [key]: value }));
@@ -159,8 +166,8 @@ export function CheckoutForm() {
             deliveryPostalCode: values.deliveryPostalCode,
           }
         : {
-            pickupDate: values.pickupDate || undefined,
-            pickupTimeSlot: values.pickupTimeSlot || undefined,
+            pickupDate: pickupDate || undefined,
+            pickupTimeSlot: pickupTimeSlot || undefined,
           }),
       notes: values.notes || undefined,
       items,
@@ -321,7 +328,7 @@ export function CheckoutForm() {
                   id="pickupDate"
                   type="date"
                   min={todayInIndia()}
-                  value={values.pickupDate}
+                  value={pickupDate}
                   onChange={(e) => set("pickupDate", e.target.value)}
                   aria-invalid={!!errors.pickupDate}
                   aria-describedby={errors.pickupDate ? "pickupDate-error" : undefined}
@@ -331,7 +338,7 @@ export function CheckoutForm() {
               <Field id="pickupTimeSlot" label="Pickup time slot" error={errors.pickupTimeSlot}>
                 <select
                   id="pickupTimeSlot"
-                  value={values.pickupTimeSlot}
+                  value={pickupTimeSlot}
                   onChange={(e) => set("pickupTimeSlot", e.target.value)}
                   aria-invalid={!!errors.pickupTimeSlot}
                   aria-describedby={errors.pickupTimeSlot ? "pickupTimeSlot-error" : undefined}
@@ -340,7 +347,7 @@ export function CheckoutForm() {
                   <option value="">Choose a time slot</option>
                   {PICKUP_SLOTS.map((slot) => {
                     // Slots that already started today can't be booked.
-                    const past = !!values.pickupDate && isSlotPast(slot, values.pickupDate);
+                    const past = !!pickupDate && isSlotPast(slot, pickupDate);
                     return (
                       <option key={slot} value={slot} disabled={past}>
                         {slot}{past ? " (not available today)" : ""}

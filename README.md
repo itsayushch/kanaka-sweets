@@ -178,4 +178,6 @@ scripts/            create-admin and the test / check commands
 - Header Search and Wishlist are placeholders and do not work yet.
 - If a customer pays and closes the browser before the confirmation reaches our server, the order stays
   unpaid until it expires. A Razorpay webhook would fix this; it is not part of the brief.
-- Many products share the same example photos. Upload real photos from the admin panel.
+- Product photos are example photos: the sweets and snacks are from Wikimedia Commons (CC BY-SA, credited on
+  `/credits` and in `src/data/photo-credits.ts`) and the cakes are from Unsplash. Replace them with the shop's own
+  photos from the admin panel (and remove the matching rows from the credits file).
