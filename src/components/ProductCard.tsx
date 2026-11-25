@@ -55,8 +55,8 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
           )}
         </div>
 
-        {/* Top-right FSSAI Green Vegetarian Mark */}
-        <div className="absolute top-2.5 right-2.5 pointer-events-none shadow-sm rounded">
+        {/* Green vegetarian mark: bottom-left, so it never covers the badge on narrow phones */}
+        <div className="absolute bottom-2.5 left-2.5 pointer-events-none shadow-sm rounded">
           <VegetarianMarkIcon className="w-4 h-4" />
         </div>
 
@@ -88,7 +88,7 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
 
           {/* Product Title */}
           <Heading
-            className="font-medium text-base sm:text-lg text-[#002c3f] group-hover:text-[#871a45] transition-colors line-clamp-1 leading-snug"
+            className="font-medium text-base sm:text-lg text-[#002c3f] group-hover:text-[#871a45] transition-colors leading-snug"
             style={{ fontFamily: "var(--font-jost)" }}
           >
             <Link

@@ -166,9 +166,11 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
         </>
       )}
 
-      {/* ── Slide Dot Indicators (Bottom Center) ── */}
+      {/* ── Slide Dot Indicators ──
+          Bottom right on phones, so they never sit on top of the banner's button
+          (bottom left). Bottom centre on wider screens. */}
       {length > 1 && (
-        <div className="absolute bottom-3 sm:bottom-5 inset-x-0 z-20 flex items-center justify-center gap-2 pointer-events-none">
+        <div className="absolute bottom-0 sm:bottom-5 inset-x-0 z-20 flex items-center justify-end pr-1 sm:justify-center sm:pr-0 sm:gap-2 pointer-events-none">
           {banners.map((_, index) => (
             <button
               key={index}
