@@ -79,9 +79,10 @@ export function CategoryStories() {
                 <Image
                   src={cat.image}
                   alt={cat.label}
-                  fill
+                  width={160}
+                  height={160}
                   sizes="80px"
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {cat.badge && (
                   <span className="absolute bottom-0 inset-x-0 bg-[#871a45]/90 text-white text-[8px] font-bold uppercase tracking-wider py-0.5 text-center backdrop-blur-xs">

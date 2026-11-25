@@ -135,9 +135,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/ghee-mysore-pak.jpg"
                                         alt="Mysore Pak"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -164,9 +165,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/pootharekulu.jpg"
                                         alt="Pootharekulu"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -193,9 +195,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/ariselu.jpg"
                                         alt="Ariselu"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -219,9 +222,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/boondi-ladoo.jpg"
                                         alt="Boondi Ladoo"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -245,9 +249,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/bobbatlu.jpg"
                                         alt="Bobbatlu"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -287,9 +292,10 @@ export function Navbar() {
                                       <Image
                                         src="/images/products/kaju-katli.jpg"
                                         alt="Kaju Katli"
-                                        fill
+                                        width={64}
+                                        height={64}
                                         sizes="32px"
-                                        className="object-cover group-hover/item:scale-110 transition-transform duration-200"
+                                        className="absolute inset-0 h-full w-full object-cover group-hover/item:scale-110 transition-transform duration-200"
                                       />
                                     </div>
                                     <div className="flex flex-col">
@@ -482,9 +488,10 @@ export function Navbar() {
                               <Image
                                 src="/images/products/royal-festive-hamper.jpg"
                                 alt="Royal Festive Hamper"
-                                fill
+                                width={480}
+                                height={300}
                                 sizes="240px"
-                                className="object-cover"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                               <div className="absolute top-2.5 left-2.5 bg-[#871a45] text-[#F8D030] text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
                                 <SparklesIcon className="w-2.5 h-2.5 text-[#F8D030]" />
@@ -658,9 +665,10 @@ export function Navbar() {
                               <Image
                                 src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80"
                                 alt="Fresh Celebration Cakes"
-                                fill
+                                width={480}
+                                height={300}
                                 sizes="240px"
-                                className="object-cover"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                               <div className="absolute top-2.5 left-2.5 bg-[#871a45] text-[#F8D030] text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
                                 Baked Fresh Daily
@@ -834,9 +842,10 @@ export function Navbar() {
                               <Image
                                 src="/images/products/category-snacks.jpg"
                                 alt="Vijayawada Savouries"
-                                fill
+                                width={480}
+                                height={300}
                                 sizes="240px"
-                                className="object-cover"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                               <div className="absolute top-2.5 left-2.5 bg-[#871a45] text-[#F8D030] text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
                                 Fresh Groundnut Oil
@@ -987,9 +996,10 @@ export function Navbar() {
                               <Image
                                 src="/images/products/royal-festive-hamper.jpg"
                                 alt="Royal Festive Hampers"
-                                fill
+                                width={480}
+                                height={300}
                                 sizes="240px"
-                                className="object-cover"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                             </div>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#871a45]">

@@ -168,10 +168,11 @@ async function ProductDetailContent({ params }: ProductPageProps) {
               <Image
                 src={product.image}
                 alt={`${product.name} — handcrafted at Kanaka Sweets, Vijayawada`}
-                fill
+                width={1200}
+                height={900}
                 priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
               {product.isBestForGifting && (
                 <div className="absolute top-4 left-4 bg-[#871a45] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
@@ -192,9 +193,10 @@ async function ProductDetailContent({ params }: ProductPageProps) {
                     <Image
                       src={imgUrl}
                       alt={`${product.name} — view ${idx + 1}`}
-                      fill
+                      width={1200}
+                      height={900}
                       sizes="(max-width: 768px) 25vw, 10vw"
-                      className="object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                       loading="lazy"
                     />
                   </div>

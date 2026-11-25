@@ -111,13 +111,14 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
                   <Image
                     src={banner.image}
                     alt={banner.alt || "Kanaka Sweets & Bakery"}
-                    fill
+                    width={1920}
+                    height={815}
                     priority={index === 0}
                     // Banners other than the first only mount when about to be shown,
                     // so load them right away to avoid a blank frame while fading in.
                     loading={index === 0 ? undefined : "eager"}
                     sizes="100vw"
-                    className="object-cover object-center select-none"
+                    className="absolute inset-0 h-full w-full object-cover object-center select-none"
                   />
                 )}
               </Link>

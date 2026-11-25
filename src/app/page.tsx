@@ -198,9 +198,10 @@ export default async function HomePage() {
                 <Image
                   src="/images/products/category-sweets.jpg"
                   alt="Pure Desi Ghee Sweets"
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col justify-between">
@@ -231,9 +232,10 @@ export default async function HomePage() {
                 <Image
                   src="/images/products/royal-festive-hamper.jpg"
                   alt="Luxury Gift Boxes"
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col justify-between">
@@ -264,9 +266,10 @@ export default async function HomePage() {
                 <Image
                   src="/images/products/category-snacks.jpg"
                   alt="Vijayawada Savouries"
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col justify-between">
@@ -299,9 +302,10 @@ export default async function HomePage() {
                 <Image
                   src="/images/products/ghee-mysore-pak.jpg"
                   alt="Fresh Mysore Pak, a Kanaka Sweets favourite"
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5 flex-grow flex flex-col justify-between">
@@ -397,9 +401,10 @@ export default async function HomePage() {
                   <Image
                     src={siteSettings.festivalHighlightImage || topFestivalBox.image}
                     alt="Kanaka Sweets festival gift boxes"
-                    fill
+                    width={800}
+                    height={600}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>

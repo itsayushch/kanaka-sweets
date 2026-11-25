@@ -153,10 +153,11 @@ async function CategoryContent({ params }: CategoryPageProps) {
                 <Image
                   src={category.image}
                   alt={`${category.name} collection`}
-                  fill
+                  width={1200}
+                  height={900}
                   priority
                   sizes="(max-width: 768px) 100vw, 35vw"
-                  className="object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
             </div>

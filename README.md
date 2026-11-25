@@ -173,8 +173,9 @@ scripts/            create-admin and the test / check commands
 
 ## Known limits
 
-- Unknown URLs show a "Not Found" page with `noindex` but answer HTTP 200. This is how this version of
-  Next.js streams pages with caching turned on.
+- The very first visit to a never-seen unknown URL answers HTTP 200 (with the "Not Found" page and `noindex`);
+  after that, the same URL answers a real 404. This is how this version of Next.js streams pages with caching
+  turned on.
 - Header Search and Wishlist are placeholders and do not work yet.
 - If a customer pays and closes the browser before the confirmation reaches our server, the order stays
   unpaid until it expires. A Razorpay webhook would fix this; it is not part of the brief.

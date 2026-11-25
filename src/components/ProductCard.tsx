@@ -29,10 +29,11 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
         <Image
           src={product.image}
           alt={`${product.name} — Kanaka Sweets & Bakery Vijayawada`}
-          fill
+          width={800}
+          height={800}
           priority={priority}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          className="absolute inset-0 h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           loading={priority ? undefined : "lazy"}
         />
 
