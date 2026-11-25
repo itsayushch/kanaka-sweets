@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getAllCategories, getAllProducts } from "@/lib/db-products";
+import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://kanaka-sweets.vercel.app";
+  const baseUrl = SITE_URL;
   const now = new Date("2026-11-24T00:00:00.000Z");
 
   // Core base pages

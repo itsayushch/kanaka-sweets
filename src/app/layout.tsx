@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
+import { SITE_URL } from "@/lib/site";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -29,7 +30,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://kanaka-sweets.vercel.app"
+    SITE_URL
   ),
   title: {
     default: "Kanaka Sweets & Bakery | Authentic Pure Ghee Sweets in Vijayawada",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://kanaka-sweets.vercel.app",
+    url: SITE_URL,
     siteName: "Kanaka Sweets & Bakery",
     title: "Kanaka Sweets & Bakery | 15 Years of Pure Ghee Sweets in Vijayawada",
     description:

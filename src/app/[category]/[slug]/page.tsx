@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -45,7 +46,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://kanaka-sweets.vercel.app/${categorySlug}/${productSlug}`,
+      url: `${SITE_URL}/${categorySlug}/${productSlug}`,
       images: [
         {
           url: product.image,
