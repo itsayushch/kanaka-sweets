@@ -97,7 +97,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
     <div style={{ fontFamily: "var(--font-jost)" }} className="bg-white">
       {/* ── Category Hero Banner (Royal Blue & Gold Starbursts) ── */}
       <section className="relative bg-[#023757] text-white overflow-hidden py-12 sm:py-16">
-        <div className="absolute top-4 right-10 text-[#F8D030]/20 text-5xl font-serif pointer-events-none select-none">
+        <div aria-hidden="true" className="absolute top-4 right-10 text-[#F8D030]/20 text-5xl font-serif pointer-events-none select-none">
           ✦
         </div>
 
@@ -106,7 +106,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
             <div className="md:col-span-8 space-y-4">
               {/* Breadcrumb */}
               <nav aria-label="Breadcrumb" className="text-xs text-white/60 flex items-center gap-2">
-                <Link href="/" className="hover:text-[#F8D030] transition-colors inline-flex items-center min-h-[44px]">
+                <Link href="/" className="hover:text-[#F8D030] transition-colors inline-flex items-center justify-center min-h-[44px] min-w-[44px]">
                   Home
                 </Link>
                 <span>/</span>
@@ -172,7 +172,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
               <Link
                 key={c.id}
                 href={`/${c.slug}`}
-                className={`flex-shrink-0 px-5 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[38px] inline-flex items-center ${
+                className={`flex-shrink-0 px-5 min-h-[44px] inline-flex items-center rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all min-h-[38px] inline-flex items-center ${
                   c.slug === categorySlug
                     ? "bg-[#871a45] text-white shadow-sm"
                     : "bg-white text-stone-700 border border-stone-200 hover:border-[#871a45] hover:text-[#871a45]"

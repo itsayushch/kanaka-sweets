@@ -146,13 +146,13 @@ async function ProductDetailContent({ params }: ProductPageProps) {
           aria-label="Breadcrumb"
           className="text-xs text-stone-600 flex items-center gap-1.5 flex-wrap"
         >
-          <Link href="/" className="hover:text-[#871a45] transition-colors inline-flex items-center min-h-[44px]">
+          <Link href="/" className="hover:text-[#871a45] transition-colors inline-flex items-center justify-center min-h-[44px] min-w-[44px]">
             Home
           </Link>
           <span>/</span>
           <Link
             href={`/${product.categorySlug}`}
-            className="hover:text-[#871a45] transition-colors inline-flex items-center min-h-[44px]"
+            className="hover:text-[#871a45] transition-colors inline-flex items-center justify-center min-h-[44px] min-w-[44px]"
           >
             {product.categoryName}
           </Link>

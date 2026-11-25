@@ -16,7 +16,7 @@ export default function CreditsPage() {
       </h1>
       <p className="text-stone-700 mb-8 leading-relaxed">
         The sweet and snack photos on this site are from{" "}
-        <a href="https://commons.wikimedia.org" className="underline text-[#871a45]" target="_blank" rel="noopener noreferrer">
+        <a href="https://commons.wikimedia.org" className="underline text-[#871a45] inline-flex items-center min-h-[44px]" target="_blank" rel="noopener noreferrer">
           Wikimedia Commons
         </a>
         . We resized and cropped them. Each is shared by its photographer under the licence shown. The cake photos
@@ -28,15 +28,13 @@ export default function CreditsPage() {
           <li key={c.file} className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-relaxed">
             <div className="font-bold text-[#002c3f]">{c.usedFor}</div>
             <div className="text-stone-700">
-              &ldquo;
-              <a href={c.page} className="underline" target="_blank" rel="noopener noreferrer">
-                {c.title}
+              <a href={c.page} className="underline inline-flex items-center min-h-[44px]" target="_blank" rel="noopener noreferrer">
+                &ldquo;{c.title}&rdquo;
               </a>
-              &rdquo; by {c.author}, licence{" "}
-              <a href={c.licenseUrl} className="underline" target="_blank" rel="noopener noreferrer">
-                {c.license}
+              <span className="block">Photo by {c.author}</span>
+              <a href={c.licenseUrl} className="underline inline-flex items-center min-h-[44px]" target="_blank" rel="noopener noreferrer">
+                Licence: {c.license}
               </a>
-              .
             </div>
           </li>
         ))}
