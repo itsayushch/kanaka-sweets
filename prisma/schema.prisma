@@ -2,8 +2,10 @@
 // Stack: Next.js + PostgreSQL on Supabase (Mumbai ap-south-1) via Prisma
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider      = "prisma-client"
+  output        = "../src/generated/prisma"
+  // "native" = this computer; the second one is the Linux runtime Vercel uses.
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {

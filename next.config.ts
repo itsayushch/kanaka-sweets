@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // Make sure Vercel ships Prisma's query engine files with every route.
+  outputFileTracingIncludes: {
+    "/": ["./src/generated/prisma/**/*"],
+    "/**": ["./src/generated/prisma/**/*"],
+  },
   poweredByHeader: false, // don't advertise the framework
   // Basic hardening headers on every response.
   async headers() {
