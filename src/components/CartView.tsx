@@ -144,7 +144,7 @@ export function CartView() {
                 <div>
                   <Link
                     href={`/${info.categorySlug}/${info.productSlug}`}
-                    className="font-semibold text-[#002c3f] hover:text-[#871a45] leading-snug block"
+                    className="font-semibold text-[#002c3f] hover:text-[#871a45] leading-snug block py-[11px] -my-[11px]"
                   >
                     {info.productName}
                   </Link>
