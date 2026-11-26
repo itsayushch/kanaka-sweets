@@ -5,7 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
-import { StorefrontShell } from "@/components/StorefrontShell";
+import { HideOnAdmin } from "@/components/StorefrontShell";
 import { SITE_URL } from "@/lib/site";
 
 const fraunces = Fraunces({
@@ -106,26 +106,29 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-white text-[#1a1a1a]"
+        className="flex flex-col min-h-screen bg-white text-[#1a1a1a]"
         suppressHydrationWarning
       >
+        <Suspense fallback={<Navbar />}>
+          <HideOnAdmin>
+            <Navbar />
+          </HideOnAdmin>
+        </Suspense>
+        <main className="flex-grow" suppressHydrationWarning>
+          {children}
+        </main>
         <Suspense
           fallback={
-            <div className="flex flex-col min-h-screen pb-16 md:pb-0">
-              <Navbar />
-              <main className="flex-grow">{children}</main>
+            <>
               <Footer />
               <FloatingContact />
-            </div>
+            </>
           }
         >
-          <StorefrontShell
-            navbar={<Navbar />}
-            footer={<Footer />}
-            floatingContact={<FloatingContact />}
-          >
-            {children}
-          </StorefrontShell>
+          <HideOnAdmin>
+            <Footer />
+            <FloatingContact />
+          </HideOnAdmin>
         </Suspense>
       </body>
     </html>
