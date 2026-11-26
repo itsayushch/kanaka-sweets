@@ -99,32 +99,6 @@ export default async function HomePage() {
       <CategoryStories />
 
       {/* ═══════════════════════════════════════════════════════════
-          3. AS SEEN IN / PRESS STRIP (BSS Signature Social Proof)
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-5 sm:py-9 border-b border-stone-100">
-        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 text-center">
-          <h2
-            className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-stone-600 mb-3 sm:mb-5"
-            style={{ fontFamily: "var(--font-jost)" }}
-          >
-            Featured In &amp; Recommended By
-          </h2>
-
-          <div className="flex items-center sm:justify-center gap-6 sm:gap-10 overflow-x-auto no-scrollbar whitespace-nowrap text-stone-600 font-serif text-xs sm:text-base lg:text-lg font-bold tracking-wider py-0.5">
-            <span className="hover:text-[#002c3f] transition-colors shrink-0">VOGUE INDIA</span>
-            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors shrink-0">THE HINDU</span>
-            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors shrink-0">TIMES OF INDIA</span>
-            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors shrink-0">DECCAN CHRONICLE</span>
-            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors shrink-0">CONDÉ NAST</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
           3. OUR GIFTING FAVOURITES (Products Grid)
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-8 sm:py-16 bg-white" aria-labelledby="gifting-heading">
