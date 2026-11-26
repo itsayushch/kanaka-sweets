@@ -127,14 +127,14 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
         })}
       </div>
 
-      {/* ── Prev / Next Navigation Arrows (Hover visible, accessible) ── */}
+      {/* ── Prev / Next Navigation Arrows (Desktop hover/focus; mobile uses swipe & dots) ── */}
       {length > 1 && (
         <>
           <button
             type="button"
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-[#002c3f] shadow-lg items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
           >
             <svg
               className="w-5 h-5"
@@ -151,7 +151,7 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
             type="button"
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/75 hover:bg-white text-[#002c3f] shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-[#002c3f] shadow-lg items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 backdrop-blur-xs cursor-pointer"
           >
             <svg
               className="w-5 h-5"
@@ -167,28 +167,29 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
       )}
 
       {/* ── Slide Dot Indicators ──
-          Bottom right on phones, so they never sit on top of the banner's button
-          (bottom left). Bottom centre on wider screens. */}
+          Bottom right on phones, centered on wider screens, with a dark pill backdrop for contrast. */}
       {length > 1 && (
-        <div className="absolute bottom-0 sm:bottom-5 inset-x-0 z-20 flex items-center justify-end pr-1 sm:justify-center sm:pr-0 sm:gap-2 pointer-events-none">
-          {banners.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setCurrent(index)}
-              // 44px tap area (Rule C6) around a small visible dot. Only transform and
-              // opacity animate (Rule D6).
-              className="pointer-events-auto w-11 h-11 flex items-center justify-center cursor-pointer"
-              aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === current ? "true" : undefined}
-            >
-              <span
-                className={`block h-2 w-2 rounded-full bg-white transition-[transform,opacity] duration-300 ${
-                  index === current ? "scale-125 opacity-100 shadow-sm" : "opacity-50"
-                }`}
-              />
-            </button>
-          ))}
+        <div className="absolute bottom-1 sm:bottom-4 inset-x-0 z-20 flex items-center justify-end pr-2 sm:justify-center sm:pr-0 pointer-events-none">
+          <div className="pointer-events-auto inline-flex items-center bg-black/35 backdrop-blur-xs rounded-full px-1">
+            {banners.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setCurrent(index)}
+                // 44px tap area (Rule C6) around a small visible dot. Only transform and
+                // opacity animate (Rule D6).
+                className="w-11 h-11 flex items-center justify-center cursor-pointer"
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={index === current ? "true" : undefined}
+              >
+                <span
+                  className={`block h-2 w-2 rounded-full bg-white transition-[transform,opacity] duration-300 ${
+                    index === current ? "scale-125 opacity-100 shadow-sm" : "opacity-55"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>

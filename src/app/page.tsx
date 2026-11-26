@@ -110,15 +110,15 @@ export default async function HomePage() {
             Featured In &amp; Recommended By
           </h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-stone-600 font-serif text-lg sm:text-xl font-bold tracking-wider">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 text-stone-600 font-serif text-sm sm:text-base lg:text-lg font-bold tracking-wider">
             <span className="hover:text-[#002c3f] transition-colors">VOGUE INDIA</span>
-            <span className="text-stone-500">•</span>
+            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
             <span className="hover:text-[#002c3f] transition-colors">THE HINDU</span>
-            <span className="text-stone-500">•</span>
+            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
             <span className="hover:text-[#002c3f] transition-colors">TIMES OF INDIA</span>
-            <span className="text-stone-500">•</span>
+            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
             <span className="hover:text-[#002c3f] transition-colors">DECCAN CHRONICLE</span>
-            <span className="text-stone-500">•</span>
+            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
             <span className="hover:text-[#002c3f] transition-colors">CONDÉ NAST</span>
           </div>
         </div>

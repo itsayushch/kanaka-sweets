@@ -75,24 +75,26 @@ export function CategoryStories() {
               className="flex flex-col items-center gap-1.5 group shrink-0 min-w-[76px] sm:min-w-[92px] flex-1 text-center"
             >
               {/* Real High-Resolution Circular Photography Disc */}
-              <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-xs group-hover:shadow-md transition-transform duration-300 relative bg-stone-100">
-                <Image
-                  src={cat.image}
-                  alt={cat.label}
-                  width={160}
-                  height={160}
-                  sizes="80px"
-                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+              <div className="relative">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-stone-200/90 group-hover:border-[#871a45] group-hover:scale-105 shadow-xs group-hover:shadow-md transition-transform duration-300 relative bg-stone-100">
+                  <Image
+                    src={cat.image}
+                    alt={cat.label}
+                    width={160}
+                    height={160}
+                    sizes="80px"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
                 {cat.badge && (
-                  <span className="absolute bottom-0 inset-x-0 bg-[#871a45]/90 text-white text-[8px] font-bold uppercase tracking-wider py-0.5 text-center backdrop-blur-xs">
+                  <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-10 bg-[#871a45] text-white text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-xs">
                     {cat.badge}
                   </span>
                 )}
               </div>
 
               {/* Category Label and Subtitle */}
-              <div className="flex flex-col items-center leading-tight mt-0.5">
+              <div className="flex flex-col items-center leading-tight mt-1.5">
                 <span
                   className="text-xs sm:text-sm font-semibold text-[#002c3f] group-hover:text-[#871a45] transition-colors whitespace-nowrap"
                   style={{ fontFamily: "var(--font-jost)" }}

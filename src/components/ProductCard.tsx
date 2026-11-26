@@ -38,18 +38,18 @@ export function ProductCard({ product, priority = false, headingLevel = "h3" }: 
         />
 
         {/* Top-left Badges (BSS Style with vector icon) */}
-        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 pointer-events-none">
+        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1.5 pointer-events-none">
           {product.isBestForGifting ? (
-            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5">
-              <GiftIcon className="w-3 h-3 text-[#F8D030]" />
+            <span className="bg-[#871a45] text-white text-[9px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-md flex items-center gap-1 whitespace-nowrap">
+              <GiftIcon className="w-3 h-3 text-[#F8D030] shrink-0" />
               <span>Best for Gifting</span>
             </span>
           ) : product.isFeatured ? (
-            <span className="bg-[#871a45] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md">
+            <span className="bg-[#871a45] text-white text-[9px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-md whitespace-nowrap">
               Best Seller
             </span>
           ) : (
-            <span className="bg-[#002c3f]/90 text-white text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-full shadow-sm">
+            <span className="bg-[#002c3f]/90 text-white text-[9px] sm:text-[11px] font-medium px-2 py-0.5 rounded-full shadow-sm whitespace-nowrap">
               Vijayawada Fresh
             </span>
           )}

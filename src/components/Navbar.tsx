@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CartBadge } from "@/components/CartBadge";
+import { MobileMenu } from "@/components/MobileMenu";
 import {
   PhoneIcon,
   ShoppingBagIcon,
@@ -20,13 +21,16 @@ import {
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-stone-200/80 relative">
-        {/* ── 1. Top Announcement Bar (Plum #871a45 - Clean, Crisp Padding) ── */}
-        <div className="bg-[#871a45] text-white text-xs py-1.5 px-4 sm:px-6 lg:px-8">
-          <div className="w-full flex items-center justify-between gap-4">
+        {/* ── 1. Top Announcement Bar (Plum #871a45 - Single-line on phones) ── */}
+        <div className="bg-[#871a45] text-white text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 lg:px-8">
+          <div className="w-full flex items-center justify-between gap-3">
             {/* Left: Free delivery badge */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030] shrink-0" />
-              <span className="font-semibold tracking-wide">
+              <span className="font-semibold tracking-wide truncate sm:hidden">
+                Vijayawada Delivery • 100% Pure Desi Ghee
+              </span>
+              <span className="font-semibold tracking-wide hidden sm:inline">
                 Home delivery across Vijayawada &nbsp;•&nbsp; 100% Pure Desi Cow Ghee
               </span>
             </div>
@@ -60,32 +64,32 @@ export function Navbar() {
 
         {/* ── 2. Main Brand Header (Myntra-Style Mega Menu Navigation Bar) ── */}
         <div className="bg-white">
-          <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-6 h-18">
+          <div className="w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 h-16 sm:h-18">
             {/* Left: Logo */}
             <div className="flex items-center gap-6 lg:gap-8 shrink-0 h-full">
               <Link
                 href="/"
-                className="flex items-center gap-2.5 group shrink-0 py-2"
+                className="flex items-center gap-2 sm:gap-2.5 group shrink-0 py-1.5 sm:py-2"
                 aria-label="Kanaka Sweets & Bakery Homepage"
               >
-                <div className="w-10 h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-xs group-hover:scale-105 transition-transform">
-                  <KanakaEmblemIcon className="w-5 h-5 text-[#F8D030]" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#871a45] flex items-center justify-center text-[#F8D030] shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                  <KanakaEmblemIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#F8D030]" />
                 </div>
                 <div className="flex flex-col leading-tight">
                   <span
-                    className="font-serif text-2xl font-extrabold text-[#002c3f] tracking-tight group-hover:text-[#871a45] transition-colors"
+                    className="font-serif text-xl sm:text-2xl font-extrabold text-[#002c3f] tracking-tight group-hover:text-[#871a45] transition-colors"
                     style={{ fontFamily: "var(--font-fraunces)" }}
                   >
                     Kanaka
                   </span>
                   <div className="flex items-center gap-1 -mt-0.5">
                     <span
-                      className="text-[9px] tracking-[0.2em] uppercase text-[#871a45] font-bold"
+                      className="text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#871a45] font-bold whitespace-nowrap"
                       style={{ fontFamily: "var(--font-jost)" }}
                     >
                       Sweets &amp; Bakery
                     </span>
-                    <span className="text-[9px] text-stone-600 font-medium hidden sm:inline">
+                    <span className="text-[9px] text-stone-600 font-medium hidden sm:inline whitespace-nowrap">
                       • Estd. 2011
                     </span>
                   </div>
@@ -1039,8 +1043,8 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Right: Search, Profile (admin login) and Cart */}
-            <div className="flex flex-1 min-w-0 items-center justify-end gap-3 sm:gap-5">
+            {/* Right: Search, Profile (admin login), Cart, and Mobile Menu */}
+            <div className="flex flex-1 min-w-0 items-center justify-end gap-1.5 sm:gap-5">
               {/* Search box: a plain GET form, works without JavaScript. It takes only the
                   space that is left, so the cart always stays on screen. Between 1024 and
                   1279px the menu needs that space, so the search icon is shown instead. */}
@@ -1074,10 +1078,10 @@ export function Navbar() {
                 </span>
               </Link>
 
-              {/* Profile Icon with Short Title Below */}
+              {/* Profile Icon with Short Title Below (hidden on < sm, accessible inside MobileMenu) */}
               <Link
                 href="/admin"
-                className="flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
+                className="hidden sm:flex flex-col items-center justify-center group text-[#002c3f] hover:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
                 aria-label="Profile and Admin Login"
               >
                 <div className="w-6 h-6 flex items-center justify-center">
@@ -1108,6 +1112,8 @@ export function Navbar() {
                   Cart
                 </span>
               </Link>
+
+              <MobileMenu />
             </div>
           </div>
         </div>

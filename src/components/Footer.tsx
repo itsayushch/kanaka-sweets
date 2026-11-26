@@ -162,13 +162,13 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
-          <p>
-            © 2026 Kanaka Sweets &amp; Bakery, Vijayawada. All rights reserved.{" "}
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1">
+            <p>© 2026 Kanaka Sweets &amp; Bakery, Vijayawada. All rights reserved.</p>
             <Link href="/credits" className="underline hover:text-white inline-flex items-center min-h-[44px]">
               Photo credits
             </Link>
-          </p>
-          <p className="text-white/70">
+          </div>
+          <p className="text-white/70 text-center sm:text-right">
             Handcrafted with Pure Desi Ghee · FSSAI Certified · Authentic Andhra Mithai
           </p>
         </div>
