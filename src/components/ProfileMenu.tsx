@@ -2,28 +2,25 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { UserIcon } from "@/components/icons";
+import { logoutAction } from "@/app/admin/actions";
 
 interface AdminUser {
   email?: string;
   name?: string;
-  role?: string;
 }
 
 export function ProfileMenu() {
-  const router = useRouter();
   const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
-  const [signingOut, setSigningOut] = useState(false);
 
   useEffect(() => {
     let active = true;
-    fetch("/api/auth/get-session", { credentials: "include" })
+    fetch("/api/admin/session", { credentials: "include" })
       .then((res) => (res.ok ? res.json() : null))
-      .then((data: { user?: AdminUser } | null) => {
+      .then((data: { authenticated?: boolean; email?: string; name?: string } | null) => {
         if (!active) return;
-        if (data?.user?.role === "admin") {
-          setAdminUser(data.user);
+        if (data?.authenticated) {
+          setAdminUser({ email: data.email, name: data.name });
         } else {
           setAdminUser(null);
         }
@@ -35,22 +32,6 @@ export function ProfileMenu() {
       active = false;
     };
   }, []);
-
-  async function handleSignOut() {
-    setSigningOut(true);
-    try {
-      await fetch("/api/auth/sign-out", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: "{}",
-        credentials: "include",
-      });
-      setAdminUser(null);
-      router.refresh();
-    } finally {
-      setSigningOut(false);
-    }
-  }
 
   const rowClass =
     "block py-1.5 text-[13px] text-stone-700 hover:text-[#002c3f] hover:font-semibold transition-colors";
@@ -173,14 +154,14 @@ export function ProfileMenu() {
               Call +91 90000 00000
             </a>
             {adminUser && (
-              <button
-                type="button"
-                onClick={handleSignOut}
-                disabled={signingOut}
-                className="block w-full text-left py-1.5 mt-1 text-[13px] font-semibold text-rose-700 hover:text-rose-900 cursor-pointer disabled:opacity-60"
-              >
-                {signingOut ? "Signing out..." : "Logout"}
-              </button>
+              <form action={logoutAction}>
+                <button
+                  type="submit"
+                  className="block w-full text-left py-1.5 mt-1 text-[13px] font-semibold text-rose-700 hover:text-rose-900 cursor-pointer"
+                >
+                  Logout
+                </button>
+              </form>
             )}
           </div>
         </div>
