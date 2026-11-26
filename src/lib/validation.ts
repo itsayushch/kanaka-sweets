@@ -16,6 +16,12 @@ import {
   isSlotPast,
 } from "@/lib/shop-constants";
 
+/** An order number typed on /track, e.g. KS-261125-A1B2C3. Spaces and small letters are fine. */
+export const orderNumberSchema = z
+  .string()
+  .transform((value) => value.replace(/\s+/g, "").toUpperCase())
+  .pipe(z.string().regex(/^KS-\d{6}-[0-9A-F]{6}$/));
+
 /** One cart line: only IDs and a quantity, never a price. */
 export const cartItemSchema = z.object({
   productId: z.string().min(1).max(64),
