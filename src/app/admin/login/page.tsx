@@ -21,7 +21,7 @@ async function AlreadySignedIn() {
 export default function AdminLoginPage() {
   return (
     <div
-      className="min-h-[calc(100vh-140px)] bg-[#FAF6EF] py-12 sm:py-16 px-4 flex flex-col items-center justify-center"
+      className="min-h-screen bg-[#FAF6EF] py-12 px-4 flex flex-col items-center justify-center"
       style={{ fontFamily: "var(--font-jost)" }}
     >
       <Suspense fallback={null}>
