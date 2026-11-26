@@ -52,11 +52,14 @@ export function ProfileMenu() {
     }
   }
 
+  const rowClass =
+    "block py-1.5 text-[13px] text-stone-700 hover:text-[#002c3f] hover:font-semibold transition-colors";
+
   return (
-    <div className="hidden sm:flex relative group/profile items-center">
+    <div className="hidden sm:flex relative group/profile items-center h-full">
       <Link
         href={adminUser ? "/admin" : "/admin/login"}
-        className="flex flex-col items-center justify-center text-[#002c3f] group-hover/profile:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
+        className="flex flex-col items-center justify-center text-[#002c3f] group-hover/profile:text-[#871a45] transition-colors min-w-[44px] min-h-[44px] border-b-2 border-transparent group-hover/profile:border-[#871a45]"
         aria-label={adminUser ? "Store Manager Dashboard" : "Profile and Store Manager Login"}
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
@@ -76,126 +79,108 @@ export function ProfileMenu() {
         </span>
       </Link>
 
-      {/* Dropdown Panel */}
-      <div className="absolute right-0 top-full pt-2.5 w-64 invisible opacity-0 group-hover/profile:visible group-hover/profile:opacity-100 group-focus-within/profile:visible group-focus-within/profile:opacity-100 transition-[opacity,visibility] duration-150 z-50">
-        <div className="bg-white rounded-xl border border-stone-200/90 shadow-[0_14px_40px_rgba(0,0,0,0.14)] overflow-hidden text-left">
-          {/* Header */}
-          <div className="px-4 py-3 bg-[#FAF6EF] border-b border-stone-200/70">
+      {/* Myntra-style clean white dropdown */}
+      <div className="absolute right-0 top-full w-64 invisible opacity-0 group-hover/profile:visible group-hover/profile:opacity-100 group-focus-within/profile:visible group-focus-within/profile:opacity-100 transition-[opacity,visibility] duration-150 z-50">
+        <div className="bg-white border border-stone-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-5 py-4 text-left">
+          {/* Top Welcome / Auth Section */}
+          <div className="pb-3.5 border-b border-stone-200/70">
             {adminUser ? (
-              <div className="space-y-0.5">
+              <>
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
-                    Store Manager
-                  </span>
+                  <span className="text-sm font-bold text-[#002c3f]">Store Manager</span>
                 </div>
-                <div className="text-xs font-medium text-[#002c3f] truncate">
+                <p className="text-xs text-stone-600 truncate mt-0.5">
                   {adminUser.email || adminUser.name || "Signed in"}
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div className="text-[13px] font-bold text-[#002c3f]">
-                  Welcome to Kanaka Sweets
-                </div>
-                <p className="text-[11px] text-stone-600 mt-0.5">
-                  Fast guest checkout · No sign-up needed
                 </p>
-              </div>
-            )}
-          </div>
-
-          {/* Menu Items */}
-          <div className="p-1.5">
-            {adminUser ? (
-              <ul className="space-y-0.5 text-[13px] font-medium text-[#002c3f]">
-                <li>
-                  <Link
-                    href="/admin"
-                    className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] font-semibold transition-colors"
-                  >
-                    <span>Admin Dashboard</span>
-                    <span className="text-[10px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded">
-                      Live
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/admin/products"
-                    className="block px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    Manage Products &amp; Stock
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/admin/orders"
-                    className="block px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    View Customer Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/admin/settings"
-                    className="block px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    Festival Highlight
-                  </Link>
-                </li>
-              </ul>
+                <Link
+                  href="/admin"
+                  className="inline-flex items-center justify-center mt-3 px-4 min-h-[38px] border border-stone-300 hover:border-[#871a45] text-xs font-bold uppercase tracking-wider text-[#871a45] transition-colors"
+                >
+                  Open Dashboard
+                </Link>
+              </>
             ) : (
-              <ul className="space-y-0.5 text-[13px] font-medium text-[#002c3f]">
-                <li>
-                  <Link
-                    href="/cart"
-                    className="block px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    My Cart &amp; Checkout
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/festival-boxes"
-                    className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    <span>Festival Gift Boxes</span>
-                    <span className="text-[10px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded">
-                      Gifting
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="block px-3 py-2 rounded-lg hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                  >
-                    Shop Location &amp; Contact
-                  </Link>
-                </li>
-              </ul>
+              <>
+                <div className="text-sm font-bold text-[#002c3f]">Welcome</div>
+                <p className="text-xs text-stone-600 mt-0.5">
+                  To manage shop, products and orders
+                </p>
+                <Link
+                  href="/admin/login"
+                  className="inline-flex items-center justify-center mt-3 px-4 min-h-[38px] border border-stone-300 hover:border-[#871a45] text-xs font-bold uppercase tracking-wider text-[#871a45] transition-colors"
+                >
+                  Store Manager Login
+                </Link>
+              </>
             )}
           </div>
 
-          {/* Footer CTA */}
-          <div className="p-2.5 border-t border-stone-100 bg-stone-50/60">
-            {adminUser ? (
+          {/* Admin Links (only when signed in as admin) */}
+          {adminUser && (
+            <div className="py-2.5 border-b border-stone-200/70">
+              <Link href="/admin/products" className={rowClass}>
+                Products &amp; Stock
+              </Link>
+              <Link href="/admin/orders" className={rowClass}>
+                Customer Orders
+              </Link>
+              <Link href="/admin/settings" className={rowClass}>
+                Festival Highlight
+              </Link>
+            </div>
+          )}
+
+          {/* Storefront Quick Links */}
+          <div className="py-2.5 border-b border-stone-200/70">
+            <Link href="/cart" className={rowClass}>
+              Cart &amp; Checkout
+            </Link>
+            <Link
+              href="/festival-boxes"
+              className="flex items-center gap-2 py-1.5 text-[13px] text-stone-700 hover:text-[#002c3f] hover:font-semibold transition-colors"
+            >
+              <span>Festival Boxes</span>
+              <span className="bg-[#871a45] text-white text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-xs leading-none">
+                Gifting
+              </span>
+            </Link>
+            <Link href="/sweets" className={rowClass}>
+              Pure Ghee Sweets
+            </Link>
+            <Link href="/cakes" className={rowClass}>
+              Cakes &amp; Bakery
+            </Link>
+            <Link href="/snacks" className={rowClass}>
+              Vijayawada Savouries
+            </Link>
+          </div>
+
+          {/* Support & Sign out */}
+          <div className="pt-2.5">
+            <Link href="/contact" className={rowClass}>
+              Contact &amp; Directions
+            </Link>
+            <a
+              href="https://wa.me/919000000000?text=Hello%20Kanaka%20Sweets,%20I%20would%20like%20to%20order"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={rowClass}
+            >
+              WhatsApp Order
+            </a>
+            <a href="tel:+919000000000" className={rowClass}>
+              Call +91 90000 00000
+            </a>
+            {adminUser && (
               <button
                 type="button"
                 onClick={handleSignOut}
                 disabled={signingOut}
-                className="w-full min-h-[38px] px-3 rounded-lg border border-rose-200 bg-white hover:bg-rose-50 text-rose-700 text-xs font-bold transition-colors cursor-pointer disabled:opacity-60"
+                className="block w-full text-left py-1.5 mt-1 text-[13px] font-semibold text-rose-700 hover:text-rose-900 cursor-pointer disabled:opacity-60"
               >
-                {signingOut ? "Signing out..." : "Sign out"}
+                {signingOut ? "Signing out..." : "Logout"}
               </button>
-            ) : (
-              <Link
-                href="/admin/login"
-                className="w-full min-h-[38px] px-3 rounded-lg bg-[#871a45] hover:bg-[#691436] text-white text-xs font-bold flex items-center justify-center transition-colors shadow-2xs"
-              >
-                Store Manager Login
-              </Link>
             )}
           </div>
         </div>
