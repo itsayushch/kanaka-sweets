@@ -41,7 +41,7 @@ async function SearchResults({ searchParams }: { searchParams: SearchParams }) {
           <p role="status" className="text-sm text-stone-600 mb-4">
             {products.length} {products.length === 1 ? "result" : "results"} for &ldquo;{term}&rdquo;
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} headingLevel="h2" />
             ))}
