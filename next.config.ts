@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    // Keep Supabase pooler connections low during static build prerendering.
+    staticGenerationMaxConcurrency: 2,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

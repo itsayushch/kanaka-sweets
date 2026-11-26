@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Fraunces, Jost } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -108,13 +109,24 @@ export default function RootLayout({
         className="min-h-screen bg-white text-[#1a1a1a]"
         suppressHydrationWarning
       >
-        <StorefrontShell
-          navbar={<Navbar />}
-          footer={<Footer />}
-          floatingContact={<FloatingContact />}
+        <Suspense
+          fallback={
+            <div className="flex flex-col min-h-screen pb-16 md:pb-0">
+              <Navbar />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+              <FloatingContact />
+            </div>
+          }
         >
-          {children}
-        </StorefrontShell>
+          <StorefrontShell
+            navbar={<Navbar />}
+            footer={<Footer />}
+            floatingContact={<FloatingContact />}
+          >
+            {children}
+          </StorefrontShell>
+        </Suspense>
       </body>
     </html>
   );
