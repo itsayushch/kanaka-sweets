@@ -3,14 +3,13 @@ import { SITE_URL } from "@/lib/site";
 import { clip } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
   getCategoryBySlug,
   getProductsByCategory,
   getAllCategories,
 } from "@/lib/db-products";
 import { ProductCard } from "@/components/ProductCard";
-import { SparklesIcon, LeafIcon, PackageIcon } from "@/components/icons";
+import { SparklesIcon, LeafIcon, PackageIcon, GiftIcon } from "@/components/icons";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -98,102 +97,90 @@ async function CategoryContent({ params }: CategoryPageProps) {
   const products = await getProductsByCategory(categorySlug);
   const allCategories = await getAllCategories();
 
+  const categoryHighlights: Record<string, string> = {
+    sweets: "100% Pure Desi Cow Ghee",
+    cakes: "Baked Fresh Daily • Eggless Options",
+    snacks: "Cold-Pressed Groundnut Oil",
+    "festival-boxes": "Best for Gifting • Velvet Packaging",
+  };
+  const highlightLabel = categoryHighlights[categorySlug] || "Handcrafted Daily";
+
   return (
     <div style={{ fontFamily: "var(--font-jost)" }} className="bg-white">
-      {/* ── Category Hero Banner (Royal Blue & Gold Starbursts) ── */}
-      <section className="relative bg-[#023757] text-white overflow-hidden py-12 sm:py-16">
-        <div aria-hidden="true" className="absolute top-4 right-10 text-[#F8D030]/20 text-5xl font-serif pointer-events-none select-none">
-          ✦
-        </div>
+      {/* ── Compact Editorial Category Header (Products visible above the fold) ── */}
+      <section className="bg-[#FAF6EF] border-b border-stone-200/80 py-6 sm:py-8">
+        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="text-xs text-stone-600 flex items-center gap-1.5 mb-2">
+            <Link
+              href="/"
+              className="hover:text-[#871a45] transition-colors inline-flex items-center min-h-[44px] pr-1"
+            >
+              Home
+            </Link>
+            <span aria-hidden="true" className="text-stone-400">/</span>
+            <span className="text-[#002c3f] font-semibold">{category.name}</span>
+          </nav>
 
-        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <div className="md:col-span-8 space-y-4">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="text-xs text-white/60 flex items-center gap-2">
-                <Link href="/" className="hover:text-[#F8D030] transition-colors inline-flex items-center justify-center min-h-[44px] min-w-[44px]">
-                  Home
-                </Link>
-                <span>/</span>
-                <span className="text-white font-medium">{category.name}</span>
-              </nav>
-
-              <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-semibold text-[#F8D030]">
-                <span aria-hidden="true">✦</span>
-                <span className="tracking-widest uppercase">
-                  KANAKA SWEETS • VIJAYAWADA
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+            <div className="space-y-2 max-w-2xl">
+              <div className="flex flex-wrap items-center gap-3">
+                {/* H1 — Rule E4 */}
+                <h1
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#002c3f] tracking-tight"
+                  style={{ fontFamily: "var(--font-fraunces)" }}
+                >
+                  {category.name}
+                </h1>
+                <span className="inline-flex items-center gap-1 bg-white border border-stone-200 text-[#871a45] text-xs font-bold px-3 py-1 rounded-full shadow-2xs">
+                  <SparklesIcon className="w-3.5 h-3.5 text-[#871a45]" />
+                  <span>{products.length} Varieties</span>
                 </span>
               </div>
 
-              {/* H1 — Rule E4 */}
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight"
-                style={{ fontFamily: "var(--font-fraunces)" }}
-              >
-                {category.name}
-              </h1>
-
-              <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-xl">
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
                 {category.description}
               </p>
 
-              <div className="flex flex-wrap gap-2.5 pt-2">
-                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
-                  <SparklesIcon className="w-3.5 h-3.5 text-[#F8D030]" />
-                  <span>{products.length} Fresh Varieties</span>
-                </div>
-                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
-                  <LeafIcon className="w-3.5 h-3.5 text-emerald-300" />
-                  <span>100% Pure Cow Ghee</span>
-                </div>
-                <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/90 text-xs px-3.5 py-1.5 rounded-full font-medium">
-                  <PackageIcon className="w-3.5 h-3.5 text-[#F8D030]" />
-                  <span>Same-Day Counter Pickup</span>
-                </div>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 pt-1 text-xs font-medium text-stone-700">
+                <span className="inline-flex items-center gap-1.5">
+                  {categorySlug === "festival-boxes" ? (
+                    <GiftIcon className="w-3.5 h-3.5 text-[#871a45]" />
+                  ) : (
+                    <LeafIcon className="w-3.5 h-3.5 text-emerald-700" />
+                  )}
+                  <span>{highlightLabel}</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <PackageIcon className="w-3.5 h-3.5 text-[#871a45]" />
+                  <span>Same-Day Counter Pickup · Vijayawada</span>
+                </span>
               </div>
             </div>
 
-            <div className="md:col-span-4 hidden md:block">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
-                <Image
-                  src={category.image}
-                  alt={`${category.name} collection`}
-                  width={1200}
-                  height={900}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 35vw"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
+            {/* Category Switcher Pills */}
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5 shrink-0">
+              {allCategories.map((c) => (
+                <Link
+                  key={c.id}
+                  href={`/${c.slug}`}
+                  className={`shrink-0 px-4 min-h-[44px] inline-flex items-center rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
+                    c.slug === categorySlug
+                      ? "bg-[#871a45] text-white shadow-xs"
+                      : "bg-white text-[#002c3f] border border-stone-200/90 hover:border-[#871a45] hover:text-[#871a45]"
+                  }`}
+                >
+                  {c.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Category Switcher Strip (NOT sticky) ── */}
-      <div className="bg-[#FAF6EF] border-b border-stone-200/80">
-        <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-3.5">
-            {allCategories.map((c) => (
-              <Link
-                key={c.id}
-                href={`/${c.slug}`}
-                className={`flex-shrink-0 px-5 min-h-[44px] inline-flex items-center rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors min-h-[38px] inline-flex items-center ${
-                  c.slug === categorySlug
-                    ? "bg-[#871a45] text-white shadow-sm"
-                    : "bg-white text-stone-700 border border-stone-200 hover:border-[#871a45] hover:text-[#871a45]"
-                }`}
-              >
-                {c.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Products Grid (BSS Style) ── */}
+      {/* ── Products Grid ── */}
       <section
-        className="py-12 sm:py-16 bg-white"
+        className="py-8 sm:py-10 bg-white"
         aria-label={`${category.name} products`}
       >
         <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
