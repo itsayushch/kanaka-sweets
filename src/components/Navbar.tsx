@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CartBadge } from "@/components/CartBadge";
 import { MobileMenu } from "@/components/MobileMenu";
+import { ProfileMenu } from "@/components/ProfileMenu";
 import {
   PhoneIcon,
   ShoppingBagIcon,
@@ -11,7 +12,6 @@ import {
   ChevronDownIcon,
   GiftIcon,
   ClockIcon,
-  UserIcon,
   StarIcon,
   LeafIcon,
   ShieldCheckIcon,
@@ -1078,79 +1078,7 @@ export function Navbar() {
                 </span>
               </Link>
 
-              {/* Profile Icon with Myntra-style Dropdown (no customer accounts needed; includes quick shop links & Store Manager Login) */}
-              <div className="hidden sm:flex relative group/profile items-center">
-                <Link
-                  href="/admin"
-                  className="flex flex-col items-center justify-center text-[#002c3f] group-hover/profile:text-[#871a45] transition-colors min-w-[44px] min-h-[44px]"
-                  aria-label="Profile, Quick Links and Store Manager Login"
-                >
-                  <div className="w-6 h-6 flex items-center justify-center">
-                    <UserIcon className="w-5 h-5 text-[#002c3f] group-hover/profile:text-[#871a45] transition-colors" />
-                  </div>
-                  <span
-                    className="text-[10px] font-semibold leading-none mt-1 text-[#002c3f] group-hover/profile:text-[#871a45] transition-colors"
-                    style={{ fontFamily: "var(--font-jost)" }}
-                  >
-                    Profile
-                  </span>
-                </Link>
-
-                {/* Dropdown Panel */}
-                <div className="absolute right-0 top-full pt-2 w-64 invisible opacity-0 group-hover/profile:visible group-hover/profile:opacity-100 group-focus-within/profile:visible group-focus-within/profile:opacity-100 transition-[opacity,visibility] duration-150 z-50">
-                  <div className="bg-white rounded-2xl border border-stone-200/90 shadow-xl p-4 text-left space-y-3">
-                    <div className="pb-2.5 border-b border-stone-100">
-                      <div className="text-sm font-bold text-[#002c3f]">
-                        Welcome to Kanaka Sweets
-                      </div>
-                      <p className="text-xs text-stone-500 mt-0.5">
-                        Fast guest checkout — no account required
-                      </p>
-                    </div>
-
-                    <ul className="space-y-1 text-xs font-semibold text-[#002c3f]">
-                      <li>
-                        <Link
-                          href="/cart"
-                          className="flex items-center justify-between px-2.5 min-h-[40px] rounded-xl hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                        >
-                          <span>My Cart &amp; Checkout</span>
-                          <span className="text-stone-400">→</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/festival-boxes"
-                          className="flex items-center justify-between px-2.5 min-h-[40px] rounded-xl hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                        >
-                          <span>Festival Gift Boxes</span>
-                          <span className="text-[10px] font-bold text-[#871a45] bg-[#fce8e8] px-1.5 py-0.5 rounded-full">
-                            Gifting
-                          </span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/contact"
-                          className="flex items-center justify-between px-2.5 min-h-[40px] rounded-xl hover:bg-[#FAF6EF] hover:text-[#871a45] transition-colors"
-                        >
-                          <span>Shop Location &amp; Contact</span>
-                          <span className="text-stone-400">→</span>
-                        </Link>
-                      </li>
-                    </ul>
-
-                    <div className="pt-2.5 border-t border-stone-100">
-                      <Link
-                        href="/admin/login"
-                        className="w-full min-h-[40px] px-3 rounded-xl border border-[#871a45]/30 bg-[#FAF6EF] hover:bg-[#871a45] text-[#871a45] hover:text-white text-xs font-bold flex items-center justify-center transition-colors"
-                      >
-                        Store Manager Login
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProfileMenu />
 
               {/* Cart Icon with Counter Badge & Short Title Below */}
               <Link
