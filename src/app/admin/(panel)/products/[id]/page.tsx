@@ -1,8 +1,10 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { requireAdminPage } from "@/lib/admin-guard";
 import { ProductForm } from "@/components/admin/ProductForm";
+import { FormSkeleton } from "@/components/admin/AdminSkeletons";
 
 async function EditProduct({ params }: { params: Promise<{ id: string }> }) {
   await requireAdminPage(); // Rule F3
@@ -19,7 +21,20 @@ async function EditProduct({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-[#002c3f]">Edit: {product.name}</h1>
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <h1
+          className="text-2xl sm:text-3xl font-bold text-[#002c3f]"
+          style={{ fontFamily: "var(--font-fraunces)" }}
+        >
+          Edit: {product.name}
+        </h1>
+        <Link
+          href="/admin/products"
+          className="text-sm font-semibold text-stone-600 hover:text-[#871a45] min-h-[44px] inline-flex items-center"
+        >
+          ← Back to products
+        </Link>
+      </div>
       <ProductForm
         categories={categories}
         initial={{
@@ -47,7 +62,7 @@ async function EditProduct({ params }: { params: Promise<{ id: string }> }) {
 
 export default function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
   return (
-    <Suspense fallback={<p role="status">Loading...</p>}>
+    <Suspense fallback={<FormSkeleton />}>
       <EditProduct params={params} />
     </Suspense>
   );
