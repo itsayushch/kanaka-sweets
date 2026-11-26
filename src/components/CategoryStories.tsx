@@ -66,8 +66,8 @@ export function CategoryStories() {
       aria-label="Category Stories"
       className="bg-[#FAF6EF] border-y border-stone-200/80 w-full py-4 sm:py-5 shadow-2xs"
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="flex items-center justify-between gap-3 sm:gap-5 md:gap-6 overflow-x-auto no-scrollbar py-1">
+      <div className="w-full px-3 sm:px-6 lg:px-8 xl:px-12">
+        <div className="flex items-center justify-between gap-2.5 sm:gap-5 md:gap-6 overflow-x-auto no-scrollbar py-1">
           {CATEGORY_STORIES.map((cat) => (
             <Link
               key={cat.href}

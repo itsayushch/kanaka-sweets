@@ -101,25 +101,25 @@ export default async function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           3. AS SEEN IN / PRESS STRIP (BSS Signature Social Proof)
       ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-10 border-b border-stone-100">
+      <section className="bg-white py-5 sm:py-9 border-b border-stone-100">
         <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 text-center">
           <h2
-            className="text-xs font-bold uppercase tracking-[0.25em] text-stone-600 mb-6"
+            className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-stone-600 mb-3 sm:mb-5"
             style={{ fontFamily: "var(--font-jost)" }}
           >
             Featured In &amp; Recommended By
           </h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 text-stone-600 font-serif text-sm sm:text-base lg:text-lg font-bold tracking-wider">
-            <span className="hover:text-[#002c3f] transition-colors">VOGUE INDIA</span>
-            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors">THE HINDU</span>
-            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors">TIMES OF INDIA</span>
-            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors">DECCAN CHRONICLE</span>
-            <span className="hidden sm:inline text-stone-400" aria-hidden="true">•</span>
-            <span className="hover:text-[#002c3f] transition-colors">CONDÉ NAST</span>
+          <div className="flex items-center sm:justify-center gap-6 sm:gap-10 overflow-x-auto no-scrollbar whitespace-nowrap text-stone-600 font-serif text-xs sm:text-base lg:text-lg font-bold tracking-wider py-0.5">
+            <span className="hover:text-[#002c3f] transition-colors shrink-0">VOGUE INDIA</span>
+            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
+            <span className="hover:text-[#002c3f] transition-colors shrink-0">THE HINDU</span>
+            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
+            <span className="hover:text-[#002c3f] transition-colors shrink-0">TIMES OF INDIA</span>
+            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
+            <span className="hover:text-[#002c3f] transition-colors shrink-0">DECCAN CHRONICLE</span>
+            <span className="text-stone-400 shrink-0" aria-hidden="true">•</span>
+            <span className="hover:text-[#002c3f] transition-colors shrink-0">CONDÉ NAST</span>
           </div>
         </div>
       </section>
@@ -127,12 +127,12 @@ export default async function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           3. OUR GIFTING FAVOURITES (Products Grid)
       ═══════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-white" aria-labelledby="gifting-heading">
+      <section className="py-8 sm:py-16 bg-white" aria-labelledby="gifting-heading">
         <div className="w-full max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-12">
             <h2
               id="gifting-heading"
-              className="text-3xl sm:text-4xl font-bold text-[#002c3f] tracking-tight"
+              className="text-2xl sm:text-4xl font-bold text-[#002c3f] tracking-tight"
               style={{ fontFamily: "var(--font-fraunces)" }}
             >
               Our Gifting Favourites

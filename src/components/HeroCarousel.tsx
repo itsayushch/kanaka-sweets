@@ -167,10 +167,11 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
       )}
 
       {/* ── Slide Dot Indicators ──
-          Bottom right on phones, centered on wider screens, with a dark pill backdrop for contrast. */}
+          Placed in a slim bar below the image on mobile so nothing covers the banner art,
+          and overlaid cleanly at the bottom center on wider screens. */}
       {length > 1 && (
-        <div className="absolute bottom-1 sm:bottom-4 inset-x-0 z-20 flex items-center justify-end pr-2 sm:justify-center sm:pr-0 pointer-events-none">
-          <div className="pointer-events-auto inline-flex items-center bg-black/35 backdrop-blur-xs rounded-full px-1">
+        <div className="sm:absolute sm:bottom-3 inset-x-0 z-20 flex items-center justify-center bg-[#FAF6EF] sm:bg-transparent border-b border-stone-200/60 sm:border-0 sm:pointer-events-none">
+          <div className="pointer-events-auto inline-flex items-center">
             {banners.map((_, index) => (
               <button
                 key={index}
@@ -183,8 +184,8 @@ export function HeroCarousel({ banners }: HeroCarouselProps) {
                 aria-current={index === current ? "true" : undefined}
               >
                 <span
-                  className={`block h-2 w-2 rounded-full bg-white transition-[transform,opacity] duration-300 ${
-                    index === current ? "scale-125 opacity-100 shadow-sm" : "opacity-55"
+                  className={`block h-2 w-2 rounded-full transition-[transform,opacity] duration-300 bg-[#871a45] sm:bg-white sm:ring-1 sm:ring-black/25 ${
+                    index === current ? "scale-125 opacity-100 shadow-sm" : "opacity-35 sm:opacity-60"
                   }`}
                 />
               </button>
