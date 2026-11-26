@@ -128,20 +128,26 @@ export function ProductsTableClient({ products }: { products: AdminProductRow[] 
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5">
+            <div className="divide-y divide-stone-100 rounded-xl border border-stone-200/80 bg-stone-50/50 px-3">
               {p.variants.map((v) => (
-                <span
+                <div
                   key={v.id}
-                  className={`text-xs px-2.5 py-1 rounded-lg border font-medium ${
-                    v.stock === 0
-                      ? "bg-rose-50 border-rose-200 text-rose-800"
-                      : v.stock <= 5
-                        ? "bg-amber-50 border-amber-200 text-amber-900"
-                        : "bg-stone-50 border-stone-200 text-stone-700"
-                  }`}
+                  className="py-2 grid grid-cols-[1fr_auto_auto] items-center gap-3 text-xs"
                 >
-                  {v.name}: {rupees(v.price)} · {v.stock === 0 ? "Sold out" : `${v.stock} left`}
-                </span>
+                  <span className="font-medium text-stone-700 truncate">{v.name}</span>
+                  <span className="font-bold text-[#002c3f] tabular-nums">{rupees(v.price)}</span>
+                  <span
+                    className={`w-18 text-center rounded-full px-2 py-0.5 text-[11px] font-bold tabular-nums ${
+                      v.stock === 0
+                        ? "bg-rose-100 text-rose-800"
+                        : v.stock <= 5
+                          ? "bg-amber-100 text-amber-900"
+                          : "bg-emerald-100/80 text-emerald-800"
+                    }`}
+                  >
+                    {v.stock === 0 ? "Sold out" : `${v.stock} left`}
+                  </span>
+                </div>
               ))}
             </div>
 
@@ -195,23 +201,28 @@ export function ProductsTableClient({ products }: { products: AdminProductRow[] 
                 </td>
                 <td className="py-3.5 px-4 text-stone-700 font-medium">{p.categoryName}</td>
                 <td className="py-3.5 px-4">
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="max-w-sm divide-y divide-stone-100 rounded-xl border border-stone-200/80 bg-stone-50/40 px-3">
                     {p.variants.map((v) => (
-                      <span
+                      <div
                         key={v.id}
-                        className={`inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border font-medium ${
-                          v.stock === 0
-                            ? "bg-rose-50 border-rose-200 text-rose-800"
-                            : v.stock <= 5
-                              ? "bg-amber-50 border-amber-200 text-amber-900"
-                              : "bg-stone-50 border-stone-200 text-stone-700"
-                        }`}
+                        className="py-1.5 grid grid-cols-[1fr_auto_auto] items-center gap-3 text-xs"
                       >
-                        <span>{v.name}:</span>
-                        <span className="font-bold">{rupees(v.price)}</span>
-                        <span className="text-stone-400">·</span>
-                        <span>{v.stock === 0 ? "sold out" : `${v.stock} in stock`}</span>
-                      </span>
+                        <span className="font-medium text-stone-700 truncate">{v.name}</span>
+                        <span className="font-bold text-[#002c3f] tabular-nums">
+                          {rupees(v.price)}
+                        </span>
+                        <span
+                          className={`w-18 text-center rounded-full px-2 py-0.5 text-[11px] font-bold tabular-nums ${
+                            v.stock === 0
+                              ? "bg-rose-100 text-rose-800"
+                              : v.stock <= 5
+                                ? "bg-amber-100 text-amber-900"
+                                : "bg-emerald-100/80 text-emerald-800"
+                          }`}
+                        >
+                          {v.stock === 0 ? "Sold out" : `${v.stock} left`}
+                        </span>
+                      </div>
                     ))}
                   </div>
                 </td>
